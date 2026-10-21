@@ -20,7 +20,7 @@ export default defineConfig({
   run: {
     cache: false,
     tasks: {
-      release: `vp pm publish dist/${packageJson.name}-${packageJson.version}.tgz --access public`,
+      release: `vp pm stage publish dist/${packageJson.name}-${packageJson.version}.tgz --access public`,
       sync: "node scripts/sync.ts",
       bench: "node --expose-gc scripts/benchmark.ts",
     },
