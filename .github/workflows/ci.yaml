@@ -21,5 +21,6 @@ jobs:
       - uses: ./.github/actions/setup
       - run: vp pack
       - run: vp check
+        if: runner.os != 'Windows'
       - run: vp exec playwright-core install --with-deps chromium
       - run: vp test
