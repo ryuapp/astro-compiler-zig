@@ -75,7 +75,7 @@ export default defineConfig({
     clean: true,
     hooks: {
       async "build:prepare"() {
-        await $`zig build install -Doptimize=fast`.cwd(import.meta.dirname);
+        await $`zig build install -Doptimize=fast --summary all`.cwd(import.meta.dirname);
       },
     },
     async onSuccess() {
