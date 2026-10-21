@@ -22,5 +22,5 @@ jobs:
       - run: vp pack
       - run: vp check
         if: runner.os != 'Windows'
-      - run: vp exec playwright-core install --with-deps chromium
+      - run: vp exec playwright-core install --with-deps --only-shell chromium
       - run: vp test
