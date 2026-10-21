@@ -10,10 +10,17 @@ runs:
         run-install: true
         cache: true
     - uses: jdx/mise-action@fc42bcc7ddbf51124c30f95a877a0c5168a3bfde # v5.2.1
-    - name: Cache Zig build
+    - name: Configure Zig global cache
+      shell: pwsh
+      run: |
+        $cachePath = Join-Path $env:GITHUB_WORKSPACE '.zig-cache/global'
+        "ZIG_GLOBAL_CACHE_DIR=$cachePath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    - name: Cache Zig build and packages
       uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
-        path: .zig-cache
-        key: zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-${{ hashFiles('build.zig', 'src/**') }}
+        path: |
+          .zig-cache
+          zig-pkg
+        key: zig-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-${{ hashFiles('build.zig', 'src/**') }}
         restore-keys: |
-          zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-
+          zig-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-
