@@ -1,0 +1,1648 @@
+{
+  "repository": "https://github.com/withastro/compiler-rs",
+  "revision": "3fd9d58f7e3054ef4a4ac399a6f9f2cb37596598",
+  "license": "MIT",
+  "directory": "crates/astro_codegen/tests/fixtures/",
+  "fixtures": [
+    {
+      "file": "_110_backtick_in_attribute_name.astro",
+      "sha256": "65d9220bbfcf01d6412e70f79f4bf0099efba32ca88f4179de85147fb12cc984"
+    },
+    {
+      "file": "_153_scoped_classname.astro",
+      "sha256": "99d1b975f39855f8f58221f645d7f6d7a3a4b9a4ec49b10ade42c92146a3f04e"
+    },
+    {
+      "file": "_33_unquoted_dashed_attribute.astro",
+      "sha256": "1562d4ca4e7bce1375c99eb06fe0fefc034d8fab88e3855627e87333e45437b6"
+    },
+    {
+      "file": "_33_unquoted_numeric_attribute.astro",
+      "sha256": "d6409338b11d4d27439bee61e12af4a621631fdf51b912df312dbaa5806926b1"
+    },
+    {
+      "file": "_53_style_in_conditional.astro",
+      "sha256": "0221616f23669dce3934380f0fe23afe06db9d7dc0cf765a101881030ba3dff4"
+    },
+    {
+      "file": "_56_attribute_backslash.astro",
+      "sha256": "b46ebffe67ceec8acf039c2bb313eee469dc3f19f9c9d4f8a96a2b618504a64b"
+    },
+    {
+      "file": "_56_component_prop_backslash.astro",
+      "sha256": "72729e8596f149da04257b9921b2a949ba17e6d4110e20431eb65bbb584670d7"
+    },
+    {
+      "file": "_71_define_vars_on_custom_element.astro",
+      "sha256": "e90ebceabe4dc8b6be170af8cff20e2114bb1736c053f68b2cde5b10fc2170d9"
+    },
+    {
+      "file": "_89_component_prop_escapes.astro",
+      "sha256": "96c19f47e151a9bc5ccc3cfa5fae08afdd2ec3ad7ba60c77f6c58382b5095584"
+    },
+    {
+      "file": "_955_ternary_slot_with_elements.astro",
+      "sha256": "49a7127091e1513af0522b176c92909eceab76cfd04d03f771f8916acd604543"
+    },
+    {
+      "file": "_955_ternary_slot_with_text.astro",
+      "sha256": "892cfaba5cc637c78ec81730c6683ac5b34d0fbee217df51318f2a870929c40c"
+    },
+    {
+      "file": "advanced_svg_expression.astro",
+      "sha256": "947ed86df79e47c3c86244175992e1681f6a8c196051e7f5a305b5b3a7195083"
+    },
+    {
+      "file": "all_components.astro",
+      "sha256": "6ceeb78d48858eba0dbde8836ae16a9a4871d219a39a90624d67551836cd4448"
+    },
+    {
+      "file": "anchor_content.astro",
+      "sha256": "6c7329b37857b44767e8b7868cb4326ab98cb8400315eb618c00f4f0851102c0"
+    },
+    {
+      "file": "anchor_expressions.astro",
+      "sha256": "899c06d4c3d7cddda53d197da4fbd4bc95cfbbe412c6f03cfd205d1433dac027"
+    },
+    {
+      "file": "anchor_inside_expression.astro",
+      "sha256": "e1f33fbb42dfd1fc37c0eca7343b2143fcd56e00c344da11620401fc38d5d5ba"
+    },
+    {
+      "file": "aspire_dev_page.astro",
+      "sha256": "4d7b10e77b6d8494b8aa207866dcc1d7c4a6eb275663ee6286b40594ea90e640"
+    },
+    {
+      "file": "async_arrow_in_expression.astro",
+      "sha256": "a6886357f7608ad5b948c4ad50383924a06742187c28173238e5e16df7975a4d"
+    },
+    {
+      "file": "async_named_slots_partial_await.astro",
+      "sha256": "9bc6880e0cce1d2dc8cfeca4749696e6d66ef991297c18bb3236583271d08772"
+    },
+    {
+      "file": "async_slot_precision_siblings.astro",
+      "sha256": "84e1fee307785fbea9123aa548d82c28e8069e2e1e75dbfc518e8f39fa9cc79a"
+    },
+    {
+      "file": "attribute_with_template_literal.astro",
+      "sha256": "642b75cf0913d08378bba1ed42ec5773511842034a28ea907a851207b1581f3a"
+    },
+    {
+      "file": "attribute_with_template_literal_interpolation.astro",
+      "sha256": "648bb94c9709b99dc599249687cb14d34894b58d8ead92acb058f213e517ab09"
+    },
+    {
+      "file": "backtick_in_html_comment.astro",
+      "sha256": "bafcfeac90532890bf743ac5fefbeaa93f6530f9f543e0725493dbb3bd9c3755"
+    },
+    {
+      "file": "basic__frontmatter_.astro",
+      "sha256": "667a51db329e6361d1659a2e6312c134371f1e9ef1e8278e3b3c7c5970dde90f"
+    },
+    {
+      "file": "basic__no_frontmatter_.astro",
+      "sha256": "80da029fb8386f6af29d0bafd6f72698e4f781d7acec95216c60c94e780a23d9"
+    },
+    {
+      "file": "basic_renderhead.astro",
+      "sha256": "b73f810d620461affe849474d5b0132a1f66005dcc16a24cbafffd838b95355e"
+    },
+    {
+      "file": "caption_only.astro",
+      "sha256": "ffdf32d12a86d37c9ee5b2fae655078d7db5181313a575eb3e7d33d8d11cb2fb"
+    },
+    {
+      "file": "class_and_class_list_object.astro",
+      "sha256": "f3f1871fa5d5ead8db8bf0843925d44b481de093d7583f84970f48a814a766e0"
+    },
+    {
+      "file": "class_and_class_list_set.astro",
+      "sha256": "df83530bc345d3946a3c1cd3d57d4b7252c569992c3720759c2bdc8e07e08404"
+    },
+    {
+      "file": "class_and_class_list_simple_array.astro",
+      "sha256": "765848c2659408f84bf467103fc3da13f605feb5938c8eafb570e46a94ddb501"
+    },
+    {
+      "file": "class_decl_in_arrow_with_jsx.astro",
+      "sha256": "bcf56157c1e76faa26d38da6938d5b6278633673ed5c63541cb85ec30ba1b6be"
+    },
+    {
+      "file": "class_decl_with_decorators.astro",
+      "sha256": "c57eeb933db1fe83c7d5cc93b86348cba4e38f4b3986b751903e56a359362cca"
+    },
+    {
+      "file": "class_decl_with_param_property.astro",
+      "sha256": "d0e767ba402688533fd057850907f8b3198cd1a4b1b931cb0d9edab37e2f7cea"
+    },
+    {
+      "file": "class_decl_with_ts_types.astro",
+      "sha256": "81d96f54b64076b5a0b59f679d5de8ed8580d14f52c58cbe59cdf452ec70e57a"
+    },
+    {
+      "file": "class_expr_with_jsx.astro",
+      "sha256": "33cc758a59d07d1fca6d7784f8e7e94c1b9ed1e7062ecfb5bba0d6b64775737b"
+    },
+    {
+      "file": "class_list.astro",
+      "sha256": "d0619ed6d1cff24c050d3f6dd3e913b472babefacedb897cdf6d05f8f0b13e88"
+    },
+    {
+      "file": "class_list_with_spread.astro",
+      "sha256": "2afa384c51627a35e83f57e70c89d21699a9bdcca9d4055a118b04ef40c788db"
+    },
+    {
+      "file": "class_with_spread.astro",
+      "sha256": "d14b6d016725b954d384dad52c225d1b8fab1cde588d0a6e5e01b0b6a49212a6"
+    },
+    {
+      "file": "client_only_component__default_.astro",
+      "sha256": "bc3726b3204631e73956494d2479426664de5aa3f03a450f89dafb839a414a6d"
+    },
+    {
+      "file": "client_only_component__multiple_.astro",
+      "sha256": "6ebf913cceab7bddda7c73e42b10ee7518350e5c041eca6bf9562334772a5fb3"
+    },
+    {
+      "file": "client_only_component__named_.astro",
+      "sha256": "8e2c9ca4d768261fd4f1f44d6b1df412348269aefbf84a7482ec6c3e8c4d7dec"
+    },
+    {
+      "file": "client_only_component__namespace_.astro",
+      "sha256": "f145219d0afadd11d432d2b5825042dcb2fc26b6af658c62156351b1a02e87c3"
+    },
+    {
+      "file": "client_only_component__namespaced_default_.astro",
+      "sha256": "39fb65df8db9412accb04ebc1d2c1b3c45c6d2bbdbe286e0ce43db448a5b3e52"
+    },
+    {
+      "file": "client_only_component__namespaced_named_.astro",
+      "sha256": "c83ed5e22d29875613c3efae775078b69fa8407de791c6eebbab2dc166fdc094"
+    },
+    {
+      "file": "comment_only_expressions_are_removed_i.astro",
+      "sha256": "c5defb8dd494636b16ad06d7449bcd81f535b1bf08b2aeac02ced683859429df"
+    },
+    {
+      "file": "comment_only_expressions_are_removed_ii.astro",
+      "sha256": "ac908542ff05120d16ca255c6a479298fe55860bd93c8e6da2a4dd55f8a9a221"
+    },
+    {
+      "file": "comment_only_expressions_are_removed_iii.astro",
+      "sha256": "3e82b9c213814947b4f8a06214417cc21384a0656b71e7f5546ad1a0008e6690"
+    },
+    {
+      "file": "comments_between_attributes.astro",
+      "sha256": "e09b5384bb704cf5edb4851b878bbee7335c499d4a25da160cfe64600a9b3e6a"
+    },
+    {
+      "file": "comments_removed_from_attribute_list.astro",
+      "sha256": "07bbf66ac8229abf00b57b55ba2c89dde4ec6c1bc41a958cee82f794c1abd75c"
+    },
+    {
+      "file": "compact__basic.astro",
+      "sha256": "911920f7000c0e14d88f7d67130198ac64e99ff68af007900ec04b4dbc95f03f"
+    },
+    {
+      "file": "compact__basic_interior_space.astro",
+      "sha256": "5055baf8c31facf190ffb6c743842322694ad708af909a7e048f7fffe96d66d3"
+    },
+    {
+      "file": "compact__collapsing_inline.astro",
+      "sha256": "7cb8bcaccb5f673274e769683dd4420900a9a6bb249489a38bdd828457098d2c"
+    },
+    {
+      "file": "compact__collapsing_newline_expression.astro",
+      "sha256": "811ac622b55ace2b1006ac10ef33fa8c006f0a99c7c048d620fcfb7bb6f44150"
+    },
+    {
+      "file": "compact__collapsing_space_expression.astro",
+      "sha256": "d9d4eb8f64673728bad508090de349a6494e3ccc7366ef385475fdf5a499f673"
+    },
+    {
+      "file": "compact__disabled.astro",
+      "sha256": "cc481d34bd02bfec7e1ec49ad72d6246c3004c18da7bb7f974d4589883344aaf"
+    },
+    {
+      "file": "compact__html_slot_whitespace.astro",
+      "sha256": "cf122cefd9ffc1e898c04941ac91c09d3cfd7644213e3f567887b74a4bb56e85"
+    },
+    {
+      "file": "compact__jsx_custom_element_slot_whitespace.astro",
+      "sha256": "450f9f7e37045c3f4f97abe0833158961cbbe12752e1c79499baf281230a9794"
+    },
+    {
+      "file": "compact__jsx_inline_whitespace.astro",
+      "sha256": "ba23f3d099f6f3055949475c3cb538b4a0f6bfed367caafacfdf801b484735ea"
+    },
+    {
+      "file": "compact__jsx_newline_whitespace.astro",
+      "sha256": "91e2e860f4922c16e11e2da964305e866b2a6580cbccc0f90342a1d275aa9382"
+    },
+    {
+      "file": "compact__jsx_preserve_raw.astro",
+      "sha256": "9ce97b0e5d9e6b6e17cbb5d1fc8a94d8732e3b61a9d002b7fee1ab734b331632"
+    },
+    {
+      "file": "compact__jsx_slot_inline_whitespace.astro",
+      "sha256": "e3e2331ab73467079b59c94934d09e322896f08f9882f09f84a3973b6358325f"
+    },
+    {
+      "file": "compact__jsx_slot_newline_whitespace.astro",
+      "sha256": "a235ba39a0f5c65deca67f8877f89237bf1b30fb69ab3f471c93319b02feb0c1"
+    },
+    {
+      "file": "compact__jsx_slot_pre_newlines_128.astro",
+      "sha256": "2a08441e26f6ba557aaa59722d292c155a05d87866acdccab9931ea626340d66"
+    },
+    {
+      "file": "compact__preserve_is_raw.astro",
+      "sha256": "1f6e228ea93a8308a27b11d086ed3121e498ca9b04e2252b0241d40e4078264c"
+    },
+    {
+      "file": "compact__preserve_pre.astro",
+      "sha256": "337ad64e1041b55a64b53d252ecf37da6bd9038c0c397680c63d1514dadaba75"
+    },
+    {
+      "file": "compact__separated_by_newlines_815.astro",
+      "sha256": "a1815f577b547cd64dbcd3f6d97f190adb58c9be707318ad7fa10fbdbf8e1ecd"
+    },
+    {
+      "file": "compact__surrounded_by_newlines_7401.astro",
+      "sha256": "897cc6455527b4169649eca25128d2b17cba0d9b7b7e81e1acb836ffbce7523a"
+    },
+    {
+      "file": "compact__whitespace_before_style_1003.astro",
+      "sha256": "57c8a921721077b85196f6e8e99d1f123bd0e917cbd00cd8cbf74c7f19c96a01"
+    },
+    {
+      "file": "complex_nested_template_literal_expression.astro",
+      "sha256": "bf61e59d8efee733c7830c8327818138df7ff3b445b0abd62a6d3b35713567bf"
+    },
+    {
+      "file": "complex_recursive_component.astro",
+      "sha256": "00489e03751ebe51a76b9cf460a2a87131508ae1eaadd265fd805608e031ffd3"
+    },
+    {
+      "file": "complex_table.astro",
+      "sha256": "5d5a57be76725602d8aad04d763c1baf7381c2fbb0180858a97541d042b34574"
+    },
+    {
+      "file": "component.astro",
+      "sha256": "9cf37e855243dbd8f7baff2cc21c62ee507fa4f6ec93d3d0768220dfa7f92d5d"
+    },
+    {
+      "file": "component_in_expression_with_its_child_expression_before_its_child_element.astro",
+      "sha256": "18d48df85d5983a16cca8beef03ad4a268cd5250a5788cfd09845d93b83775d6"
+    },
+    {
+      "file": "component_is_raw.astro",
+      "sha256": "4f18f37aaaf8f1714c774af96e8b09bbef4fc71508c738c3f6afcd58f88d2826"
+    },
+    {
+      "file": "component_names_a-z.astro",
+      "sha256": "9efe15a12ed2aa84c7fae69be4c6ad797db6540d14d7ef99262fffa4dafd88af"
+    },
+    {
+      "file": "component_siblings_are_siblings.astro",
+      "sha256": "8f5fd55b5cb18a48e16f9fab4fb4ccdd232002be6b1b71b2d637591f40a75f22"
+    },
+    {
+      "file": "component_with_await.astro",
+      "sha256": "5762807e125be2ff5a16c788123f795c3d3bcedf3ad07696799565240ac7c2c2"
+    },
+    {
+      "file": "component_with_only_a_script.astro",
+      "sha256": "d4736294528b5197fe77d9d15fc2f9c56aa263cd0acab111e0208425771acb6d"
+    },
+    {
+      "file": "component_with_quoted_attributes.astro",
+      "sha256": "d802c481e49c1d83c9bfd2d8a279d7ce71a7d699998962da4d82c2f6f76cc393"
+    },
+    {
+      "file": "condition_expressions_at_the_top-level.astro",
+      "sha256": "c3f1f5252567cf35ee490ecde4c37e9056ac60c036b0bc3539b0f82517245112"
+    },
+    {
+      "file": "condition_expressions_at_the_top-level_with_head_content.astro",
+      "sha256": "ae27f2aeb011c58cdfedf4795705adc9c8a5a6eb22d56c0ee1905d8785a24db7"
+    },
+    {
+      "file": "conditional_iframe.astro",
+      "sha256": "a051ec53017e2ab4c7dfeab0f9dbd8b91248f90695a1f849522d6984cad739b9"
+    },
+    {
+      "file": "conditional_noscript.astro",
+      "sha256": "cb1e93ea269964f17091ff5f6253e00c89604e844a8297eadff701c165ce7b44"
+    },
+    {
+      "file": "conditional_render.astro",
+      "sha256": "e345dc1bc3171f13d69a87640b5228017fc84d9a7b5383482d4a2a77abddbfb9"
+    },
+    {
+      "file": "conditional_rendering_of_title_containing_expression.astro",
+      "sha256": "da7612e5b6335214744e553d978bda0da0757b73880b50913e3a653b99bfc17f"
+    },
+    {
+      "file": "conditional_slot.astro",
+      "sha256": "414eeece64aadbc945834e52af123c6c350e15f36d6d0aad7faa20dce1c767e2"
+    },
+    {
+      "file": "css_comment_doesn_t_produce_semicolon.astro",
+      "sha256": "15deac88f217a1dacf60172f58486072c35ed560fa221ac8f3c5c71a2deeb663"
+    },
+    {
+      "file": "css_imports_are_not_included_in_module_metadata.astro",
+      "sha256": "4d5fffe57c47a95bf3e83d427cee1eb4bc8d8b8db07c705f72f6510ed98188dd"
+    },
+    {
+      "file": "custom-element.astro",
+      "sha256": "82740f6d63a444bf80abfa02d95bedb2392531c857eba21fbaf30ea8f3ee413b"
+    },
+    {
+      "file": "custom_elements.astro",
+      "sha256": "afae8207a4f12d91e2d9e4917337da14db14769326121247494cffe13f5e956a"
+    },
+    {
+      "file": "define_vars_on_a_module_script_with_imports.astro",
+      "sha256": "ab132a4e4c181ca2c0e74bee084803bea409e4adae4452a2d1b0eed3c113fad9"
+    },
+    {
+      "file": "define_vars_on_non-root_elements.astro",
+      "sha256": "05fce7e594521b35789d1f3a634d27d7eef7daa2493ebecc1c1b21b21a86f319"
+    },
+    {
+      "file": "define_vars_on_script_with_staticexpression_turned_on.astro",
+      "sha256": "5f74e9e07efc232a80f7e48155d7f9a5db4db40344be68d28029d8bdd7126a29"
+    },
+    {
+      "file": "define_vars_on_style.astro",
+      "sha256": "2d339bdaaaee41682694b68d4610b6150a4779fccd8e870acb24b44427045b97"
+    },
+    {
+      "file": "define_vars_on_style_tag_with_style_empty_attribute_on_element.astro",
+      "sha256": "b36cf399dad8da02fc966f9fc4e0d8e4bd01182db6fd2f4c316d287874e97596"
+    },
+    {
+      "file": "define_vars_on_style_tag_with_style_expression_attribute_on_element.astro",
+      "sha256": "0c1c3cddc975859c25500fa1c74c33f784f7305f2445a3a4107b0dca794dfc30"
+    },
+    {
+      "file": "define_vars_on_style_tag_with_style_quoted_attribute_on_element.astro",
+      "sha256": "d37b128d338c43828cd93b7d37597ee99916639cb6ad2f5f8b2f2ff34965df05"
+    },
+    {
+      "file": "define_vars_on_style_tag_with_style_shorthand_attribute_on_element.astro",
+      "sha256": "0ee534ed48cdb0119f7092795a726ac430c4731d373c6bbcfd248f910c0dd084"
+    },
+    {
+      "file": "define_vars_on_style_tag_with_style_template_literal_attribute_on_element.astro",
+      "sha256": "1f16cbc6f0f468d482fb022ec7d4d5a967781370122221fcaf8c3e428f73453c"
+    },
+    {
+      "file": "define_vars_script_preserves_attributes.astro",
+      "sha256": "440851d7be4cbb2769e10b531ece8c3044d2890f3132163dea999e31285edb84"
+    },
+    {
+      "file": "division_inside_expression.astro",
+      "sha256": "1d43c6a6704a373a1a58d44a0864e9be4f24b5bc30ac4b42554c1fa91ca9c439"
+    },
+    {
+      "file": "doctype.astro",
+      "sha256": "4f0ff9f53e57f5319f8e3847a57b5fc69313146b557d11a65fd57daae7576aef"
+    },
+    {
+      "file": "dot_component.astro",
+      "sha256": "dcc901df1ff5e3899de7911f277bc25c58f8f8f258adeda1a5a719fae0150a1c"
+    },
+    {
+      "file": "dynamic_import.astro",
+      "sha256": "ae2206b29d15683b022c568ff4b9c0fa109572debe3111e0be1b10a29067b6f8"
+    },
+    {
+      "file": "empty_attribute_expression.astro",
+      "sha256": "875e72abb912e588c7703f3227107ad211980f37e60408067cd39cc24fbbf2e3"
+    },
+    {
+      "file": "empty_expression.astro",
+      "sha256": "f493134bd0f9890eff9a7eed438095bda6398eb3fa59443c5f0eebd223ed95a8"
+    },
+    {
+      "file": "empty_expression_with_whitespace.astro",
+      "sha256": "b6e28f040ce8ab658599735b337983505105385dd88b857efc18a3ee672d8c35"
+    },
+    {
+      "file": "empty_style.astro",
+      "sha256": "e845eb52b154aab6e1f12246a399dbd852c770c2b469de14c863bc96fc0eb078"
+    },
+    {
+      "file": "escaped_entity.astro",
+      "sha256": "1993bb52d6f89a324908a30f3466493e122474991093eec8c085d2fc52dd15bf"
+    },
+    {
+      "file": "export_comments_i.astro",
+      "sha256": "6ce1c1bffd7eec1e0e1e903b0aa64047fe04e0bd3f5af55050d03c490dd9d8c8"
+    },
+    {
+      "file": "export_comments_ii.astro",
+      "sha256": "2ed1b6dc55361935629ab6c8e87d9e078ff2058046668b4c119327c309bb9cc4"
+    },
+    {
+      "file": "export_member_does_not_panic.astro",
+      "sha256": "e8493c425184fca9db7691a25faba84043e2ab6da7f1da915bc343cd652b2111"
+    },
+    {
+      "file": "expression_in_form_followed_by_other_sibling_forms.astro",
+      "sha256": "82375f9308c77aaede03344c39dec7d02423c09276210e155722af3e52964e64"
+    },
+    {
+      "file": "expression_returning_multiple_elements.astro",
+      "sha256": "d863be035aea7095fd6283e4105e651f0f70e6312565bddea1d40aebfb12fa75"
+    },
+    {
+      "file": "expression_slot.astro",
+      "sha256": "c0cf89a5bd0651bd36515779dfec4eb7aca9b43c524bc893b3314caa9b9e5edb"
+    },
+    {
+      "file": "expression_with_leading_whitespace.astro",
+      "sha256": "637381fcaba89a4e0178316bb52882236a7399aeead2f25fdfad3015f4c3807f"
+    },
+    {
+      "file": "expressions_with_js_comments.astro",
+      "sha256": "4a871a53ce8fcf06596b22d3c6434eb981ce816845fcd086cb96133b06af714d"
+    },
+    {
+      "file": "expressions_with_multiple_curly_braces.astro",
+      "sha256": "a2f39d6eefd012480c43beef343a1245460ca5c222cacd29c1dd04f2b6a2a06e"
+    },
+    {
+      "file": "font_component.astro",
+      "sha256": "3569e81c9b55b10415aa92322aa7f34618c2619fb2c8e8622b2f381c024c7dc7"
+    },
+    {
+      "file": "for_init_with_jsx.astro",
+      "sha256": "44ebeceaa775024f3e6615c0fb2b835f420f52960cafa04e778d777ad23a31f4"
+    },
+    {
+      "file": "fragment.astro",
+      "sha256": "768d1cd236f5188e166de33a73e8e62eeffdc6f3e6b99d6e2387e56a7ee2abbf"
+    },
+    {
+      "file": "fragment_in_arrow_with_await.astro",
+      "sha256": "8fd07ab10b90c9009a0ec71eee7ba2e22d8bec6d468d04080eb5083c0118df8a"
+    },
+    {
+      "file": "fragment_in_expression_with_await.astro",
+      "sha256": "1ffacad450888ce412b1f2e58aa7c81b7778a670e684f7d18e34e174fb937c06"
+    },
+    {
+      "file": "fragment_literal_only.astro",
+      "sha256": "ed188257d5cfaf9c6267aece2d1a7fee7f2e1d36a06190786f920a885ac2b05c"
+    },
+    {
+      "file": "fragment_shorthand.astro",
+      "sha256": "d0b4b2a38536f1f6ffff69df1cfa97d786566a9a0707d06abc73010ee9066cf1"
+    },
+    {
+      "file": "fragment_shorthand_only.astro",
+      "sha256": "911765ea07a4e1cb13fe11d7a29a74850207127b74ae34214531dcda74824402"
+    },
+    {
+      "file": "fragment_shorthand_with_await.astro",
+      "sha256": "3c99cfa0bfcfd4c94248ca96bf1fef2358c5927f010b6b8c03eedb36c83792f5"
+    },
+    {
+      "file": "fragment_slotted.astro",
+      "sha256": "53bf91317693f86dcbc4f7ee01919bc775b05861d57b2a1525a451089db3fe18"
+    },
+    {
+      "file": "fragment_slotted_with_name.astro",
+      "sha256": "0cf4e2a99ac51680cc98baf535ec50c47602922e7b9068253b00aa093b4482a6"
+    },
+    {
+      "file": "fragment_with_await.astro",
+      "sha256": "eb13fabafe4c187defe373eb9496ae040efdbdfadc64aa28f7e532d5e43f84ab"
+    },
+    {
+      "file": "fragment_wrapping_link_with_awaited_href.astro",
+      "sha256": "beb931e7abb091cdd5173c349f5f7ae93cbdc60b83c7c46e66d10ffa9782bb8e"
+    },
+    {
+      "file": "frontmatter_await_using.astro",
+      "sha256": "f1917132a7ca413f9da24b1ab2379ad850aefcf5eb95256ed7abe73e099af9d1"
+    },
+    {
+      "file": "frontmatter_for_await.astro",
+      "sha256": "7a884ddaa5b20f6637351787a216bc21bb4ce67fae37a0c41b0a33c6f0a5689b"
+    },
+    {
+      "file": "full_page_layout.astro",
+      "sha256": "632d1a3d429480635a5b083a293ff8b0043ec9a9c7474f6de5b60307e2caca24"
+    },
+    {
+      "file": "function_decl_in_arrow_with_jsx.astro",
+      "sha256": "ca448518ef3fd932b6aab6612f512bc9450c30b9389186a0c8b983eeae48a2f3"
+    },
+    {
+      "file": "function_decl_with_defaults_and_rest.astro",
+      "sha256": "105a180305a80ae3ad4835bdbfd02aef3fed2d112c820e41b553a75f90faae68"
+    },
+    {
+      "file": "function_expression_slots_i.astro",
+      "sha256": "d78db7a9336fe814209989cddc1be51cba984e8944080f616f664c91bc3f75a5"
+    },
+    {
+      "file": "function_expression_slots_ii___959_.astro",
+      "sha256": "104df3ad29916484e9cfcd2e19d199636d4cef27c1c7598c05b3ce017663d4c0"
+    },
+    {
+      "file": "gets_all_potential_hydrated_components.astro",
+      "sha256": "c5bd8d0b8cdc59dca287a71f250b186e67a2219597440a54199873c9198469e4"
+    },
+    {
+      "file": "getstaticpaths__basic_.astro",
+      "sha256": "1bb4e75fe92c9d2bb0694990ed279bfb09be4bce55b257e920180cb183f8cb04"
+    },
+    {
+      "file": "getstaticpaths__hoisted_.astro",
+      "sha256": "8c828cf8016f10a2fe7ca9188c17d2967864cd2481ef3bd73638d1da90bde31c"
+    },
+    {
+      "file": "getstaticpaths__hoisted_ii_.astro",
+      "sha256": "27334eeb1526c18478df197813948bf5cda051ad6e87821cfde10892716bb9c7"
+    },
+    {
+      "file": "head_content_with_component_first.astro",
+      "sha256": "43654ada9a6b32e7c80985f996622e5ebf2d6ac684e76828b0ac155056b5797c"
+    },
+    {
+      "file": "head_expression.astro",
+      "sha256": "ad4fbc127f618ee068d1c13e123b96fcc7553748bd76ffdf9820a9653d97b5bd"
+    },
+    {
+      "file": "head_expression_and_conditional_rendering_of_fragment.astro",
+      "sha256": "b05a7b1a1c0b5dffabc58b33a56c0e1a5a2142daf3ba574f78499225a8d7fe94"
+    },
+    {
+      "file": "head_inside_slot.astro",
+      "sha256": "e7ef383391ffc344779652eeec8d29374a9dfaf0402833315a5398361f1b9f60"
+    },
+    {
+      "file": "head_slot.astro",
+      "sha256": "71e58d56d7f1156f260c69d56b373634449f9eb8dcb545be7672abdd696e0322"
+    },
+    {
+      "file": "head_slot_ii.astro",
+      "sha256": "3a7b4cdfd3ef2d8bd7363e47d43702257dbbf03a4131fcade3c3e653610be049"
+    },
+    {
+      "file": "head_slot_iii.astro",
+      "sha256": "06e3efc4383f4a682f186ac0b74f918c6c7f08e992726c19f1971373d23b551b"
+    },
+    {
+      "file": "html5_boilerplate.astro",
+      "sha256": "a88ae5a146427efec0ed91e8ec3c68cfd67a7b7c1b7ff29713abfdf668700434"
+    },
+    {
+      "file": "html_comment_in_component_inside_expression_i.astro",
+      "sha256": "6bac7867abbfbb2afb8dd863b86098e5e235e73d2f6067695767270bfe0f177e"
+    },
+    {
+      "file": "html_comment_in_component_inside_expression_ii.astro",
+      "sha256": "d82e96ad0794108c01c141000c85a354ba49d06cf05e601287bd16566a2a80e7"
+    },
+    {
+      "file": "iframe.astro",
+      "sha256": "caf1f499c020b6e0c8d4278fb6d87cbe64e149007b1cf0c331a140daa1854589"
+    },
+    {
+      "file": "import_assertions.astro",
+      "sha256": "618552c134ee699d8f4f3640de81dceb5b131b9329042fc1b1bea9d8bf12d25b"
+    },
+    {
+      "file": "import_meta.astro",
+      "sha256": "759b25df3cc848a301fe928a654a1c576cf0d47438aadbcce561e33dc86022d8"
+    },
+    {
+      "file": "import_meta_env.astro",
+      "sha256": "71244f494dbcf27a9c47ff92dbccd434bdc762b06274eef3269314c715fac700"
+    },
+    {
+      "file": "import_order.astro",
+      "sha256": "e45576111159d13f5158f6c2b93ce1a565ed23945ab4600edb790f94c1e56f52"
+    },
+    {
+      "file": "import_to_identifier_named_assert.astro",
+      "sha256": "4cf204b653a12cc949250aae8620da594f5991e551ad9879e35f49a6c5e08d0a"
+    },
+    {
+      "file": "includes_comments_for_expression_attribute.astro",
+      "sha256": "9d21383c65666771c1df021dceab5b866ab770d68abeba2c61f4dd338a071da6"
+    },
+    {
+      "file": "includes_comments_for_shorthand_attribute.astro",
+      "sha256": "8a0425d75654a8f4aae6ac3bc7bb1786becdff8f1be7c36e91062d8bf3bdb4d2"
+    },
+    {
+      "file": "inline_component_assets.astro",
+      "sha256": "8d1bedbd966268b6213f37eca730261413a38efeb6fd4189f1848a05daf946bc"
+    },
+    {
+      "file": "inline_elements_in_nested_blocks_893.astro",
+      "sha256": "0fa978d80a866ef515a7b4373c2e596df7e8d2667a506ce571dc8d850c9f2224"
+    },
+    {
+      "file": "is_raw.astro",
+      "sha256": "652414d7a6bf5a49fd0e95222db2bd9b1d4407fe06d46453aee5769474c31928"
+    },
+    {
+      "file": "jsx_object_literal_lookup.astro",
+      "sha256": "7a473e0a110f53ac5f618d52f08324d0542dbeeb5507f26ea7e700c2aacc4c23"
+    },
+    {
+      "file": "map_basic.astro",
+      "sha256": "2baa736c8a9273c182e9e37a71c63cf168609dd14489679feec9e29b106b7661"
+    },
+    {
+      "file": "map_nested.astro",
+      "sha256": "33a3507aa03e59a6bb335540c551b73b3f6f33e565a7a48eec48071aa1a03e45"
+    },
+    {
+      "file": "map_with_component.astro",
+      "sha256": "c3267bf9e28ec7249b4ca45a56432bd9e1831a7210e8300d8c2c7eb3d5d3bd26"
+    },
+    {
+      "file": "map_without_component.astro",
+      "sha256": "bd992a12c70f123710688f7f7916396e1e68708094424dc6a5626e8e81552644"
+    },
+    {
+      "file": "mayberenderhead_not_printed_for_hoisted_scripts.astro",
+      "sha256": "2f87c890e84a91a8d13d9d863ce123eb7d65f3fa5277d04286ff701a57ffeaaa"
+    },
+    {
+      "file": "mixed_style_siblings.astro",
+      "sha256": "0d2d3816828b45578dcf2ef5c8691809b1e92b4938b8717109cc19dc8fdf0f17"
+    },
+    {
+      "file": "multibyte_character___script.astro",
+      "sha256": "1be9b70b8e4e20c4dfb71c044d487da229f427c667c85aa9d2b3c63d6182d4ac"
+    },
+    {
+      "file": "multibyte_character___style.astro",
+      "sha256": "4aede5a727a8dad50b56db00695abfa4f2424f0ca10f11ff34a8236ebfde9b87"
+    },
+    {
+      "file": "multibyte_characters.astro",
+      "sha256": "a55d43f685c84b3e9d914eaee95a23440b117b257c48ba74c04614f3f8e8bdc0"
+    },
+    {
+      "file": "multiline_class_attribute_on_component.astro",
+      "sha256": "33a714668cea0e4d15e1608983bcdbf1d9d4aa2cf9922985105b460e8fc37bb6"
+    },
+    {
+      "file": "multiple_define_vars_on_style.astro",
+      "sha256": "f6997ab89eb94db2357ac75e3b4048f37d03587202b828ae063183f36f30b23e"
+    },
+    {
+      "file": "namespace_is_preserved_when_inside_an_expression.astro",
+      "sha256": "5d7060f9562f987a82bbaeb275afeff48b4c96df2f3a5f5e465809ee9ebc93c4"
+    },
+    {
+      "file": "nested_expressions.astro",
+      "sha256": "6e023f7bc60b3aa572dc3f490a18bd1c9db9c58af7ea295040ae838845d99c3a"
+    },
+    {
+      "file": "nested_expressions_ii.astro",
+      "sha256": "6c1f38d2ce95678779a6959c6b82ea1782e19817f038fce9f98ce910cae55455"
+    },
+    {
+      "file": "nested_expressions_iii.astro",
+      "sha256": "654acffc5777fec6074b362f5e06f1b548a5f7ea05f361a386fdc7d52dcfb171"
+    },
+    {
+      "file": "nested_expressions_iv.astro",
+      "sha256": "5ed4598c31dbabee46be14176ec589e7075d2fd0c393c203977a87293e684e8c"
+    },
+    {
+      "file": "nested_expressions_v.astro",
+      "sha256": "f023cd95ab2e8902e4551ef6d7e714b2bd45469452e04be10a28a0898dbf8488"
+    },
+    {
+      "file": "nested_expressions_vi.astro",
+      "sha256": "83d853bfa95180cdacd206c02ad974194dafe989ebe82326037b06d878591aec"
+    },
+    {
+      "file": "nested_expressions_vii.astro",
+      "sha256": "7354f7492ff824aa8ed0bf89b85d8abe362c564662922d0e04e9101f98be7fac"
+    },
+    {
+      "file": "nested_expressions_viii.astro",
+      "sha256": "a3c03202aad292fb23de8a3315e330ddec0e11e2dfd3ab6cffb9f5af9d2bf1fa"
+    },
+    {
+      "file": "nested_head_content_stays_in_the_head.astro",
+      "sha256": "3fe12dedac5200510cc374cf9f4ecd87f3b991fa2148d5d81d5fe173084a4d3f"
+    },
+    {
+      "file": "nested_html_in_expressions__wrapped_in_parens.astro",
+      "sha256": "bc2719cc93b88c87ed0dbcaced2182042a5f3aeb0410b225b078ea5efb1bff26"
+    },
+    {
+      "file": "nested_template_literal_expression.astro",
+      "sha256": "f51dac81afbf07991043fd7ac698abcabf055ffd8cbe77c9d550c800880d1a9e"
+    },
+    {
+      "file": "nested_template_literal_expression_01.astro",
+      "sha256": "dbb3ea8bdc858302f5fb6bf3dd4a1742d1046788f31c861f9e751fed3b2e5895"
+    },
+    {
+      "file": "nested_ternary_with_slots.astro",
+      "sha256": "5cd3f68f7d8d5f8b33d13b6094c5c15b5068c0e405530aa72832a315161b3aa5"
+    },
+    {
+      "file": "no_expressions_in_math.astro",
+      "sha256": "95baedcb1f277fae585d1ce9e1a0e9aeeede099c0772dc7cbc796f0fa2f1dc64"
+    },
+    {
+      "file": "no_expressions_in_math_01.astro",
+      "sha256": "95baedcb1f277fae585d1ce9e1a0e9aeeede099c0772dc7cbc796f0fa2f1dc64"
+    },
+    {
+      "file": "no_extra_script_tag.astro",
+      "sha256": "d9c29998dfedc703c1217fbba8059fd9d73167f9429bc58f05b9402013dce90c"
+    },
+    {
+      "file": "noscript_component.astro",
+      "sha256": "63672aea754eda596d1e4e7e4ad6cda082996f380f387b4ba8970ae86c24ae21"
+    },
+    {
+      "file": "noscript_deep_styles.astro",
+      "sha256": "f20168fd7cad98be315ed34fb977f46200d48f5587f2fd138010118d5edf00a4"
+    },
+    {
+      "file": "noscript_only.astro",
+      "sha256": "9a51e658f51b1256e9d54a0782838d7c6c0fd2e5a89a02e42e981e84a332bd82"
+    },
+    {
+      "file": "noscript_styles.astro",
+      "sha256": "a6a7aea7c6bb7de57db920f14a209006987f4f3c725dcbb548225f2012cd1a3a"
+    },
+    {
+      "file": "orphan_slot.astro",
+      "sha256": "7486df25ea03d68e8346590439b8075a5704402807b730511766c4ae040d528b"
+    },
+    {
+      "file": "parenthesized_conditional_slots.astro",
+      "sha256": "77a4e29ad8bcc6af6468bad42f25d22aa308ef21d9b6d7e8e6a8489b50f0600c"
+    },
+    {
+      "file": "parser_can_handle_files___4096_chars.astro",
+      "sha256": "2fb2aaf814c15c6e5c194e61fb3898e89e516218ab8bc05c79941191c9eac9f5"
+    },
+    {
+      "file": "passes_escaped_filename_into_createcomponent_if_it_contains_single_quotes.astro",
+      "sha256": "270c2933edc62fa347a9fd26d3903915932587c92db80568d5a3a12823d69a17"
+    },
+    {
+      "file": "passes_filename_into_createcomponent_if_passed_into_the_compiler_options.astro",
+      "sha256": "270c2933edc62fa347a9fd26d3903915932587c92db80568d5a3a12823d69a17"
+    },
+    {
+      "file": "preserve_is_inline_slot.astro",
+      "sha256": "a014cde2e99e29efb605a01a1ca30d505ef4bac12ed9058ad77d7ef8597ae076"
+    },
+    {
+      "file": "preserve_is_inline_slot_ii.astro",
+      "sha256": "42b11746dca44d920f24c41fdfb8eee7cf333393dfc3ec81fb3555d51488f902"
+    },
+    {
+      "file": "preserve_namespaces.astro",
+      "sha256": "f24632cac2713b84893290a7d8d818c1235009f58f84037e0c7d0291ecf2dabd"
+    },
+    {
+      "file": "preserve_namespaces_for_components.astro",
+      "sha256": "c31a46ac382264d31cb8a4159f85fcb40e52713001ddd499d21b2b227db8a0b0"
+    },
+    {
+      "file": "preserve_namespaces_in_expressions.astro",
+      "sha256": "41b39101c0fd4903402582dfb1bad83dd2772bfe3e2eed509768e2a8c03a2a35"
+    },
+    {
+      "file": "preserve_slot_whitespace.astro",
+      "sha256": "ee5ea108b3790d26958f8df63ebffa6407384bc39a4a360135ccdf5cdb1abe8e"
+    },
+    {
+      "file": "preserve_slots_inside_custom-element.astro",
+      "sha256": "96e5c6a421614d7030391352097cbe418b376af6a21bc2ca022a6543cfd523d0"
+    },
+    {
+      "file": "react_framework_example.astro",
+      "sha256": "8813ddbbd4c5e5a291426cdfb33cb3ce608945804e7f96c765b847ffddd51dda"
+    },
+    {
+      "file": "script__renderscript__true_.astro",
+      "sha256": "d81742492f2f8037d90cf660f55c463d93060c1779fbdc69e6567409dbb46d65"
+    },
+    {
+      "file": "script_before_elements.astro",
+      "sha256": "b509d2951338bf86916a7cfc658b78379ee6bda2f5423a670f5baf506c8de37a"
+    },
+    {
+      "file": "script_define_vars_i.astro",
+      "sha256": "5d8a49c5d80b3cd0ea01c544068787bc77a9e3399d23780c48f9c9135c3527e3"
+    },
+    {
+      "file": "script_define_vars_ii.astro",
+      "sha256": "8f1f18fee5a8b4f9ad3fa2f3af71015ff278ceb89cb720dab0510124267cdb9b"
+    },
+    {
+      "file": "script_external__renderscript__true_.astro",
+      "sha256": "5d83ab7d847eda184e419b5882930bc7b61aa4515bc04db8e97d2fd732328abb"
+    },
+    {
+      "file": "script_external_in_expression__renderscript__false_.astro",
+      "sha256": "c856527e7d1f408c1d0e87a984187c60276ec2f13833165166267b2ec589afcd"
+    },
+    {
+      "file": "script_external_in_expression__renderscript__true_.astro",
+      "sha256": "c856527e7d1f408c1d0e87a984187c60276ec2f13833165166267b2ec589afcd"
+    },
+    {
+      "file": "script_hoist_with_frontmatter.astro",
+      "sha256": "295b8e12fe2ac99e42c364d6d43095ede9003fe8799af8eeb0d53d1b90231dd7"
+    },
+    {
+      "file": "script_hoist_without_frontmatter.astro",
+      "sha256": "a7a3e0665073db0aa3f90452b97634d780da5ba17aeacbf2933525d26fd9c7f1"
+    },
+    {
+      "file": "script_in__head_.astro",
+      "sha256": "4bb55e3ea46844d33b1afb07bae1a4b7bd99fa06f844e90db36e90286b93ce44"
+    },
+    {
+      "file": "script_in_expression__renderscript__false_.astro",
+      "sha256": "a96e94a30e215c8e42da70367707c93b9af76a5b0c47425c821aecda44000a16"
+    },
+    {
+      "file": "script_in_expression__renderscript__true_.astro",
+      "sha256": "769d9fa96115d522314ba110ad75d4ffa4556785b6bae6bb400c8f242d638b9f"
+    },
+    {
+      "file": "script_inline.astro",
+      "sha256": "6240daf75676d38d6df291ce1530c999c20a986c406110c8196611a8b226c925"
+    },
+    {
+      "file": "script_inline__renderscript__true_.astro",
+      "sha256": "6240daf75676d38d6df291ce1530c999c20a986c406110c8196611a8b226c925"
+    },
+    {
+      "file": "script_inside_template_not_hoisted.astro",
+      "sha256": "d7a70c808503eeaaf1740720ff73fd23e967f8d82f03cb5a775e87952f9c5855"
+    },
+    {
+      "file": "script_mixed_handled_and_inline__renderscript__true_.astro",
+      "sha256": "3471dd672487ba6f940b49e14956ae15c438a291da2c4bb7d56bc64b3c36865d"
+    },
+    {
+      "file": "script_multiple__renderscript__true_.astro",
+      "sha256": "f02b048905eb164af5d7d6faba01960b60afe6af8b47bf34a872d19abae4b31c"
+    },
+    {
+      "file": "scriptinline.astro",
+      "sha256": "6240daf75676d38d6df291ce1530c999c20a986c406110c8196611a8b226c925"
+    },
+    {
+      "file": "select_in_form.astro",
+      "sha256": "0986568b1701d6a1094b69146a3e3dc5c471ba93cfbce1975515f34961e4f4ac"
+    },
+    {
+      "file": "select_map_expression.astro",
+      "sha256": "9920f4a359db227c43621b25fce90ac749a6ed8db8a505bf00bdb1460b4d1c31"
+    },
+    {
+      "file": "select_nested_option.astro",
+      "sha256": "83330a644811a09611f6779213f6b36a22391bb7cc455e5c93320f7ad5e7e558"
+    },
+    {
+      "file": "select_option_expression.astro",
+      "sha256": "e6d9541021476ba886d829ebe5a7c028226d005bd687f99439606082a99c3b3c"
+    },
+    {
+      "file": "selectedcontent_element_in_customizable_select.astro",
+      "sha256": "02fb615169fe72fd403545b2f2cbe52c4517c5e9f44e5e515ef41dcbc75616f0"
+    },
+    {
+      "file": "selectedcontent_self-closing_element.astro",
+      "sha256": "68255e1aceed5372604e8bcf8bd075a210f54b65adbb59f04ab6d7da3149991e"
+    },
+    {
+      "file": "self-closing_components_in_head_can_have_siblings.astro",
+      "sha256": "6e4e812c37c7eee072e7841ae5d97947dc03e07c2e7e8d04f8583309df05db33"
+    },
+    {
+      "file": "self-closing_components_siblings_are_siblings.astro",
+      "sha256": "29d1cc4a916cdfc691c77d14f0c85dbdfcc73db49504f2d3e29ab6680ff37a0b"
+    },
+    {
+      "file": "self-closing_formatting_elements.astro",
+      "sha256": "a6325238cc41b8439bb845aab23124b03e635483388272878c995ef3ecba26e8"
+    },
+    {
+      "file": "self-closing_formatting_elements_2.astro",
+      "sha256": "e7237e2ef991bbe74adcca3400a3060ab00a3ff73bd79a9cde065ac88ff363a9"
+    },
+    {
+      "file": "self-closing_script_in_head_works.astro",
+      "sha256": "f305a6470b11b0b074005d2a9c6df83db0f32ac0689e32e9925d3a1666c53c30"
+    },
+    {
+      "file": "self-closing_td.astro",
+      "sha256": "eaf44d1286e443212258c86d38205978095bf480f7d1cb338949edbdb381b53e"
+    },
+    {
+      "file": "self-closing_title.astro",
+      "sha256": "1bbb5715f3fab85b6b9a3662c40f2aec9dbbf624a705476d8b7b87e8a5b46d85"
+    },
+    {
+      "file": "self-closing_title_ii.astro",
+      "sha256": "8d2c85f25db5240ab1a000130fdb58a0bf9d37e44f4276dd1466677598786b84"
+    },
+    {
+      "file": "set_html.astro",
+      "sha256": "a72cbed4334d4d64a61e71ea9435a067f4a3319f6cbb823838ac0a5f754a922c"
+    },
+    {
+      "file": "set_html_and_set_text.astro",
+      "sha256": "1a4b49747e0776c7b6d17918348a70ccec77789625732cdaf2daf0eede9e4dbc"
+    },
+    {
+      "file": "set_html_on_component.astro",
+      "sha256": "5d482df0fb4e07abbbd8a2ae02d7d15f03246768ef7ccab333e36ea3f4b9a2fe"
+    },
+    {
+      "file": "set_html_on_component_with_quoted_attribute.astro",
+      "sha256": "b17ce23e641e130953bf4120e6ce9f6b3c82cd1fd686e74afb7d2509fe059e48"
+    },
+    {
+      "file": "set_html_on_component_with_template_literal_attribute_with_variable.astro",
+      "sha256": "28d040a9a59727ae3697a6e6a54847bc7f8c09d79706e6862046d5676a852972"
+    },
+    {
+      "file": "set_html_on_component_with_template_literal_attribute_without_variable.astro",
+      "sha256": "365000f4acab1f9644741ad38664d559a452373a44ffac7702edf3ef3185f579"
+    },
+    {
+      "file": "set_html_on_custom-element.astro",
+      "sha256": "d048f77f0e59e598292dc5a0c776d67782a13812aa50c57970a7298e7817d510"
+    },
+    {
+      "file": "set_html_on_custom-element_with_quoted_attribute.astro",
+      "sha256": "2127aa25b2e99f89a3173460c169f06ff1be53faabdd3c756d6450db64a6b117"
+    },
+    {
+      "file": "set_html_on_custom-element_with_template_literal_attribute_with_variable.astro",
+      "sha256": "6992720f7f65511fbde3a5d2c6a663531c6d14013007312777202f4d9c190675"
+    },
+    {
+      "file": "set_html_on_custom-element_with_template_literal_attribute_without_variable.astro",
+      "sha256": "d5910377e96ea03f00d524ea2996494b17ac2a2bea489f43765d1d1c92bd1dfb"
+    },
+    {
+      "file": "set_html_on_empty_tag.astro",
+      "sha256": "497c8dafb1ba13723be0b7b1247620b9368d16cd1b583a3ce415ff8835f5288f"
+    },
+    {
+      "file": "set_html_on_empty_tag_with_quoted_attribute.astro",
+      "sha256": "e5dd0ffca79b1570bd37abd55ceb6d5ca010ffbac556f1f67a4ae3ce216767bf"
+    },
+    {
+      "file": "set_html_on_empty_tag_with_template_literal_attribute_with_variable.astro",
+      "sha256": "23af302b5438b67afdebb53bb56335aa42f8bdd51c6c3e1567fa027b23dbce42"
+    },
+    {
+      "file": "set_html_on_empty_tag_with_template_literal_attribute_without_variable.astro",
+      "sha256": "1c74521fa6c2c253f8389d0bd40ed7475afad1c4862a8eb55ae2d695ca373c03"
+    },
+    {
+      "file": "set_html_on_fragment.astro",
+      "sha256": "6bb889e1959cad79819345caeddace7d9233ef10948a2a0931b86d24eeeda710"
+    },
+    {
+      "file": "set_html_on_fragment_with_expression_template_literal_with_variable.astro",
+      "sha256": "eac85c80dffc15e556750e356997d4fc4c5f970b64fff45ab56e1ab6c951040f"
+    },
+    {
+      "file": "set_html_on_fragment_with_quoted_attribute.astro",
+      "sha256": "1eaa5b6a8c8602dc0e55a52e526781bdfd422896a481ecd323ec3453a7644b72"
+    },
+    {
+      "file": "set_html_on_fragment_with_template_literal_attribute_with_variable.astro",
+      "sha256": "20eb7b183bd07fcc2533831fd1fde257a3915933269fe5b10ddedf249c74a029"
+    },
+    {
+      "file": "set_html_on_fragment_with_template_literal_attribute_without_variable.astro",
+      "sha256": "20a27f3e571548fe484586970baa643f118197c772be992e5e433e52d5679770"
+    },
+    {
+      "file": "set_html_on_script.astro",
+      "sha256": "2b53be8c1965b355f243a02eabfc6dd177a381677860f7042c7ef3d878364338"
+    },
+    {
+      "file": "set_html_on_script_with_quoted_attribute.astro",
+      "sha256": "eba723bfd80b8cdaf56226580c045096ddda79acb336522fabcc0def2526c4ee"
+    },
+    {
+      "file": "set_html_on_script_with_template_literal_attribute_with_variable.astro",
+      "sha256": "b2431e47cc7645760a51aa69e8977c6ad50fb1a695e6dac5332a78cf8b96b50a"
+    },
+    {
+      "file": "set_html_on_script_with_template_literal_attribute_without_variable.astro",
+      "sha256": "7e9978ccc263a0abdf69d9766b3073b393507f5cc989a8a971f9285cf052f033"
+    },
+    {
+      "file": "set_html_on_self-closing_tag.astro",
+      "sha256": "a72cbed4334d4d64a61e71ea9435a067f4a3319f6cbb823838ac0a5f754a922c"
+    },
+    {
+      "file": "set_html_on_self-closing_tag_with_quoted_attribute.astro",
+      "sha256": "a7a973901457c0ef6e4e0d403643cb807b73f015c0a2b19dc1e1c51c5020bae4"
+    },
+    {
+      "file": "set_html_on_self-closing_tag_with_template_literal_attribute_with_variable.astro",
+      "sha256": "de7a6283dc65a6fde5911783d3fca1a7a232cadd542a5488fa465a31e3eb7e75"
+    },
+    {
+      "file": "set_html_on_self-closing_tag_with_template_literal_attribute_without_variable.astro",
+      "sha256": "a9d520cb97146cfa8d7fef694080568a8e10cc9353d217b2a6439984726dfaa3"
+    },
+    {
+      "file": "set_html_on_style.astro",
+      "sha256": "0635cab892bb18f2d9b888192519e0ce6fef217730e708de15f79fa55e4492af"
+    },
+    {
+      "file": "set_html_on_style_with_quoted_attribute.astro",
+      "sha256": "cee67f916db1170e3d338129622aac86d9c1bf3e2f18bad4d02cd879cf90d397"
+    },
+    {
+      "file": "set_html_on_style_with_template_literal_attribute_with_variable.astro",
+      "sha256": "7b27962777eb45443e8bbb4db47ea6d2860f895f298fe5e78d09d8dfec917d7f"
+    },
+    {
+      "file": "set_html_on_style_with_template_literal_attribute_without_variable.astro",
+      "sha256": "b2e3db8bc1f3fb7071d3e64ac59bc4e4b4cbab92362932e59f6c3e363617a463"
+    },
+    {
+      "file": "set_html_on_tag_with_children.astro",
+      "sha256": "f3dccaca84b3eb0410f5de8eb5e6a2a9f37d6fc3bb4f379e4536b7b14a6af5c6"
+    },
+    {
+      "file": "set_html_on_tag_with_children_and_quoted_attribute.astro",
+      "sha256": "29f4e5ee1072c1f78f7945d127c194e7efffd76c33f1a59ea63ab95d1f79b709"
+    },
+    {
+      "file": "set_html_on_tag_with_children_and_template_literal_attribute_with_variable.astro",
+      "sha256": "710c498f3d596866ece091395d0e711d86b58f927936298f387cab39c55c4c3d"
+    },
+    {
+      "file": "set_html_on_tag_with_children_and_template_literal_attribute_without_variable.astro",
+      "sha256": "7ad846a2cf56a10fc26221b8fcf206f2ee0bb9d28aaa5532520d38b56db45cf4"
+    },
+    {
+      "file": "set_html_on_tag_with_empty_whitespace.astro",
+      "sha256": "ff9610c646426ab1b0d65141ffd6b33228a7946516dda7a4e5c40b0d8adc4412"
+    },
+    {
+      "file": "set_html_on_tag_with_empty_whitespace_and_quoted_attribute.astro",
+      "sha256": "45b869b6a5d0b67b8c213b40e63941c7ef9be5b719578a2e9928b89573dad717"
+    },
+    {
+      "file": "set_html_on_tag_with_empty_whitespace_and_template_literal_attribute_with_variable.astro",
+      "sha256": "792c352acc87291a984ce940431ff3dfc6719a8a90302482225d033db0d346e5"
+    },
+    {
+      "file": "set_html_on_tag_with_empty_whitespace_and_template_literal_attribute_without_variable.astro",
+      "sha256": "0ccaf094d334818e14864bd80ce33e85a70bdcd8161e4c9dcf541f94b43d300f"
+    },
+    {
+      "file": "set_html_with_other_attributes.astro",
+      "sha256": "54f1a9a89ac44c20ffa0f5abbd4ac142342d57e92248e24d38e2dad36b470c70"
+    },
+    {
+      "file": "set_html_with_quoted_attribute.astro",
+      "sha256": "a7a973901457c0ef6e4e0d403643cb807b73f015c0a2b19dc1e1c51c5020bae4"
+    },
+    {
+      "file": "set_html_with_quoted_attribute_and_other_attributes.astro",
+      "sha256": "409f9bb127c982c3fb1338736496e39011654267e0ffbab89e1e00bb6da8c669"
+    },
+    {
+      "file": "set_html_with_template_literal_attribute_with_variable.astro",
+      "sha256": "de7a6283dc65a6fde5911783d3fca1a7a232cadd542a5488fa465a31e3eb7e75"
+    },
+    {
+      "file": "set_html_with_template_literal_attribute_with_variable_and_other_attributes.astro",
+      "sha256": "a1b9d9d4ef5171f399422e193fd1d821d95774b7a6318d12fc1f2ec1f2985435"
+    },
+    {
+      "file": "set_html_with_template_literal_attribute_without_variable.astro",
+      "sha256": "a9d520cb97146cfa8d7fef694080568a8e10cc9353d217b2a6439984726dfaa3"
+    },
+    {
+      "file": "set_html_with_template_literal_attribute_without_variable_and_other_attributes.astro",
+      "sha256": "260a68dadeaa1b0c61fd75687dbbaf6ca86d8ef36715305c9297f551a2dad5e0"
+    },
+    {
+      "file": "set_text.astro",
+      "sha256": "25751989759d618438cdd77e24e7ab3602b15aba5c9f511d4b2678a44d95e987"
+    },
+    {
+      "file": "set_text_on_component.astro",
+      "sha256": "96495dc7fbb2ed7ed187065a0dae30346903e3460f3ca69979cc8a6df3f6c948"
+    },
+    {
+      "file": "set_text_on_component_with_quoted_attribute.astro",
+      "sha256": "cd42a6e9d7f6c0fadf4847336b79a913aac5b6edbab54c834d13612c6f289de9"
+    },
+    {
+      "file": "set_text_on_component_with_template_literal_attribute_with_variable.astro",
+      "sha256": "14e7ed9a8769cfa008f92b2edfa8b5f9cb3a035ecb1b1661e85d2d72338f35d6"
+    },
+    {
+      "file": "set_text_on_component_with_template_literal_attribute_without_variable.astro",
+      "sha256": "3df8fd4a02e6b0c55cd4673adf9828e895fafa45e8ee8cef425ae417727f69e0"
+    },
+    {
+      "file": "set_text_on_custom-element.astro",
+      "sha256": "ff58d04b92a2a58b7b3e9dfa8fc55f9233bd477c00352b9d29ba345807905125"
+    },
+    {
+      "file": "set_text_on_custom-element_with_quoted_attribute.astro",
+      "sha256": "58c505b3f70b016d5108e46e3871a805b6efcf1ef362ec0feb25eb23f75a0608"
+    },
+    {
+      "file": "set_text_on_custom-element_with_template_literal_attribute_with_variable.astro",
+      "sha256": "de46c93802b639e06863f9edd2364db33703d95e312b1d560ceeeaa0a5c7d330"
+    },
+    {
+      "file": "set_text_on_custom-element_with_template_literal_attribute_without_variable.astro",
+      "sha256": "ebab3325d3b04d982b93733dd4b3c717ec10f44b733c272a7ecae0c756602174"
+    },
+    {
+      "file": "set_text_with_quoted_attribute.astro",
+      "sha256": "30687088d654361068788137e7533fb98efb76c73ad5ecc40fd62942da25d5ad"
+    },
+    {
+      "file": "set_text_with_template_literal_attribute_with_variable.astro",
+      "sha256": "9429ada91e5132340496ce2e2218e324aabdcf30d7cdf336ed8a544f2d116310"
+    },
+    {
+      "file": "set_text_with_template_literal_attribute_without_variable.astro",
+      "sha256": "8981a6dc974cad71df52e190841c33b6a269401427e234c219c350f842647284"
+    },
+    {
+      "file": "sibling_expressions.astro",
+      "sha256": "c969a6f0ecbc7ab15cf107614877e9ee5a8bac4a5b573d07d875ff95a612d2b3"
+    },
+    {
+      "file": "sibling_inline_elements_852.astro",
+      "sha256": "08c021d5376163420bd3c9a84737dfde67cbf03e6d1b8d0b8cbb1abf2fef64b3"
+    },
+    {
+      "file": "simple_ternary.astro",
+      "sha256": "cbbb8341abb4a81beb5722f7f33dd48f00ae959c5896907f5bd07eae0a8f3d0f"
+    },
+    {
+      "file": "slot_inside_of_base.astro",
+      "sha256": "0771f14b2fcbe5dd72d13ac1de109d1a4403ea148c018a8b075b755be9c2215a"
+    },
+    {
+      "file": "slot_whitespace_verbatim_when_not_compact.astro",
+      "sha256": "0b35e4bd0983529844ffb9d33347f3702ee8644635d8a0dde56f1bbaf8d67fa7"
+    },
+    {
+      "file": "slot_with_fallback.astro",
+      "sha256": "5895c7b9b8f81ac4d21d4e70c2ee7c210e60368833ae3a2946d268f18c9b8789"
+    },
+    {
+      "file": "slot_with_fallback_ii.astro",
+      "sha256": "d01c79e8dedee033b40f79f6c9ce061f6e1bc177747ebd0d2b0656d80496e40d"
+    },
+    {
+      "file": "slot_with_fallback_iii.astro",
+      "sha256": "f480594c4243a12d3c6f60b74c58155c9872d3fe26d09d87ecbd888dfee5f298"
+    },
+    {
+      "file": "slot_with_quoted_attributes.astro",
+      "sha256": "baf49b4416a79f22b815f3c0e81ecfa364516e4833458e529e3f8a7142b74a42"
+    },
+    {
+      "file": "slots__array_of_slots_.astro",
+      "sha256": "cfc91b31f94cf50d5e283ece0751b527af3c63e6d303270956432e2ac7209aee"
+    },
+    {
+      "file": "slots__basic_.astro",
+      "sha256": "023f76160e130642cfa512c8a076f56fcae6dc66ea66e792413ef09d029d51f4"
+    },
+    {
+      "file": "slots__conditional_fragment_slots_.astro",
+      "sha256": "f7e604baa6ff3c52d3b8557f56544a20f496ae3e97848bf6b51bb8875af9c22b"
+    },
+    {
+      "file": "slots__conditional_multi_dynamic_.astro",
+      "sha256": "086610eafc4bb00dbad266996c36db81bd138caa763bc7913eebdfbfc8ca7993"
+    },
+    {
+      "file": "slots__custom_element_dynamic_slot_.astro",
+      "sha256": "e07c556ab56e96ddae188428dfe333f9adb3b7d0682ba07f94357b9997144a6a"
+    },
+    {
+      "file": "slots__dynamic_conditional_.astro",
+      "sha256": "5e4dbd92d0c0caa207e50dba71047f3343f0a4dc644d4d0a930efc35aaa2e093"
+    },
+    {
+      "file": "slots__dynamic_name_.astro",
+      "sha256": "1c20bc4cd714a4b2bda243b02e2344ac593f6227d2abcd598fb61957c10fbe88"
+    },
+    {
+      "file": "slots__expression_.astro",
+      "sha256": "eb1adfb960dc3743f8df0b5cef82c9172fe66c2b0fd5995558f7995243c2e130"
+    },
+    {
+      "file": "slots__map_dynamic_outer_name_.astro",
+      "sha256": "f924db05d953678edd4f4875e54e1f9b8311e57f3a0178b37f8eeb5096ec067e"
+    },
+    {
+      "file": "slots__map_expression_.astro",
+      "sha256": "22fda877fc80187576a136575b7fbb2d5759b38a32e7057e68e9a7d74a8aafd0"
+    },
+    {
+      "file": "slots__mapped_dynamic_array_from_.astro",
+      "sha256": "4f7741f7461782fcb11509308f5c3147af40dce20fb74238772658a900633b08"
+    },
+    {
+      "file": "slots__mapped_dynamic_array_in_callback_.astro",
+      "sha256": "d476c90d1a7abc32a63fcf9a1291baddd3d830fdb3eb58bde3b327ab614bf1d6"
+    },
+    {
+      "file": "slots__mapped_dynamic_async_.astro",
+      "sha256": "8d464f11c619321a5cc155bafa040dba8411d222473cab16258a6b06dc5bfe1d"
+    },
+    {
+      "file": "slots__mapped_dynamic_async_no_await_.astro",
+      "sha256": "165f5c46f750ffd70f06ad3bf1c1da505fda9168fcbc0caccaf7faeb6ff7bb90"
+    },
+    {
+      "file": "slots__mapped_dynamic_conditional_return_.astro",
+      "sha256": "37dc37a1f063a0300af4fdf78e371880bc91fa0ed89413af4d07e1b75e4943af"
+    },
+    {
+      "file": "slots__mapped_dynamic_destructured___868_.astro",
+      "sha256": "ead09fd5308c79dee5ef2a872e994dbf2f63123714cacf9b7ad36c77c8f58fb0"
+    },
+    {
+      "file": "slots__mapped_dynamic_filter_chain_.astro",
+      "sha256": "93a2042aa7f6f87319dee0ee2630971d47c769551392dbe5cbe65b3934358be7"
+    },
+    {
+      "file": "slots__mapped_dynamic_function_expression_.astro",
+      "sha256": "a8f8b9bf5c143c37a2719c3b2889a1bccc984b149002386253280af19e3734b4"
+    },
+    {
+      "file": "slots__mapped_dynamic_name_.astro",
+      "sha256": "23832fa4c02e3cbe5928cf9f8576dc9f46d2744f04661242d950ac7a96a422e7"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_.astro",
+      "sha256": "35d9e835d3b887ebc62559f629323d38ebb3f351283f9eea37168ad47dd4025f"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_block_body_.astro",
+      "sha256": "c0d49b4c8c396583f5499fa64f1873bde90a8d7a58eb645c4073fbdc7b6178b7"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_both_async_.astro",
+      "sha256": "b12a3bef26613407fa8df5716b02283ca66be871079295b83d4fba96aaf13bb9"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_function_outer_.astro",
+      "sha256": "0ceddc763b82cdd79baab0187444aa6f2fd9068074bd7d91b7f02e131a61aa11"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_inner_async_.astro",
+      "sha256": "a158eaa0c24400dcd2abafad2d651a14d4e93fe2001b85d3039f8243794a1335"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_inner_id_.astro",
+      "sha256": "82f7e3209456ed6c899516759087512265237ed7d2ba6a05766a48a515da95b5"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_outer_async_.astro",
+      "sha256": "55d3102ab4e7ce097ba57fb05ad128081ddbf2b440418a488e6852d2a3ed144b"
+    },
+    {
+      "file": "slots__mapped_dynamic_nested_triple_async_.astro",
+      "sha256": "8176cd58254eea24f508fc97ba69073730ea628d9b5db8dd7ea580d0dd28d64f"
+    },
+    {
+      "file": "slots__mapped_dynamic_with_default_.astro",
+      "sha256": "99fd86fc5f7a37140c20e554e1293b0325da4e9e185ebf5b1e549e85fcc14999"
+    },
+    {
+      "file": "slots__named_only_.astro",
+      "sha256": "2bf898a5d3681c87d78cfca4abff5707c93b6e54ec003d362fd544502e4390aa"
+    },
+    {
+      "file": "slots__no_comments_.astro",
+      "sha256": "201e62a149ffd4485f2ccd0a48b81c0050b7d877cc1b3ca5f917277e0e5d7fc5"
+    },
+    {
+      "file": "slots__optional_chain_.astro",
+      "sha256": "e965c5387df56c4a01ab57d327f59f4d6ff8ec97e6f27d0404833bfbdacd6df4"
+    },
+    {
+      "file": "slots__same_named_expression_slots_.astro",
+      "sha256": "530185801470a91c1d4e357a27d07a7c851d649578bddee24e5b5eb7fb468df6"
+    },
+    {
+      "file": "small_expression.astro",
+      "sha256": "d31a274276aa4df51ee8ce40a2c946d33bebcade020b37e9bdeaacd274c9c386"
+    },
+    {
+      "file": "solidus_in_template_literal_expression.astro",
+      "sha256": "2413a281b810c83c3d63334989ee6f1d4e7333082b9c20305e9399eeb6d0f212"
+    },
+    {
+      "file": "source_annotations.astro",
+      "sha256": "2858c8c10602b02f52b8286ffb6ba338fbbac9cbd60a8fa872de54f27e1d9a6f"
+    },
+    {
+      "file": "spread_component_with_global_style_no_scope.astro",
+      "sha256": "d6886bc41285709f453b3df98b3827b72e4b58f97ca269da7ddc143fe32573cd"
+    },
+    {
+      "file": "spread_with_double_quotation_marks.astro",
+      "sha256": "478517b1eb09b8a3e84f52ecb948cc1309573075071c632aa117d82717a8616f"
+    },
+    {
+      "file": "spread_with_global_style_no_scope.astro",
+      "sha256": "1ff07180007edab6a4888098ca78464dd07249f38fe2aa0e5ccbc292d95d373d"
+    },
+    {
+      "file": "spread_with_mixed_styles_scope.astro",
+      "sha256": "33d92e753b76afd51a99db018cf64ad1ca0aab06309e9bc29b9ae68c3f7e7413"
+    },
+    {
+      "file": "spread_with_style_but_no_explicit_class.astro",
+      "sha256": "47cbbcf6e56b0028832a1181f9ace75428285d73065198a8be126d1e5a5b9330"
+    },
+    {
+      "file": "spread_without_style_or_class.astro",
+      "sha256": "0857c17a91dfea760b8fa3d2fa538e42ebe3620ccd1b7f5f0dfd242d62adddc7"
+    },
+    {
+      "file": "styles__no_frontmatter_.astro",
+      "sha256": "4451bf0a10446e3d8f5e1862fae8a4bfb1432bfab1f8797192185eb597ffe9f3"
+    },
+    {
+      "file": "svg_expressions.astro",
+      "sha256": "c657d1ee393f0dcf965827a9c010cbaa7e731850c545512695477d4008620e8d"
+    },
+    {
+      "file": "svg_styles.astro",
+      "sha256": "67847a973b57f25bf1f933c9a9de10d67ec6f34b3caff30a9678f7607b92f9ac"
+    },
+    {
+      "file": "table.astro",
+      "sha256": "aac38d867690db92aacdaa8c05b535026c948e598df4a7d27da9f09e738ea64e"
+    },
+    {
+      "file": "table_caption_expression.astro",
+      "sha256": "01a16a8ff28c7a31a6383f151e59efcfb46fa4b827af0c7367eda3808a4fe235"
+    },
+    {
+      "file": "table_expression_with_trailing_div.astro",
+      "sha256": "95165f8a75dac3cfa7110c7301a78c7d758a5575906400c3036f6531a0ee14e2"
+    },
+    {
+      "file": "table_expressions__no_implicit_tbody_.astro",
+      "sha256": "ad04842f616ad1bd7fe18b682a82759457c0b8036bdb1d46ca4c1aac6b4f9f1e"
+    },
+    {
+      "file": "table_ii.astro",
+      "sha256": "930340709665dd5683fa94c747e469ba74fc47e0f40f1d65586cbcb5a85f54dd"
+    },
+    {
+      "file": "table_iii.astro",
+      "sha256": "197724aa7d046124317b24971351958dbc51541698920ddd1674a497968709c3"
+    },
+    {
+      "file": "table_iv.astro",
+      "sha256": "81e5d6287b1ff7f4520e7f84378c49f0863d25e0f2359b12876a66a7ef0f1edf"
+    },
+    {
+      "file": "table_simple_case.astro",
+      "sha256": "81fc5ceecd90333229632dfc3133d4a0adae628308bf47bc5043fc8f833b8480"
+    },
+    {
+      "file": "table_slot_i.astro",
+      "sha256": "829df740fce5d24a542b67b98e5ecbb58100d25d482febe1cf1f244376ecdda1"
+    },
+    {
+      "file": "table_slot_ii.astro",
+      "sha256": "cdb5edd2dea1a9cf61767411bb06b9bd28024dc2519228013588b6e824b31844"
+    },
+    {
+      "file": "table_slot_iii.astro",
+      "sha256": "16800c88d97f9e0e765795d01ddf2a6d95c4958b66436bd6e5f33a5d83afd7e2"
+    },
+    {
+      "file": "table_slot_iv.astro",
+      "sha256": "a3086132c498e0988f0e8fdc5548a43b777e1ce2c42066f5ebb629cfb8c6ca52"
+    },
+    {
+      "file": "table_slot_v.astro",
+      "sha256": "f03efb091f203afd0600b2403dd95b416afb8472f30093a0f428f13bec754efb"
+    },
+    {
+      "file": "table_with_expression_in__th_.astro",
+      "sha256": "829144cd1d88ab8161beb71e4a978b0cf4bf8fef033e3da2eb3766432bf607cd"
+    },
+    {
+      "file": "tbody_expressions.astro",
+      "sha256": "56d49561081d6ef85ff10a2aefbc77636cd6a002fa357998918c816855b853dc"
+    },
+    {
+      "file": "tbody_expressions_2.astro",
+      "sha256": "cf5b8816433bbcd12919577cb6e63745e34d0d2120b7e7ce8de65b8dc3547861"
+    },
+    {
+      "file": "tbody_expressions_3.astro",
+      "sha256": "a6c2c69534ecedc7daff6dadf6f2300802e6139d93518ce417e0e4e0cb68f519"
+    },
+    {
+      "file": "td_expressions.astro",
+      "sha256": "f1f0ca969e369dd70cba16fd5966ca7fc3e8ba9b88cb4049d65b727238d30b38"
+    },
+    {
+      "file": "td_expressions_ii.astro",
+      "sha256": "906933e6c3c2aa75e0666c622d31d652c93e4cf8c971ad0e643c527a58ef6a17"
+    },
+    {
+      "file": "template_element_depth_tracking.astro",
+      "sha256": "b7786702fa522dcc676879224abd48b2bec7d6240ed7c86e279027165429b06c"
+    },
+    {
+      "file": "template_element_nested_depth_tracking.astro",
+      "sha256": "572c393b58aba38bc10c6191cf558b1eaa90828c26dacb7ac3e44233313c3713"
+    },
+    {
+      "file": "template_literal_attribute_on_component.astro",
+      "sha256": "a1559492c1d79eb7cd20adf83999418fab1cfcfe1825af2da1c88e872b8a4246"
+    },
+    {
+      "file": "template_literal_attribute_with_variable_on_component.astro",
+      "sha256": "f34d272c90cfc767072de536f09636885e3703ddb1cae81c4eb998d9f159a17f"
+    },
+    {
+      "file": "ternary_component.astro",
+      "sha256": "93bb7b6453c2831847e1e08236aedcc6f0dbe77188159b618b70eb2356ede97f"
+    },
+    {
+      "file": "ternary_layout.astro",
+      "sha256": "d976fe3078901e924f9db7f8b67246d1bb39aef568da3aa74fb0f03e0365102e"
+    },
+    {
+      "file": "ternary_slot.astro",
+      "sha256": "8e24a7585c1af06c7d12d3118f5a3a9580219628c1577b6b0f48a01150470630"
+    },
+    {
+      "file": "text_after_title_expression.astro",
+      "sha256": "ae73ed1348a78ae33d5538f249b5de9704d7bae5f300d8a64362da80911c1d29"
+    },
+    {
+      "file": "text_after_title_expressions.astro",
+      "sha256": "6e9ce24807afc743adce5e387c68115811d0bec0703623a6055fbbe40bc174cd"
+    },
+    {
+      "file": "text_only.astro",
+      "sha256": "1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa"
+    },
+    {
+      "file": "text_only_01.astro",
+      "sha256": "334d016f755cd6dc58c53a86e183882f8ec14f52fb05345887c8a5edd42c87b7"
+    },
+    {
+      "file": "textarea.astro",
+      "sha256": "a4f485f4e3ca7856c966538b650e351752ab846ff43d132add42d08389ca4c85"
+    },
+    {
+      "file": "textarea_in_form.astro",
+      "sha256": "f435a69046a4393f346e0fea988efab469cb937581d7728cb8db3a6645564c07"
+    },
+    {
+      "file": "textarea_inside_expression.astro",
+      "sha256": "01ede2839d716abb02289f4d92247e677995df20243e4633b33832987af1534d"
+    },
+    {
+      "file": "th_expressions.astro",
+      "sha256": "bcea8213d23b9a6c5c3e22bd2047b1afef067856806330a37d4fae05df217169"
+    },
+    {
+      "file": "throw_jsx_in_arrow.astro",
+      "sha256": "ccf70784f3b52495711f0b4959fbb1cec13f46cced2c5b539f0599328aa8b19e"
+    },
+    {
+      "file": "tr_only.astro",
+      "sha256": "621822861bddbe7e3866580acd30c700c0cfcd2f123945b367f6cde6f759e103"
+    },
+    {
+      "file": "trailing_expression.astro",
+      "sha256": "21ff2bab9b59cc7c493df9b0ec03070c77c7a23c1f49020f6e8cc27e0f5bf785"
+    },
+    {
+      "file": "trailing_newline.astro",
+      "sha256": "b22b009134622b6508d756f1062455d71a7026594eacb0badf81f4f677929ebe"
+    },
+    {
+      "file": "transition_animate_on_component.astro",
+      "sha256": "5862db97ae4b60de19fb8231d1ce38f50b56d2b81325247d8cee36e4e8417b41"
+    },
+    {
+      "file": "transition_animate_with_an_expression.astro",
+      "sha256": "e89d2fbc7eccb63aea363cc032a9a8e248de22b393469353deead446a22606f8"
+    },
+    {
+      "file": "transition_name_with_an_expression.astro",
+      "sha256": "950c420f16a63ce51432fe7ab66fc5d62b69b174553d565a1714d0601dbf8dba"
+    },
+    {
+      "file": "transition_name_with_an_template_literal.astro",
+      "sha256": "5af4f05fdf595531a0133b1600008b178b5dc84626f10e79065b4365b35f5d61"
+    },
+    {
+      "file": "transition_persist-props_converted_to_a_data_attribute.astro",
+      "sha256": "860006560fd6bf183b73a03106ad8d21337b9af45379b59d8aa7fba5a5d87ceb"
+    },
+    {
+      "file": "transition_persist_converted_to_a_data_attribute.astro",
+      "sha256": "a141eb2738f8f36733fbf4481ed26665d0e994888ce9df17e62d33bcf1f21fea"
+    },
+    {
+      "file": "transition_persist_uses_transition_name_if_defined.astro",
+      "sha256": "d049f7d8b295f4e36edbf8184a194907f2c8bdbc2f7855d005a7115c3d6e8a90"
+    },
+    {
+      "file": "type_import.astro",
+      "sha256": "449af0ec8e79a449d942b5415e740868e3a068a81449ddb74d3e74b033737a72"
+    },
+    {
+      "file": "unexpected_closing_tag.astro",
+      "sha256": "43be962ec02b46b6f4790aabf27d00701e01454e3cd9bc0758631f47b658f9ea"
+    },
+    {
+      "file": "unexpected_closing_tag_nested.astro",
+      "sha256": "815e0cb8c46fd39130d1298d425c283fe5ae2cb2a7a202c7be7cf04e7a1aff4c"
+    },
+    {
+      "file": "unquoted_leading_slash_attribute.astro",
+      "sha256": "a4a540015189abc6e47a81a185239f892e8fbaf3f9ea8f5ccff60060fb936a55"
+    },
+    {
+      "file": "unquoted_url_attribute.astro",
+      "sha256": "40dd3c34210124db9226c8de49c20999076aeeca67229ed8610ac2312c2a98c9"
+    },
+    {
+      "file": "unquoted_value_special_chars.astro",
+      "sha256": "335ffc87113ae52545ed48a874405bb23923d215ae8a856f01b8ab17b58b288b"
+    },
+    {
+      "file": "unusual_line_terminator_i.astro",
+      "sha256": "05d34ac4b734641ca07c44b31cb5569866a645d24a4df47d931324540fb45883"
+    },
+    {
+      "file": "unusual_line_terminator_ii.astro",
+      "sha256": "f7deb28d7ee5558a0d3c7ad9fdbc7dec282d0fe3be98559f78995843dfbfd2b1"
+    },
+    {
+      "file": "use_of_interfaces_within_frontmatter.astro",
+      "sha256": "4ccfb42b185351370256742e3744a7f69ffa571612b764b914a0f2f0cca24356"
+    },
+    {
+      "file": "user-defined__implicit__is_printed.astro",
+      "sha256": "ab96e47230edc8ab127c67deaa10cf4ac39183e31f4a3df7566445dd796681b3"
+    },
+    {
+      "file": "whitespace_before_style_1003.astro",
+      "sha256": "3dde7ef36d6a0200f3e3611977cec33cee3aab5ff7e0bb9c5d08858807cb89ed"
+    },
+    {
+      "file": "whitespace_only_between_siblings_999.astro",
+      "sha256": "a9bca78b1c1e56e9d0558cabdb69425420c5f90138f2c1b5ac756b0d93c03564"
+    },
+    {
+      "file": "xelement.astro",
+      "sha256": "8b929da4cc3f30a0798da5386d2b810c06212b54a07800e362d977fd2d901e3b"
+    }
+  ]
+}

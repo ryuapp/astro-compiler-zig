@@ -1,0 +1,9 @@
+---
+import Page from "../layouts/Page.astro";
+import Card from "../components/Card.astro";
+import Counter from "../components/Counter.tsx";
+---
+<Page title="Yuku"><h1>Yuku compiler integration</h1>
+<Card><h2 slot="title">Named title</h2><p>Default body</p></Card>
+<Counter client:load start={4}/></Page>
+<style>h1 {color:rebeccapurple}</style>

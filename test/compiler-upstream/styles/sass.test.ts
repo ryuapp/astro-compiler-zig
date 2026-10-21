@@ -1,0 +1,51 @@
+// Ported from withastro/compiler-rs (MIT); see test/fixtures/compiler-upstream.json and LICENSE.
+import { assert, beforeAll as before, describe, it } from "vite-plus/test";
+import { type TransformResult, transform, preprocessStyles } from "../../../dist/index.mjs";
+import { preprocessStyle } from "../utils.ts";
+
+const FIXTURE = `
+---
+let value = 'world';
+---
+
+<style lang="scss" define:vars={{ a: 0 }}>
+$color: red;
+
+div {
+  color: $color;
+}
+</style>
+
+<div>Hello world!</div>
+
+<div>Ahhh</div>
+
+<style lang="scss">
+$color: green;
+div {
+  color: $color;
+}
+</style>
+`;
+
+describe("styles/sass", () => {
+  let result: TransformResult;
+  before(async () => {
+    const preprocessedStyles = await preprocessStyles(FIXTURE, preprocessStyle);
+    result = transform(FIXTURE, {
+      sourcemap: "external",
+      preprocessedStyles,
+    });
+  });
+
+  it("transforms scss one", () => {
+    assert.ok(result.css[0].includes("color: red"), 'Expected "color: red" to be present.');
+  });
+
+  it("transforms scss two", () => {
+    assert.ok(
+      result.css[result.css.length - 1].includes("color: green"),
+      'Expected "color: green" to be present.',
+    );
+  });
+});

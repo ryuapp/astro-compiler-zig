@@ -1,0 +1,6 @@
+---
+import Page from "../layouts/Page.astro";
+import Card from "../components/Card.astro";
+const yes = true;
+---
+<Page title="Slots"><Card>{yes ? <strong slot="title">Conditional title</strong> : null}<p>Body</p></Card></Page>

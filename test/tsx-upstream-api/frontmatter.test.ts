@@ -1,0 +1,15 @@
+// Ported from withastro/compiler-rs (MIT); see test/fixtures/compiler-upstream.json and LICENSE.
+import { assert, test } from "vite-plus/test";
+import { typecheckAstro } from "./typecheck.ts";
+
+test("TS-to-TSX rewrites preserve assertion precedence and generic inference", () => {
+  assert.deepEqual(
+    typecheckAstro(`
+		const id = <T>(x: T) => x;
+		const value = (<{ name: string }>{ name: 'ok' }).name;
+		const text: string = id(value);
+		const nested: number = <number><unknown>id(42);
+	`),
+    [],
+  );
+});

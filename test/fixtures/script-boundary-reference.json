@@ -1,0 +1,3291 @@
+{
+  "reference": {
+    "package": "@astrojs/compiler-rs",
+    "version": "0.5.2",
+    "compilerRevision": "3fd9d58f7e3054ef4a4ac399a6f9f2cb37596598",
+    "oxcRevision": "8bb526fc0c20beb4649b223d3ac39851505caa5a",
+    "correction": "After /> or </script>, resume JSX-child lexing when the script is an HTML child; resume JavaScript lexing in expression context.",
+    "capture": "Official Rust parser, codegen, comment collector and ESTree serializer with the script-boundary correction described above; UTF-16 offsets. The installed npm reference remains unchanged.",
+    "secondaryReference": "@astrojs/compiler@4.0.0"
+  },
+  "parse": [
+    {
+      "source": "<!-- Global Metadata -->\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n<link rel=\"alternate icon\" type=\"image/x-icon\" href=\"/favicon.ico\" />\n\n<link rel=\"sitemap\" href=\"/sitemap.xml\"/>\n\n<!-- Global CSS -->\n<link rel=\"stylesheet\" href=\"/theme.css\" />\n<link rel=\"stylesheet\" href=\"/code.css\" />\n<link rel=\"stylesheet\" href=\"/index.css\" />\n\n<!-- Preload Fonts -->\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\" rel=\"stylesheet\">\n\n<!-- Scrollable a11y code helper -->\n<script type=\"module\" src=\"/make-scrollable-code-focusable.js\" />\n\n<!-- This is intentionally inlined to avoid FOUC -->\n<script is:inline>\n  const root = document.documentElement;\n  const theme = localStorage.getItem('theme');\n  if (theme === 'dark' || (!theme) && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n    root.classList.add('theme-dark');\n  } else {\n    root.classList.remove('theme-dark');\n  }\n</script>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<!-- <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n</script> -->",
+      "publishedAst": {
+        "type": "AstroRoot",
+        "frontmatter": {
+          "type": "AstroFrontmatter",
+          "program": {
+            "type": "Program",
+            "body": [],
+            "sourceType": "module",
+            "hashbang": null,
+            "start": 0,
+            "end": 0
+          },
+          "start": 0,
+          "end": 0
+        },
+        "body": [
+          {
+            "type": "AstroComment",
+            "value": " Global Metadata ",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 24,
+            "end": 25
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "meta",
+                "start": 26,
+                "end": 30
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "charset",
+                    "start": 31,
+                    "end": 38
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "utf-8",
+                    "raw": "\"utf-8\"",
+                    "start": 39,
+                    "end": 46
+                  },
+                  "start": 31,
+                  "end": 46
+                }
+              ],
+              "selfClosing": true,
+              "start": 25,
+              "end": 47
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 25,
+            "end": 47
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 47,
+            "end": 48
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "meta",
+                "start": 49,
+                "end": 53
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "name",
+                    "start": 54,
+                    "end": 58
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "viewport",
+                    "raw": "\"viewport\"",
+                    "start": 59,
+                    "end": 69
+                  },
+                  "start": 54,
+                  "end": 69
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "content",
+                    "start": 70,
+                    "end": 77
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "width=device-width",
+                    "raw": "\"width=device-width\"",
+                    "start": 78,
+                    "end": 98
+                  },
+                  "start": 70,
+                  "end": 98
+                }
+              ],
+              "selfClosing": true,
+              "start": 48,
+              "end": 99
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 48,
+            "end": 99
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 99,
+            "end": 101
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 102,
+                "end": 106
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 107,
+                    "end": 110
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "icon",
+                    "raw": "\"icon\"",
+                    "start": 111,
+                    "end": 117
+                  },
+                  "start": 107,
+                  "end": 117
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "type",
+                    "start": 118,
+                    "end": 122
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "image/svg+xml",
+                    "raw": "\"image/svg+xml\"",
+                    "start": 123,
+                    "end": 138
+                  },
+                  "start": 118,
+                  "end": 138
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 139,
+                    "end": 143
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/favicon.svg",
+                    "raw": "\"/favicon.svg\"",
+                    "start": 144,
+                    "end": 158
+                  },
+                  "start": 139,
+                  "end": 158
+                }
+              ],
+              "selfClosing": true,
+              "start": 101,
+              "end": 161
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 101,
+            "end": 161
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 161,
+            "end": 162
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 163,
+                "end": 167
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 168,
+                    "end": 171
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "alternate icon",
+                    "raw": "\"alternate icon\"",
+                    "start": 172,
+                    "end": 188
+                  },
+                  "start": 168,
+                  "end": 188
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "type",
+                    "start": 189,
+                    "end": 193
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "image/x-icon",
+                    "raw": "\"image/x-icon\"",
+                    "start": 194,
+                    "end": 208
+                  },
+                  "start": 189,
+                  "end": 208
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 209,
+                    "end": 213
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/favicon.ico",
+                    "raw": "\"/favicon.ico\"",
+                    "start": 214,
+                    "end": 228
+                  },
+                  "start": 209,
+                  "end": 228
+                }
+              ],
+              "selfClosing": true,
+              "start": 162,
+              "end": 231
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 162,
+            "end": 231
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 231,
+            "end": 233
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 234,
+                "end": 238
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 239,
+                    "end": 242
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "sitemap",
+                    "raw": "\"sitemap\"",
+                    "start": 243,
+                    "end": 252
+                  },
+                  "start": 239,
+                  "end": 252
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 253,
+                    "end": 257
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/sitemap.xml",
+                    "raw": "\"/sitemap.xml\"",
+                    "start": 258,
+                    "end": 272
+                  },
+                  "start": 253,
+                  "end": 272
+                }
+              ],
+              "selfClosing": true,
+              "start": 233,
+              "end": 274
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 233,
+            "end": 274
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 274,
+            "end": 276
+          },
+          {
+            "type": "AstroComment",
+            "value": " Global CSS ",
+            "start": 276,
+            "end": 295
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 295,
+            "end": 296
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 297,
+                "end": 301
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 302,
+                    "end": 305
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "stylesheet",
+                    "raw": "\"stylesheet\"",
+                    "start": 306,
+                    "end": 318
+                  },
+                  "start": 302,
+                  "end": 318
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 319,
+                    "end": 323
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/theme.css",
+                    "raw": "\"/theme.css\"",
+                    "start": 324,
+                    "end": 336
+                  },
+                  "start": 319,
+                  "end": 336
+                }
+              ],
+              "selfClosing": true,
+              "start": 296,
+              "end": 339
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 296,
+            "end": 339
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 339,
+            "end": 340
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 341,
+                "end": 345
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 346,
+                    "end": 349
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "stylesheet",
+                    "raw": "\"stylesheet\"",
+                    "start": 350,
+                    "end": 362
+                  },
+                  "start": 346,
+                  "end": 362
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 363,
+                    "end": 367
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/code.css",
+                    "raw": "\"/code.css\"",
+                    "start": 368,
+                    "end": 379
+                  },
+                  "start": 363,
+                  "end": 379
+                }
+              ],
+              "selfClosing": true,
+              "start": 340,
+              "end": 382
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 340,
+            "end": 382
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 382,
+            "end": 383
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 384,
+                "end": 388
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 389,
+                    "end": 392
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "stylesheet",
+                    "raw": "\"stylesheet\"",
+                    "start": 393,
+                    "end": 405
+                  },
+                  "start": 389,
+                  "end": 405
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 406,
+                    "end": 410
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/index.css",
+                    "raw": "\"/index.css\"",
+                    "start": 411,
+                    "end": 423
+                  },
+                  "start": 406,
+                  "end": 423
+                }
+              ],
+              "selfClosing": true,
+              "start": 383,
+              "end": 426
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 383,
+            "end": 426
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 426,
+            "end": 428
+          },
+          {
+            "type": "AstroComment",
+            "value": " Preload Fonts ",
+            "start": 428,
+            "end": 450
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 450,
+            "end": 451
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 452,
+                "end": 456
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 457,
+                    "end": 460
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "preconnect",
+                    "raw": "\"preconnect\"",
+                    "start": 461,
+                    "end": 473
+                  },
+                  "start": 457,
+                  "end": 473
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 474,
+                    "end": 478
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "https://fonts.googleapis.com",
+                    "raw": "\"https://fonts.googleapis.com\"",
+                    "start": 479,
+                    "end": 509
+                  },
+                  "start": 474,
+                  "end": 509
+                }
+              ],
+              "selfClosing": true,
+              "start": 451,
+              "end": 510
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 451,
+            "end": 510
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 510,
+            "end": 511
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 512,
+                "end": 516
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 517,
+                    "end": 520
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "preconnect",
+                    "raw": "\"preconnect\"",
+                    "start": 521,
+                    "end": 533
+                  },
+                  "start": 517,
+                  "end": 533
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 534,
+                    "end": 538
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "https://fonts.gstatic.com",
+                    "raw": "\"https://fonts.gstatic.com\"",
+                    "start": 539,
+                    "end": 566
+                  },
+                  "start": 534,
+                  "end": 566
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "crossorigin",
+                    "start": 567,
+                    "end": 578
+                  },
+                  "value": null,
+                  "start": 567,
+                  "end": 578
+                }
+              ],
+              "selfClosing": true,
+              "start": 511,
+              "end": 579
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 511,
+            "end": 579
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 579,
+            "end": 580
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "link",
+                "start": 581,
+                "end": 585
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "href",
+                    "start": 586,
+                    "end": 590
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap",
+                    "raw": "\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\"",
+                    "start": 591,
+                    "end": 669
+                  },
+                  "start": 586,
+                  "end": 669
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "rel",
+                    "start": 670,
+                    "end": 673
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "stylesheet",
+                    "raw": "\"stylesheet\"",
+                    "start": 674,
+                    "end": 686
+                  },
+                  "start": 670,
+                  "end": 686
+                }
+              ],
+              "selfClosing": true,
+              "start": 580,
+              "end": 687
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 580,
+            "end": 687
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 687,
+            "end": 689
+          },
+          {
+            "type": "AstroComment",
+            "value": " Scrollable a11y code helper ",
+            "start": 689,
+            "end": 725
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 725,
+            "end": 726
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "script",
+                "start": 727,
+                "end": 733
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "type",
+                    "start": 734,
+                    "end": 738
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "module",
+                    "raw": "\"module\"",
+                    "start": 739,
+                    "end": 747
+                  },
+                  "start": 734,
+                  "end": 747
+                },
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "src",
+                    "start": 748,
+                    "end": 751
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "/make-scrollable-code-focusable.js",
+                    "raw": "\"/make-scrollable-code-focusable.js\"",
+                    "start": 752,
+                    "end": 788
+                  },
+                  "start": 748,
+                  "end": 788
+                }
+              ],
+              "selfClosing": true,
+              "start": 726,
+              "end": 791
+            },
+            "children": [
+              {
+                "type": "AstroScript",
+                "program": {
+                  "type": "Program",
+                  "body": [],
+                  "sourceType": "module",
+                  "hashbang": null,
+                  "start": 791,
+                  "end": 791
+                },
+                "start": 726,
+                "end": 791
+              }
+            ],
+            "closingElement": null,
+            "start": 726,
+            "end": 791
+          },
+          {
+            "type": "AstroComment",
+            "value": " This is intentionally inlined to avoid FOUC ",
+            "start": 793,
+            "end": 845
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 845,
+            "end": 846
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "script",
+                "start": 847,
+                "end": 853
+              },
+              "typeArguments": null,
+              "attributes": [
+                {
+                  "type": "JSXAttribute",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "is:inline",
+                    "start": 854,
+                    "end": 863
+                  },
+                  "value": null,
+                  "start": 854,
+                  "end": 863
+                }
+              ],
+              "selfClosing": false,
+              "start": 846,
+              "end": 864
+            },
+            "children": [
+              {
+                "type": "AstroScript",
+                "program": {
+                  "type": "Program",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "kind": "const",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "decorators": [],
+                            "name": "root",
+                            "optional": false,
+                            "typeAnnotation": null,
+                            "start": 873,
+                            "end": 877
+                          },
+                          "init": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "decorators": [],
+                              "name": "document",
+                              "optional": false,
+                              "typeAnnotation": null,
+                              "start": 880,
+                              "end": 888
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "decorators": [],
+                              "name": "documentElement",
+                              "optional": false,
+                              "typeAnnotation": null,
+                              "start": 889,
+                              "end": 904
+                            },
+                            "optional": false,
+                            "computed": false,
+                            "start": 880,
+                            "end": 904
+                          },
+                          "definite": false,
+                          "start": 873,
+                          "end": 904
+                        }
+                      ],
+                      "declare": false,
+                      "start": 867,
+                      "end": 905
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "kind": "const",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "decorators": [],
+                            "name": "theme",
+                            "optional": false,
+                            "typeAnnotation": null,
+                            "start": 914,
+                            "end": 919
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "decorators": [],
+                                "name": "localStorage",
+                                "optional": false,
+                                "typeAnnotation": null,
+                                "start": 922,
+                                "end": 934
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "decorators": [],
+                                "name": "getItem",
+                                "optional": false,
+                                "typeAnnotation": null,
+                                "start": 935,
+                                "end": 942
+                              },
+                              "optional": false,
+                              "computed": false,
+                              "start": 922,
+                              "end": 942
+                            },
+                            "typeArguments": null,
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": "theme",
+                                "raw": "'theme'",
+                                "start": 943,
+                                "end": 950
+                              }
+                            ],
+                            "optional": false,
+                            "start": 922,
+                            "end": 951
+                          },
+                          "definite": false,
+                          "start": 914,
+                          "end": 951
+                        }
+                      ],
+                      "declare": false,
+                      "start": 908,
+                      "end": 952
+                    },
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "LogicalExpression",
+                        "left": {
+                          "type": "BinaryExpression",
+                          "left": {
+                            "type": "Identifier",
+                            "decorators": [],
+                            "name": "theme",
+                            "optional": false,
+                            "typeAnnotation": null,
+                            "start": 959,
+                            "end": 964
+                          },
+                          "operator": "===",
+                          "right": {
+                            "type": "Literal",
+                            "value": "dark",
+                            "raw": "'dark'",
+                            "start": 969,
+                            "end": 975
+                          },
+                          "start": 959,
+                          "end": 975
+                        },
+                        "operator": "||",
+                        "right": {
+                          "type": "LogicalExpression",
+                          "left": {
+                            "type": "ParenthesizedExpression",
+                            "expression": {
+                              "type": "UnaryExpression",
+                              "operator": "!",
+                              "argument": {
+                                "type": "Identifier",
+                                "decorators": [],
+                                "name": "theme",
+                                "optional": false,
+                                "typeAnnotation": null,
+                                "start": 981,
+                                "end": 986
+                              },
+                              "prefix": true,
+                              "start": 980,
+                              "end": 986
+                            },
+                            "start": 979,
+                            "end": 987
+                          },
+                          "operator": "&&",
+                          "right": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "Identifier",
+                                  "decorators": [],
+                                  "name": "window",
+                                  "optional": false,
+                                  "typeAnnotation": null,
+                                  "start": 991,
+                                  "end": 997
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "decorators": [],
+                                  "name": "matchMedia",
+                                  "optional": false,
+                                  "typeAnnotation": null,
+                                  "start": 998,
+                                  "end": 1008
+                                },
+                                "optional": false,
+                                "computed": false,
+                                "start": 991,
+                                "end": 1008
+                              },
+                              "typeArguments": null,
+                              "arguments": [
+                                {
+                                  "type": "Literal",
+                                  "value": "(prefers-color-scheme: dark)",
+                                  "raw": "'(prefers-color-scheme: dark)'",
+                                  "start": 1009,
+                                  "end": 1039
+                                }
+                              ],
+                              "optional": false,
+                              "start": 991,
+                              "end": 1040
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "decorators": [],
+                              "name": "matches",
+                              "optional": false,
+                              "typeAnnotation": null,
+                              "start": 1041,
+                              "end": 1048
+                            },
+                            "optional": false,
+                            "computed": false,
+                            "start": 991,
+                            "end": 1048
+                          },
+                          "start": 979,
+                          "end": 1048
+                        },
+                        "start": 959,
+                        "end": 1048
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "decorators": [],
+                                    "name": "root",
+                                    "optional": false,
+                                    "typeAnnotation": null,
+                                    "start": 1056,
+                                    "end": 1060
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "decorators": [],
+                                    "name": "classList",
+                                    "optional": false,
+                                    "typeAnnotation": null,
+                                    "start": 1061,
+                                    "end": 1070
+                                  },
+                                  "optional": false,
+                                  "computed": false,
+                                  "start": 1056,
+                                  "end": 1070
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "decorators": [],
+                                  "name": "add",
+                                  "optional": false,
+                                  "typeAnnotation": null,
+                                  "start": 1071,
+                                  "end": 1074
+                                },
+                                "optional": false,
+                                "computed": false,
+                                "start": 1056,
+                                "end": 1074
+                              },
+                              "typeArguments": null,
+                              "arguments": [
+                                {
+                                  "type": "Literal",
+                                  "value": "theme-dark",
+                                  "raw": "'theme-dark'",
+                                  "start": 1075,
+                                  "end": 1087
+                                }
+                              ],
+                              "optional": false,
+                              "start": 1056,
+                              "end": 1088
+                            },
+                            "directive": null,
+                            "start": 1056,
+                            "end": 1089
+                          }
+                        ],
+                        "start": 1050,
+                        "end": 1093
+                      },
+                      "alternate": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "decorators": [],
+                                    "name": "root",
+                                    "optional": false,
+                                    "typeAnnotation": null,
+                                    "start": 1105,
+                                    "end": 1109
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "decorators": [],
+                                    "name": "classList",
+                                    "optional": false,
+                                    "typeAnnotation": null,
+                                    "start": 1110,
+                                    "end": 1119
+                                  },
+                                  "optional": false,
+                                  "computed": false,
+                                  "start": 1105,
+                                  "end": 1119
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "decorators": [],
+                                  "name": "remove",
+                                  "optional": false,
+                                  "typeAnnotation": null,
+                                  "start": 1120,
+                                  "end": 1126
+                                },
+                                "optional": false,
+                                "computed": false,
+                                "start": 1105,
+                                "end": 1126
+                              },
+                              "typeArguments": null,
+                              "arguments": [
+                                {
+                                  "type": "Literal",
+                                  "value": "theme-dark",
+                                  "raw": "'theme-dark'",
+                                  "start": 1127,
+                                  "end": 1139
+                                }
+                              ],
+                              "optional": false,
+                              "start": 1105,
+                              "end": 1140
+                            },
+                            "directive": null,
+                            "start": 1105,
+                            "end": 1141
+                          }
+                        ],
+                        "start": 1099,
+                        "end": 1145
+                      },
+                      "start": 955,
+                      "end": 1145
+                    }
+                  ],
+                  "sourceType": "module",
+                  "hashbang": null,
+                  "start": 867,
+                  "end": 1146
+                },
+                "start": 846,
+                "end": 1155
+              }
+            ],
+            "closingElement": {
+              "type": "JSXClosingElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "script",
+                "start": 1148,
+                "end": 1154
+              },
+              "start": 1146,
+              "end": 1155
+            },
+            "start": 846,
+            "end": 1155
+          },
+          {
+            "type": "JSXText",
+            "value": "\n\n",
+            "raw": "\n\n",
+            "start": 1155,
+            "end": 1157
+          },
+          {
+            "type": "AstroComment",
+            "value": " Global site tag (gtag.js) - Google Analytics ",
+            "start": 1157,
+            "end": 1210
+          },
+          {
+            "type": "JSXText",
+            "value": "\n",
+            "raw": "\n",
+            "start": 1210,
+            "end": 1211
+          },
+          {
+            "type": "AstroComment",
+            "value": " <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n</script> ",
+            "start": 1211,
+            "end": 1476
+          }
+        ],
+        "comments": [],
+        "start": 0,
+        "end": 1476
+      },
+      "expectedAst": {
+        "body": [
+          {
+            "end": 24,
+            "start": 0,
+            "type": "AstroComment",
+            "value": " Global Metadata "
+          },
+          {
+            "end": 25,
+            "raw": "\n",
+            "start": 24,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 47,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 46,
+                  "name": {
+                    "end": 38,
+                    "name": "charset",
+                    "start": 31,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 31,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 46,
+                    "raw": "\"utf-8\"",
+                    "start": 39,
+                    "type": "Literal",
+                    "value": "utf-8"
+                  }
+                }
+              ],
+              "end": 47,
+              "name": {
+                "end": 30,
+                "name": "meta",
+                "start": 26,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 25,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 25,
+            "type": "JSXElement"
+          },
+          {
+            "end": 48,
+            "raw": "\n",
+            "start": 47,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 99,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 69,
+                  "name": {
+                    "end": 58,
+                    "name": "name",
+                    "start": 54,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 54,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 69,
+                    "raw": "\"viewport\"",
+                    "start": 59,
+                    "type": "Literal",
+                    "value": "viewport"
+                  }
+                },
+                {
+                  "end": 98,
+                  "name": {
+                    "end": 77,
+                    "name": "content",
+                    "start": 70,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 70,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 98,
+                    "raw": "\"width=device-width\"",
+                    "start": 78,
+                    "type": "Literal",
+                    "value": "width=device-width"
+                  }
+                }
+              ],
+              "end": 99,
+              "name": {
+                "end": 53,
+                "name": "meta",
+                "start": 49,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 48,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 48,
+            "type": "JSXElement"
+          },
+          {
+            "end": 101,
+            "raw": "\n\n",
+            "start": 99,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 161,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 117,
+                  "name": {
+                    "end": 110,
+                    "name": "rel",
+                    "start": 107,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 107,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 117,
+                    "raw": "\"icon\"",
+                    "start": 111,
+                    "type": "Literal",
+                    "value": "icon"
+                  }
+                },
+                {
+                  "end": 138,
+                  "name": {
+                    "end": 122,
+                    "name": "type",
+                    "start": 118,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 118,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 138,
+                    "raw": "\"image/svg+xml\"",
+                    "start": 123,
+                    "type": "Literal",
+                    "value": "image/svg+xml"
+                  }
+                },
+                {
+                  "end": 158,
+                  "name": {
+                    "end": 143,
+                    "name": "href",
+                    "start": 139,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 139,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 158,
+                    "raw": "\"/favicon.svg\"",
+                    "start": 144,
+                    "type": "Literal",
+                    "value": "/favicon.svg"
+                  }
+                }
+              ],
+              "end": 161,
+              "name": {
+                "end": 106,
+                "name": "link",
+                "start": 102,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 101,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 101,
+            "type": "JSXElement"
+          },
+          {
+            "end": 162,
+            "raw": "\n",
+            "start": 161,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 231,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 188,
+                  "name": {
+                    "end": 171,
+                    "name": "rel",
+                    "start": 168,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 168,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 188,
+                    "raw": "\"alternate icon\"",
+                    "start": 172,
+                    "type": "Literal",
+                    "value": "alternate icon"
+                  }
+                },
+                {
+                  "end": 208,
+                  "name": {
+                    "end": 193,
+                    "name": "type",
+                    "start": 189,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 189,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 208,
+                    "raw": "\"image/x-icon\"",
+                    "start": 194,
+                    "type": "Literal",
+                    "value": "image/x-icon"
+                  }
+                },
+                {
+                  "end": 228,
+                  "name": {
+                    "end": 213,
+                    "name": "href",
+                    "start": 209,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 209,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 228,
+                    "raw": "\"/favicon.ico\"",
+                    "start": 214,
+                    "type": "Literal",
+                    "value": "/favicon.ico"
+                  }
+                }
+              ],
+              "end": 231,
+              "name": {
+                "end": 167,
+                "name": "link",
+                "start": 163,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 162,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 162,
+            "type": "JSXElement"
+          },
+          {
+            "end": 233,
+            "raw": "\n\n",
+            "start": 231,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 274,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 252,
+                  "name": {
+                    "end": 242,
+                    "name": "rel",
+                    "start": 239,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 239,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 252,
+                    "raw": "\"sitemap\"",
+                    "start": 243,
+                    "type": "Literal",
+                    "value": "sitemap"
+                  }
+                },
+                {
+                  "end": 272,
+                  "name": {
+                    "end": 257,
+                    "name": "href",
+                    "start": 253,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 253,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 272,
+                    "raw": "\"/sitemap.xml\"",
+                    "start": 258,
+                    "type": "Literal",
+                    "value": "/sitemap.xml"
+                  }
+                }
+              ],
+              "end": 274,
+              "name": {
+                "end": 238,
+                "name": "link",
+                "start": 234,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 233,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 233,
+            "type": "JSXElement"
+          },
+          {
+            "end": 276,
+            "raw": "\n\n",
+            "start": 274,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "end": 295,
+            "start": 276,
+            "type": "AstroComment",
+            "value": " Global CSS "
+          },
+          {
+            "end": 296,
+            "raw": "\n",
+            "start": 295,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 339,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 318,
+                  "name": {
+                    "end": 305,
+                    "name": "rel",
+                    "start": 302,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 302,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 318,
+                    "raw": "\"stylesheet\"",
+                    "start": 306,
+                    "type": "Literal",
+                    "value": "stylesheet"
+                  }
+                },
+                {
+                  "end": 336,
+                  "name": {
+                    "end": 323,
+                    "name": "href",
+                    "start": 319,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 319,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 336,
+                    "raw": "\"/theme.css\"",
+                    "start": 324,
+                    "type": "Literal",
+                    "value": "/theme.css"
+                  }
+                }
+              ],
+              "end": 339,
+              "name": {
+                "end": 301,
+                "name": "link",
+                "start": 297,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 296,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 296,
+            "type": "JSXElement"
+          },
+          {
+            "end": 340,
+            "raw": "\n",
+            "start": 339,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 382,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 362,
+                  "name": {
+                    "end": 349,
+                    "name": "rel",
+                    "start": 346,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 346,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 362,
+                    "raw": "\"stylesheet\"",
+                    "start": 350,
+                    "type": "Literal",
+                    "value": "stylesheet"
+                  }
+                },
+                {
+                  "end": 379,
+                  "name": {
+                    "end": 367,
+                    "name": "href",
+                    "start": 363,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 363,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 379,
+                    "raw": "\"/code.css\"",
+                    "start": 368,
+                    "type": "Literal",
+                    "value": "/code.css"
+                  }
+                }
+              ],
+              "end": 382,
+              "name": {
+                "end": 345,
+                "name": "link",
+                "start": 341,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 340,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 340,
+            "type": "JSXElement"
+          },
+          {
+            "end": 383,
+            "raw": "\n",
+            "start": 382,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 426,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 405,
+                  "name": {
+                    "end": 392,
+                    "name": "rel",
+                    "start": 389,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 389,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 405,
+                    "raw": "\"stylesheet\"",
+                    "start": 393,
+                    "type": "Literal",
+                    "value": "stylesheet"
+                  }
+                },
+                {
+                  "end": 423,
+                  "name": {
+                    "end": 410,
+                    "name": "href",
+                    "start": 406,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 406,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 423,
+                    "raw": "\"/index.css\"",
+                    "start": 411,
+                    "type": "Literal",
+                    "value": "/index.css"
+                  }
+                }
+              ],
+              "end": 426,
+              "name": {
+                "end": 388,
+                "name": "link",
+                "start": 384,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 383,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 383,
+            "type": "JSXElement"
+          },
+          {
+            "end": 428,
+            "raw": "\n\n",
+            "start": 426,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "end": 450,
+            "start": 428,
+            "type": "AstroComment",
+            "value": " Preload Fonts "
+          },
+          {
+            "end": 451,
+            "raw": "\n",
+            "start": 450,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 510,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 473,
+                  "name": {
+                    "end": 460,
+                    "name": "rel",
+                    "start": 457,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 457,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 473,
+                    "raw": "\"preconnect\"",
+                    "start": 461,
+                    "type": "Literal",
+                    "value": "preconnect"
+                  }
+                },
+                {
+                  "end": 509,
+                  "name": {
+                    "end": 478,
+                    "name": "href",
+                    "start": 474,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 474,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 509,
+                    "raw": "\"https://fonts.googleapis.com\"",
+                    "start": 479,
+                    "type": "Literal",
+                    "value": "https://fonts.googleapis.com"
+                  }
+                }
+              ],
+              "end": 510,
+              "name": {
+                "end": 456,
+                "name": "link",
+                "start": 452,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 451,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 451,
+            "type": "JSXElement"
+          },
+          {
+            "end": 511,
+            "raw": "\n",
+            "start": 510,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 579,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 533,
+                  "name": {
+                    "end": 520,
+                    "name": "rel",
+                    "start": 517,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 517,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 533,
+                    "raw": "\"preconnect\"",
+                    "start": 521,
+                    "type": "Literal",
+                    "value": "preconnect"
+                  }
+                },
+                {
+                  "end": 566,
+                  "name": {
+                    "end": 538,
+                    "name": "href",
+                    "start": 534,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 534,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 566,
+                    "raw": "\"https://fonts.gstatic.com\"",
+                    "start": 539,
+                    "type": "Literal",
+                    "value": "https://fonts.gstatic.com"
+                  }
+                },
+                {
+                  "end": 578,
+                  "name": {
+                    "end": 578,
+                    "name": "crossorigin",
+                    "start": 567,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 567,
+                  "type": "JSXAttribute",
+                  "value": null
+                }
+              ],
+              "end": 579,
+              "name": {
+                "end": 516,
+                "name": "link",
+                "start": 512,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 511,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 511,
+            "type": "JSXElement"
+          },
+          {
+            "end": 580,
+            "raw": "\n",
+            "start": 579,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 687,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 669,
+                  "name": {
+                    "end": 590,
+                    "name": "href",
+                    "start": 586,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 586,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 669,
+                    "raw": "\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\"",
+                    "start": 591,
+                    "type": "Literal",
+                    "value": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap"
+                  }
+                },
+                {
+                  "end": 686,
+                  "name": {
+                    "end": 673,
+                    "name": "rel",
+                    "start": 670,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 670,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 686,
+                    "raw": "\"stylesheet\"",
+                    "start": 674,
+                    "type": "Literal",
+                    "value": "stylesheet"
+                  }
+                }
+              ],
+              "end": 687,
+              "name": {
+                "end": 585,
+                "name": "link",
+                "start": 581,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 580,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 580,
+            "type": "JSXElement"
+          },
+          {
+            "end": 689,
+            "raw": "\n\n",
+            "start": 687,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "end": 725,
+            "start": 689,
+            "type": "AstroComment",
+            "value": " Scrollable a11y code helper "
+          },
+          {
+            "end": 726,
+            "raw": "\n",
+            "start": 725,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [
+              {
+                "end": 791,
+                "program": {
+                  "body": [],
+                  "end": 791,
+                  "hashbang": null,
+                  "sourceType": "module",
+                  "start": 791,
+                  "type": "Program"
+                },
+                "start": 726,
+                "type": "AstroScript"
+              }
+            ],
+            "closingElement": null,
+            "end": 791,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 747,
+                  "name": {
+                    "end": 738,
+                    "name": "type",
+                    "start": 734,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 734,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 747,
+                    "raw": "\"module\"",
+                    "start": 739,
+                    "type": "Literal",
+                    "value": "module"
+                  }
+                },
+                {
+                  "end": 788,
+                  "name": {
+                    "end": 751,
+                    "name": "src",
+                    "start": 748,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 748,
+                  "type": "JSXAttribute",
+                  "value": {
+                    "end": 788,
+                    "raw": "\"/make-scrollable-code-focusable.js\"",
+                    "start": 752,
+                    "type": "Literal",
+                    "value": "/make-scrollable-code-focusable.js"
+                  }
+                }
+              ],
+              "end": 791,
+              "name": {
+                "end": 733,
+                "name": "script",
+                "start": 727,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 726,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 726,
+            "type": "JSXElement"
+          },
+          {
+            "end": 793,
+            "raw": "\n\n",
+            "start": 791,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "end": 845,
+            "start": 793,
+            "type": "AstroComment",
+            "value": " This is intentionally inlined to avoid FOUC "
+          },
+          {
+            "end": 846,
+            "raw": "\n",
+            "start": 845,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "children": [
+              {
+                "end": 1155,
+                "program": {
+                  "body": [
+                    {
+                      "declarations": [
+                        {
+                          "definite": false,
+                          "end": 904,
+                          "id": {
+                            "decorators": [],
+                            "end": 877,
+                            "name": "root",
+                            "optional": false,
+                            "start": 873,
+                            "type": "Identifier",
+                            "typeAnnotation": null
+                          },
+                          "init": {
+                            "computed": false,
+                            "end": 904,
+                            "object": {
+                              "decorators": [],
+                              "end": 888,
+                              "name": "document",
+                              "optional": false,
+                              "start": 880,
+                              "type": "Identifier",
+                              "typeAnnotation": null
+                            },
+                            "optional": false,
+                            "property": {
+                              "decorators": [],
+                              "end": 904,
+                              "name": "documentElement",
+                              "optional": false,
+                              "start": 889,
+                              "type": "Identifier",
+                              "typeAnnotation": null
+                            },
+                            "start": 880,
+                            "type": "MemberExpression"
+                          },
+                          "start": 873,
+                          "type": "VariableDeclarator"
+                        }
+                      ],
+                      "declare": false,
+                      "end": 905,
+                      "kind": "const",
+                      "start": 867,
+                      "type": "VariableDeclaration"
+                    },
+                    {
+                      "declarations": [
+                        {
+                          "definite": false,
+                          "end": 951,
+                          "id": {
+                            "decorators": [],
+                            "end": 919,
+                            "name": "theme",
+                            "optional": false,
+                            "start": 914,
+                            "type": "Identifier",
+                            "typeAnnotation": null
+                          },
+                          "init": {
+                            "arguments": [
+                              {
+                                "end": 950,
+                                "raw": "'theme'",
+                                "start": 943,
+                                "type": "Literal",
+                                "value": "theme"
+                              }
+                            ],
+                            "callee": {
+                              "computed": false,
+                              "end": 942,
+                              "object": {
+                                "decorators": [],
+                                "end": 934,
+                                "name": "localStorage",
+                                "optional": false,
+                                "start": 922,
+                                "type": "Identifier",
+                                "typeAnnotation": null
+                              },
+                              "optional": false,
+                              "property": {
+                                "decorators": [],
+                                "end": 942,
+                                "name": "getItem",
+                                "optional": false,
+                                "start": 935,
+                                "type": "Identifier",
+                                "typeAnnotation": null
+                              },
+                              "start": 922,
+                              "type": "MemberExpression"
+                            },
+                            "end": 951,
+                            "optional": false,
+                            "start": 922,
+                            "type": "CallExpression",
+                            "typeArguments": null
+                          },
+                          "start": 914,
+                          "type": "VariableDeclarator"
+                        }
+                      ],
+                      "declare": false,
+                      "end": 952,
+                      "kind": "const",
+                      "start": 908,
+                      "type": "VariableDeclaration"
+                    },
+                    {
+                      "alternate": {
+                        "body": [
+                          {
+                            "directive": null,
+                            "end": 1141,
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "end": 1139,
+                                  "raw": "'theme-dark'",
+                                  "start": 1127,
+                                  "type": "Literal",
+                                  "value": "theme-dark"
+                                }
+                              ],
+                              "callee": {
+                                "computed": false,
+                                "end": 1126,
+                                "object": {
+                                  "computed": false,
+                                  "end": 1119,
+                                  "object": {
+                                    "decorators": [],
+                                    "end": 1109,
+                                    "name": "root",
+                                    "optional": false,
+                                    "start": 1105,
+                                    "type": "Identifier",
+                                    "typeAnnotation": null
+                                  },
+                                  "optional": false,
+                                  "property": {
+                                    "decorators": [],
+                                    "end": 1119,
+                                    "name": "classList",
+                                    "optional": false,
+                                    "start": 1110,
+                                    "type": "Identifier",
+                                    "typeAnnotation": null
+                                  },
+                                  "start": 1105,
+                                  "type": "MemberExpression"
+                                },
+                                "optional": false,
+                                "property": {
+                                  "decorators": [],
+                                  "end": 1126,
+                                  "name": "remove",
+                                  "optional": false,
+                                  "start": 1120,
+                                  "type": "Identifier",
+                                  "typeAnnotation": null
+                                },
+                                "start": 1105,
+                                "type": "MemberExpression"
+                              },
+                              "end": 1140,
+                              "optional": false,
+                              "start": 1105,
+                              "type": "CallExpression",
+                              "typeArguments": null
+                            },
+                            "start": 1105,
+                            "type": "ExpressionStatement"
+                          }
+                        ],
+                        "end": 1145,
+                        "start": 1099,
+                        "type": "BlockStatement"
+                      },
+                      "consequent": {
+                        "body": [
+                          {
+                            "directive": null,
+                            "end": 1089,
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "end": 1087,
+                                  "raw": "'theme-dark'",
+                                  "start": 1075,
+                                  "type": "Literal",
+                                  "value": "theme-dark"
+                                }
+                              ],
+                              "callee": {
+                                "computed": false,
+                                "end": 1074,
+                                "object": {
+                                  "computed": false,
+                                  "end": 1070,
+                                  "object": {
+                                    "decorators": [],
+                                    "end": 1060,
+                                    "name": "root",
+                                    "optional": false,
+                                    "start": 1056,
+                                    "type": "Identifier",
+                                    "typeAnnotation": null
+                                  },
+                                  "optional": false,
+                                  "property": {
+                                    "decorators": [],
+                                    "end": 1070,
+                                    "name": "classList",
+                                    "optional": false,
+                                    "start": 1061,
+                                    "type": "Identifier",
+                                    "typeAnnotation": null
+                                  },
+                                  "start": 1056,
+                                  "type": "MemberExpression"
+                                },
+                                "optional": false,
+                                "property": {
+                                  "decorators": [],
+                                  "end": 1074,
+                                  "name": "add",
+                                  "optional": false,
+                                  "start": 1071,
+                                  "type": "Identifier",
+                                  "typeAnnotation": null
+                                },
+                                "start": 1056,
+                                "type": "MemberExpression"
+                              },
+                              "end": 1088,
+                              "optional": false,
+                              "start": 1056,
+                              "type": "CallExpression",
+                              "typeArguments": null
+                            },
+                            "start": 1056,
+                            "type": "ExpressionStatement"
+                          }
+                        ],
+                        "end": 1093,
+                        "start": 1050,
+                        "type": "BlockStatement"
+                      },
+                      "end": 1145,
+                      "start": 955,
+                      "test": {
+                        "end": 1048,
+                        "left": {
+                          "end": 975,
+                          "left": {
+                            "decorators": [],
+                            "end": 964,
+                            "name": "theme",
+                            "optional": false,
+                            "start": 959,
+                            "type": "Identifier",
+                            "typeAnnotation": null
+                          },
+                          "operator": "===",
+                          "right": {
+                            "end": 975,
+                            "raw": "'dark'",
+                            "start": 969,
+                            "type": "Literal",
+                            "value": "dark"
+                          },
+                          "start": 959,
+                          "type": "BinaryExpression"
+                        },
+                        "operator": "||",
+                        "right": {
+                          "end": 1048,
+                          "left": {
+                            "end": 987,
+                            "expression": {
+                              "argument": {
+                                "decorators": [],
+                                "end": 986,
+                                "name": "theme",
+                                "optional": false,
+                                "start": 981,
+                                "type": "Identifier",
+                                "typeAnnotation": null
+                              },
+                              "end": 986,
+                              "operator": "!",
+                              "prefix": true,
+                              "start": 980,
+                              "type": "UnaryExpression"
+                            },
+                            "start": 979,
+                            "type": "ParenthesizedExpression"
+                          },
+                          "operator": "&&",
+                          "right": {
+                            "computed": false,
+                            "end": 1048,
+                            "object": {
+                              "arguments": [
+                                {
+                                  "end": 1039,
+                                  "raw": "'(prefers-color-scheme: dark)'",
+                                  "start": 1009,
+                                  "type": "Literal",
+                                  "value": "(prefers-color-scheme: dark)"
+                                }
+                              ],
+                              "callee": {
+                                "computed": false,
+                                "end": 1008,
+                                "object": {
+                                  "decorators": [],
+                                  "end": 997,
+                                  "name": "window",
+                                  "optional": false,
+                                  "start": 991,
+                                  "type": "Identifier",
+                                  "typeAnnotation": null
+                                },
+                                "optional": false,
+                                "property": {
+                                  "decorators": [],
+                                  "end": 1008,
+                                  "name": "matchMedia",
+                                  "optional": false,
+                                  "start": 998,
+                                  "type": "Identifier",
+                                  "typeAnnotation": null
+                                },
+                                "start": 991,
+                                "type": "MemberExpression"
+                              },
+                              "end": 1040,
+                              "optional": false,
+                              "start": 991,
+                              "type": "CallExpression",
+                              "typeArguments": null
+                            },
+                            "optional": false,
+                            "property": {
+                              "decorators": [],
+                              "end": 1048,
+                              "name": "matches",
+                              "optional": false,
+                              "start": 1041,
+                              "type": "Identifier",
+                              "typeAnnotation": null
+                            },
+                            "start": 991,
+                            "type": "MemberExpression"
+                          },
+                          "start": 979,
+                          "type": "LogicalExpression"
+                        },
+                        "start": 959,
+                        "type": "LogicalExpression"
+                      },
+                      "type": "IfStatement"
+                    }
+                  ],
+                  "end": 1146,
+                  "hashbang": null,
+                  "sourceType": "module",
+                  "start": 867,
+                  "type": "Program"
+                },
+                "start": 846,
+                "type": "AstroScript"
+              }
+            ],
+            "closingElement": {
+              "end": 1155,
+              "name": {
+                "end": 1154,
+                "name": "script",
+                "start": 1148,
+                "type": "JSXIdentifier"
+              },
+              "start": 1146,
+              "type": "JSXClosingElement"
+            },
+            "end": 1155,
+            "openingElement": {
+              "attributes": [
+                {
+                  "end": 863,
+                  "name": {
+                    "end": 863,
+                    "name": "is:inline",
+                    "start": 854,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 854,
+                  "type": "JSXAttribute",
+                  "value": null
+                }
+              ],
+              "end": 864,
+              "name": {
+                "end": 853,
+                "name": "script",
+                "start": 847,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": false,
+              "start": 846,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 846,
+            "type": "JSXElement"
+          },
+          {
+            "end": 1157,
+            "raw": "\n\n",
+            "start": 1155,
+            "type": "JSXText",
+            "value": "\n\n"
+          },
+          {
+            "end": 1210,
+            "start": 1157,
+            "type": "AstroComment",
+            "value": " Global site tag (gtag.js) - Google Analytics "
+          },
+          {
+            "end": 1211,
+            "raw": "\n",
+            "start": 1210,
+            "type": "JSXText",
+            "value": "\n"
+          },
+          {
+            "end": 1476,
+            "start": 1211,
+            "type": "AstroComment",
+            "value": " <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n</script> "
+          }
+        ],
+        "comments": [],
+        "end": 1476,
+        "frontmatter": {
+          "end": 0,
+          "program": {
+            "body": [],
+            "end": 0,
+            "hashbang": null,
+            "sourceType": "module",
+            "start": 0,
+            "type": "Program"
+          },
+          "start": 0,
+          "type": "AstroFrontmatter"
+        },
+        "start": 0,
+        "type": "AstroRoot"
+      },
+      "goText": [
+        {
+          "value": "\n",
+          "start": 47,
+          "end": 48
+        },
+        {
+          "value": "\n\n",
+          "start": 99,
+          "end": 101
+        },
+        {
+          "value": "\n",
+          "start": 161,
+          "end": 162
+        },
+        {
+          "value": "\n\n",
+          "start": 231,
+          "end": 233
+        },
+        {
+          "value": "\n\n",
+          "start": 274,
+          "end": 276
+        },
+        {
+          "value": "\n",
+          "start": 295,
+          "end": 296
+        },
+        {
+          "value": "\n",
+          "start": 339,
+          "end": 340
+        },
+        {
+          "value": "\n",
+          "start": 382,
+          "end": 383
+        },
+        {
+          "value": "\n\n",
+          "start": 426,
+          "end": 428
+        },
+        {
+          "value": "\n",
+          "start": 450,
+          "end": 451
+        },
+        {
+          "value": "\n",
+          "start": 510,
+          "end": 511
+        },
+        {
+          "value": "\n",
+          "start": 579,
+          "end": 580
+        },
+        {
+          "value": "\n\n",
+          "start": 687,
+          "end": 689
+        },
+        {
+          "value": "\n",
+          "start": 725,
+          "end": 726
+        },
+        {
+          "value": "\n\n",
+          "start": 791,
+          "end": 793
+        },
+        {
+          "value": "\n",
+          "start": 845,
+          "end": 846
+        },
+        {
+          "value": "\n  const root = document.documentElement;\n  const theme = localStorage.getItem('theme');\n  if (theme === 'dark' || (!theme) && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n    root.classList.add('theme-dark');\n  } else {\n    root.classList.remove('theme-dark');\n  }\n",
+          "start": 864,
+          "end": 1146
+        },
+        {
+          "value": "\n\n",
+          "start": 1155,
+          "end": 1157
+        },
+        {
+          "value": "\n",
+          "start": 1210,
+          "end": 1211
+        }
+      ]
+    },
+    {
+      "source": "<div><script></script>/*hi*/<p/></div>",
+      "publishedAst": {
+        "type": "AstroRoot",
+        "frontmatter": {
+          "type": "AstroFrontmatter",
+          "program": {
+            "type": "Program",
+            "body": [],
+            "sourceType": "module",
+            "hashbang": null,
+            "start": 0,
+            "end": 0
+          },
+          "start": 0,
+          "end": 0
+        },
+        "body": [
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "div",
+                "start": 1,
+                "end": 4
+              },
+              "typeArguments": null,
+              "attributes": [],
+              "selfClosing": false,
+              "start": 0,
+              "end": 5
+            },
+            "children": [
+              {
+                "type": "JSXElement",
+                "openingElement": {
+                  "type": "JSXOpeningElement",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "script",
+                    "start": 6,
+                    "end": 12
+                  },
+                  "typeArguments": null,
+                  "attributes": [],
+                  "selfClosing": false,
+                  "start": 5,
+                  "end": 13
+                },
+                "children": [
+                  {
+                    "type": "AstroScript",
+                    "program": {
+                      "type": "Program",
+                      "body": [],
+                      "sourceType": "module",
+                      "hashbang": null,
+                      "start": 13,
+                      "end": 13
+                    },
+                    "start": 5,
+                    "end": 22
+                  }
+                ],
+                "closingElement": {
+                  "type": "JSXClosingElement",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "script",
+                    "start": 15,
+                    "end": 21
+                  },
+                  "start": 13,
+                  "end": 22
+                },
+                "start": 5,
+                "end": 22
+              },
+              {
+                "type": "JSXText",
+                "value": "/*hi*/",
+                "raw": "/*hi*/",
+                "start": 22,
+                "end": 28
+              },
+              {
+                "type": "JSXElement",
+                "openingElement": {
+                  "type": "JSXOpeningElement",
+                  "name": {
+                    "type": "JSXIdentifier",
+                    "name": "p",
+                    "start": 29,
+                    "end": 30
+                  },
+                  "typeArguments": null,
+                  "attributes": [],
+                  "selfClosing": true,
+                  "start": 28,
+                  "end": 32
+                },
+                "children": [],
+                "closingElement": null,
+                "start": 28,
+                "end": 32
+              }
+            ],
+            "closingElement": {
+              "type": "JSXClosingElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "div",
+                "start": 34,
+                "end": 37
+              },
+              "start": 32,
+              "end": 38
+            },
+            "start": 0,
+            "end": 38
+          }
+        ],
+        "comments": [
+          {
+            "type": "Block",
+            "value": "hi",
+            "start": 22,
+            "end": 28
+          }
+        ],
+        "start": 0,
+        "end": 38
+      },
+      "expectedAst": {
+        "body": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "end": 22,
+                    "program": {
+                      "body": [],
+                      "end": 13,
+                      "hashbang": null,
+                      "sourceType": "module",
+                      "start": 13,
+                      "type": "Program"
+                    },
+                    "start": 5,
+                    "type": "AstroScript"
+                  }
+                ],
+                "closingElement": {
+                  "end": 22,
+                  "name": {
+                    "end": 21,
+                    "name": "script",
+                    "start": 15,
+                    "type": "JSXIdentifier"
+                  },
+                  "start": 13,
+                  "type": "JSXClosingElement"
+                },
+                "end": 22,
+                "openingElement": {
+                  "attributes": [],
+                  "end": 13,
+                  "name": {
+                    "end": 12,
+                    "name": "script",
+                    "start": 6,
+                    "type": "JSXIdentifier"
+                  },
+                  "selfClosing": false,
+                  "start": 5,
+                  "type": "JSXOpeningElement",
+                  "typeArguments": null
+                },
+                "start": 5,
+                "type": "JSXElement"
+              },
+              {
+                "end": 28,
+                "raw": "/*hi*/",
+                "start": 22,
+                "type": "JSXText",
+                "value": "/*hi*/"
+              },
+              {
+                "children": [],
+                "closingElement": null,
+                "end": 32,
+                "openingElement": {
+                  "attributes": [],
+                  "end": 32,
+                  "name": {
+                    "end": 30,
+                    "name": "p",
+                    "start": 29,
+                    "type": "JSXIdentifier"
+                  },
+                  "selfClosing": true,
+                  "start": 28,
+                  "type": "JSXOpeningElement",
+                  "typeArguments": null
+                },
+                "start": 28,
+                "type": "JSXElement"
+              }
+            ],
+            "closingElement": {
+              "end": 38,
+              "name": {
+                "end": 37,
+                "name": "div",
+                "start": 34,
+                "type": "JSXIdentifier"
+              },
+              "start": 32,
+              "type": "JSXClosingElement"
+            },
+            "end": 38,
+            "openingElement": {
+              "attributes": [],
+              "end": 5,
+              "name": {
+                "end": 4,
+                "name": "div",
+                "start": 1,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": false,
+              "start": 0,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 0,
+            "type": "JSXElement"
+          }
+        ],
+        "comments": [],
+        "end": 38,
+        "frontmatter": {
+          "end": 0,
+          "program": {
+            "body": [],
+            "end": 0,
+            "hashbang": null,
+            "sourceType": "module",
+            "start": 0,
+            "type": "Program"
+          },
+          "start": 0,
+          "type": "AstroFrontmatter"
+        },
+        "start": 0,
+        "type": "AstroRoot"
+      },
+      "goText": [
+        {
+          "value": "/*hi*/",
+          "start": 22,
+          "end": 28
+        }
+      ]
+    },
+    {
+      "source": "<script/> a<p/>",
+      "publishedAst": {
+        "type": "AstroRoot",
+        "frontmatter": {
+          "type": "AstroFrontmatter",
+          "program": {
+            "type": "Program",
+            "body": [],
+            "sourceType": "module",
+            "hashbang": null,
+            "start": 0,
+            "end": 0
+          },
+          "start": 0,
+          "end": 0
+        },
+        "body": [
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "script",
+                "start": 1,
+                "end": 7
+              },
+              "typeArguments": null,
+              "attributes": [],
+              "selfClosing": true,
+              "start": 0,
+              "end": 9
+            },
+            "children": [
+              {
+                "type": "AstroScript",
+                "program": {
+                  "type": "Program",
+                  "body": [],
+                  "sourceType": "module",
+                  "hashbang": null,
+                  "start": 9,
+                  "end": 9
+                },
+                "start": 0,
+                "end": 9
+              }
+            ],
+            "closingElement": null,
+            "start": 0,
+            "end": 9
+          },
+          {
+            "type": "JSXElement",
+            "openingElement": {
+              "type": "JSXOpeningElement",
+              "name": {
+                "type": "JSXIdentifier",
+                "name": "p",
+                "start": 12,
+                "end": 13
+              },
+              "typeArguments": null,
+              "attributes": [],
+              "selfClosing": true,
+              "start": 11,
+              "end": 15
+            },
+            "children": [],
+            "closingElement": null,
+            "start": 11,
+            "end": 15
+          }
+        ],
+        "comments": [],
+        "start": 0,
+        "end": 15
+      },
+      "expectedAst": {
+        "body": [
+          {
+            "children": [
+              {
+                "end": 9,
+                "program": {
+                  "body": [],
+                  "end": 9,
+                  "hashbang": null,
+                  "sourceType": "module",
+                  "start": 9,
+                  "type": "Program"
+                },
+                "start": 0,
+                "type": "AstroScript"
+              }
+            ],
+            "closingElement": null,
+            "end": 9,
+            "openingElement": {
+              "attributes": [],
+              "end": 9,
+              "name": {
+                "end": 7,
+                "name": "script",
+                "start": 1,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 0,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 0,
+            "type": "JSXElement"
+          },
+          {
+            "end": 11,
+            "raw": " a",
+            "start": 9,
+            "type": "JSXText",
+            "value": " a"
+          },
+          {
+            "children": [],
+            "closingElement": null,
+            "end": 15,
+            "openingElement": {
+              "attributes": [],
+              "end": 15,
+              "name": {
+                "end": 13,
+                "name": "p",
+                "start": 12,
+                "type": "JSXIdentifier"
+              },
+              "selfClosing": true,
+              "start": 11,
+              "type": "JSXOpeningElement",
+              "typeArguments": null
+            },
+            "start": 11,
+            "type": "JSXElement"
+          }
+        ],
+        "comments": [],
+        "end": 15,
+        "frontmatter": {
+          "end": 0,
+          "program": {
+            "body": [],
+            "end": 0,
+            "hashbang": null,
+            "sourceType": "module",
+            "start": 0,
+            "type": "Program"
+          },
+          "start": 0,
+          "type": "AstroFrontmatter"
+        },
+        "start": 0,
+        "type": "AstroRoot"
+      },
+      "goText": [
+        {
+          "value": " a",
+          "start": 9,
+          "end": 11
+        }
+      ]
+    }
+  ],
+  "transform": [
+    {
+      "source": "<!-- Global Metadata -->\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n<link rel=\"alternate icon\" type=\"image/x-icon\" href=\"/favicon.ico\" />\n\n<link rel=\"sitemap\" href=\"/sitemap.xml\"/>\n\n<!-- Global CSS -->\n<link rel=\"stylesheet\" href=\"/theme.css\" />\n<link rel=\"stylesheet\" href=\"/code.css\" />\n<link rel=\"stylesheet\" href=\"/index.css\" />\n\n<!-- Preload Fonts -->\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\" rel=\"stylesheet\">\n\n<!-- Scrollable a11y code helper -->\n<script type=\"module\" src=\"/make-scrollable-code-focusable.js\" />\n\n<!-- This is intentionally inlined to avoid FOUC -->\n<script is:inline>\n  const root = document.documentElement;\n  const theme = localStorage.getItem('theme');\n  if (theme === 'dark' || (!theme) && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n    root.classList.add('theme-dark');\n  } else {\n    root.classList.remove('theme-dark');\n  }\n</script>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<!-- <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n</script> -->",
+      "options": {
+        "filename": "/src/no_extra_script_tag.astro",
+        "sourcemap": "external",
+        "internalURL": "http://localhost:3000/",
+        "astroGlobalArgs": "\"https://astro.build\""
+      },
+      "publishedCode": "import { render as $$render, createComponent as $$createComponent, createMetadata as $$createMetadata } from \"http://localhost:3000/\";\nexport const $$metadata = $$createMetadata(\"/src/no_extra_script_tag.astro\", {\n\tmodules: [],\n\thydratedComponents: [],\n\tclientOnlyComponents: [],\n\thydrationDirectives: new Set([]),\n\thoisted: []\n});\nconst $$NoExtraScriptTag = $$createComponent(($$result, $$props, $$slots) => {\n\treturn $$render`<!-- Global Metadata -->\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\">\n<link rel=\"alternate icon\" type=\"image/x-icon\" href=\"/favicon.ico\">\n\n<link rel=\"sitemap\" href=\"/sitemap.xml\">\n\n<!-- Global CSS -->\n<link rel=\"stylesheet\" href=\"/theme.css\">\n<link rel=\"stylesheet\" href=\"/code.css\">\n<link rel=\"stylesheet\" href=\"/index.css\">\n\n<!-- Preload Fonts -->\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\" rel=\"stylesheet\">\n\n<!-- Scrollable a11y code helper -->\n<script type=\"module\" src=\"/make-scrollable-code-focusable.js\"><\\/script><!-- This is intentionally inlined to avoid FOUC -->\n<script>\n  const root = document.documentElement;\n  const theme = localStorage.getItem('theme');\n  if (theme === 'dark' || (!theme) && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n    root.classList.add('theme-dark');\n  } else {\n    root.classList.remove('theme-dark');\n  }\n<\\/script>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<!-- <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"><\\/script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n<\\/script> -->`;\n}, \"/src/no_extra_script_tag.astro\", undefined);\nexport default $$NoExtraScriptTag;\n",
+      "expectedCode": "import { render as $$render, createComponent as $$createComponent, createMetadata as $$createMetadata } from \"http://localhost:3000/\";\nexport const $$metadata = $$createMetadata(\"/src/no_extra_script_tag.astro\", {\n\tmodules: [],\n\thydratedComponents: [],\n\tclientOnlyComponents: [],\n\thydrationDirectives: new Set([]),\n\thoisted: []\n});\nconst $$NoExtraScriptTag = $$createComponent(($$result, $$props, $$slots) => {\n\treturn $$render`<!-- Global Metadata -->\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\">\n<link rel=\"alternate icon\" type=\"image/x-icon\" href=\"/favicon.ico\">\n\n<link rel=\"sitemap\" href=\"/sitemap.xml\">\n\n<!-- Global CSS -->\n<link rel=\"stylesheet\" href=\"/theme.css\">\n<link rel=\"stylesheet\" href=\"/code.css\">\n<link rel=\"stylesheet\" href=\"/index.css\">\n\n<!-- Preload Fonts -->\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap\" rel=\"stylesheet\">\n\n<!-- Scrollable a11y code helper -->\n<script type=\"module\" src=\"/make-scrollable-code-focusable.js\"><\\/script>\n\n<!-- This is intentionally inlined to avoid FOUC -->\n<script>\n  const root = document.documentElement;\n  const theme = localStorage.getItem('theme');\n  if (theme === 'dark' || (!theme) && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n    root.classList.add('theme-dark');\n  } else {\n    root.classList.remove('theme-dark');\n  }\n<\\/script>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<!-- <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9\"><\\/script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-TEL60V1WM9');\n<\\/script> -->`;\n}, \"/src/no_extra_script_tag.astro\", undefined);\nexport default $$NoExtraScriptTag;\n"
+    }
+  ]
+}

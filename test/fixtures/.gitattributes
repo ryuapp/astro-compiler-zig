@@ -1,0 +1,2 @@
+tsx-upstream/fixtures/crlf_frontmatter.astro -text whitespace=cr-at-eol
+biome/** -text whitespace=-trailing-space,-blank-at-eof,-space-before-tab,cr-at-eol

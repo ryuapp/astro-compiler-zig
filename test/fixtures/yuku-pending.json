@@ -1,0 +1,133 @@
+{
+  "version": "0.21.0",
+  "revision": "74a6945ce3c6c0f615150921b9e63f4feec0eafd",
+  "notes": "Confirmed upstream issues. Preserve assertions and remove the matching entries after verifying an upstream fix. See YUKU_ISSUES.md.",
+  "cases": [
+    {
+      "source": "---\nconst value=100_;\n---\n<p>{value}</p>",
+      "issue": "lexer-numeric-span",
+      "checks": [
+        "ast",
+        "tsx"
+      ]
+    },
+    {
+      "source": "---\nconst value=100_ /*🦊*/;\n---\n<p/>",
+      "issue": "lexer-numeric-span",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "<p>{/a/uv.test(\"a\")}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast",
+        "tsx"
+      ]
+    },
+    {
+      "source": "<p title={/a/uv.source}/>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast",
+        "tsx"
+      ]
+    },
+    {
+      "source": "<p>{[/a/uv,/b/vu]}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "<p>🦊{/*before*/ /a/uv.source /*after*/}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "<p title={true ? /a/uv : /b/vu}>🦊</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "<p>{(()=>{return /a/uv})()}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "{[<b/>,/a/uv]}",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "---\nconst value=/a/uv;\n---\n<p/>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "---\r\n/*🦊*/const first=/a/uv;const second=/b/vu;\r\n---\r\n<p/>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "ast"
+      ]
+    },
+    {
+      "source": "---\nconst value=/x/uvv;\n---\n<p>{value}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "tsx"
+      ]
+    },
+    {
+      "source": "---\nfor(const value of [/a/uv]){}\n---\n<p/>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "tsx"
+      ]
+    },
+    {
+      "source": "---\nfunction f(){return /a/uv}\n---\n<p/>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "tsx"
+      ]
+    },
+    {
+      "source": "---\n/*🦊*/const a=/a/uv;/*x*/const b=/b/vu;const value=1;\n---\n<p>{value}</p>",
+      "issue": "lexer-regex-span-and-recovery",
+      "checks": [
+        "tsx"
+      ]
+    },
+    {
+      "source": "---\nconst enum E {A,B=2,\"C\"=3,[\"D\"]=4}\n---",
+      "issue": "computed-enum",
+      "checks": [
+        "tsx",
+        "syntax",
+        "ast"
+      ]
+    },
+    {
+      "source": "---\nenum E { `x` = 1 }\n---\n<p/>",
+      "issue": "template-enum",
+      "checks": [
+        "tsx",
+        "syntax",
+        "ast"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+---
+import MyElement, {
+	type MyElementShape,
+	} from './my-element.astro';
+
+let myElement: MyElementShape =  {};
+---
+<!-- should not generate diagnostics -->
+
+<template>
+	<MyElement />
+</template>
+

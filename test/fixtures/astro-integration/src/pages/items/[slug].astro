@@ -1,0 +1,10 @@
+---
+import Page from "../../layouts/Page.astro";
+export const prerender = true;
+export function getStaticPaths() {
+  return ["alpha","beta"].map(slug=>({params:{slug},props:{name:slug === "alpha" ? "Alpha" : "Beta"}}));
+}
+enum Value {First = 2, Second}
+const {name} = Astro.props;
+---
+<Page title={name}><p>{name}:{Value.Second}</p></Page>

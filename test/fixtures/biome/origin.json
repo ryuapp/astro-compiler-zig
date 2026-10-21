@@ -1,0 +1,2682 @@
+{
+  "repository": "https://github.com/biomejs/biome",
+  "revision": "c80f28cd192db22650c847cbd570e73fdd175c40",
+  "license": "MIT",
+  "referenceParser": "@astrojs/compiler-rs@0.5.2",
+  "referenceTsx": "@astrojs/astro2tsx@0.1.3",
+  "expressionWrapper": {
+    "prefix": "{\n",
+    "suffix": "\n}"
+  },
+  "fixtures": [
+    {
+      "file": "crates/biome_css_analyze/tests/specs/nursery/noUndeclaredCustomProperties/invalid.astro",
+      "sha256": "0c7ec93a243808eb5fffaa9bb2a77f54aa06771326dfd894d8902ff2e694159b",
+      "kind": "document",
+      "suite": "biome_css_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_css_analyze/tests/specs/nursery/noUndeclaredCustomProperties/parent-scope-astro/invalid.astro",
+      "sha256": "d324fa872e892b1126837a6eacbf0f898f140d491e04d67953ed527f1a2f4385",
+      "kind": "document",
+      "suite": "biome_css_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_css_analyze/tests/specs/nursery/noUndeclaredCustomProperties/parent-scope-astro/valid.astro",
+      "sha256": "a48bd7640252693d59833e0b21c7457547ccd27bc11e7b9473ac7c38aa083a59",
+      "kind": "document",
+      "suite": "biome_css_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_css_analyze/tests/specs/nursery/useLogicalProperties/invalid.astro",
+      "sha256": "28cc9fcee457060f8e819c21a00e8ef4780e77a19410da6bab0dca5e704fa4f5",
+      "kind": "document",
+      "suite": "biome_css_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAccessKey/astro/invalid.astro",
+      "sha256": "ad1255c0f1ac71b9da3a3bfbdd2d5b24922b10197cf8576626ff1b5d410e0ed8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAccessKey/astro/valid.astro",
+      "sha256": "a5a4a3f24a449ca48f5ac211921782ca8cac6a0a49ab7ca1f28219966f83ac8a",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAmbiguousAnchorText/astro/invalid.astro",
+      "sha256": "2a52e22e13060ef6bf6c0bf66b92807aefc435c7033f9c781d1127cbce021cde",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAmbiguousAnchorText/astro/valid.astro",
+      "sha256": "d2e47795ecc472646aadc7facf4b2cd8693c8177460e155afe3896fd57271253",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAmbiguousAnchorText/astro/words/invalid.astro",
+      "sha256": "b59db0ac2844574ebf3175ee6d90283267ce56408a94869f355641a522f2375d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAmbiguousAnchorText/astro/words/valid.astro",
+      "sha256": "fb6d2a0eeab7deca8ea328f1b97dc5dae7889596312ba2fb7fd78f2c429d0d7d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAriaHiddenOnFocusable/astro/invalid.astro",
+      "sha256": "11858d148c5a9519ab3cdd9704df6d29a1fc7362ca6083f989db57f738979a21",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAriaHiddenOnFocusable/astro/valid.astro",
+      "sha256": "d02eae776832a6500e4af69de005542d0de7f3d89634940071508c201833bf2d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAriaUnsupportedElements/astro/invalid.astro",
+      "sha256": "2c7782927de6b925ed76aa99820ef884367efa71e8e83d9d079361dbacc76f1d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAriaUnsupportedElements/astro/valid.astro",
+      "sha256": "eb12f8f5650c6b09293bc76f85f2bf28d09d2caddcb39e2ccbd69780bbfc97e8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAutofocus/astro/invalid.astro",
+      "sha256": "ebc23c130fab57d260269359db25d2a528a6ec538d955bf6158daf7154443280",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noAutofocus/astro/valid.astro",
+      "sha256": "e428ca0eb290ed30c4c4692b373c21838273090d0cff6433ee448c132a3e8a45",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noDistractingElements/astro/invalid.astro",
+      "sha256": "7e5cecb8ccd0b707eceb370898c38d25d40a33bfb59b6f25e527b85d5b5522a4",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noDistractingElements/astro/valid.astro",
+      "sha256": "f548646ba5bc5eb42cd1cbb78f3cf7d146c2c7becad6eafd6435adc0468134cd",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noHeaderScope/astro/invalid.astro",
+      "sha256": "26fe7adc4c7154d3fc222b3999d04f529775283055d6517bbe6be2270ecadfcc",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noHeaderScope/astro/valid.astro",
+      "sha256": "88ade38ac865398fb1a582d25673cd94a145137caa01e9cc41c851fe20cf2ae0",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noInteractiveElementToNoninteractiveRole/astro/invalid.astro",
+      "sha256": "76970a52d94b8ad192225ce35788120d7400348f754d0b31ed294a6b4de16712",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noInteractiveElementToNoninteractiveRole/astro/valid.astro",
+      "sha256": "c57c7de062e9ff14ac17c321f44837096712ad17f4c0de85b9c3b471d49f6bfc",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/all/invalid.astro",
+      "sha256": "e34be49057e4024a290f74749abd45656ade60ce75e3230671bace072382766a",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/all/valid.astro",
+      "sha256": "c6a7f95ce39f5ae6ded57374563a95b42c2172e523f9e8d49399a7ded06dca51",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/inputComponents/invalid.astro",
+      "sha256": "6d1c8b761864f4e47e85d148b5a6d8e4f4ca35acf4ed4a6f9bdcf08215b78970",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/inputComponents/valid.astro",
+      "sha256": "9169c3e9da8ae724f47b5a17b729ff258ebce502c2290eb7d13ab244da00dfb1",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/invalid.astro",
+      "sha256": "d4a80329f875fd78251ac610d462c83943f3eded992f311d88e42e1a19246beb",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/labelAttributes/invalid.astro",
+      "sha256": "2d314c68807c120cbc0e25eb02652c76a8f8a5975e09ee795c564a943f1e226e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/labelAttributes/valid.astro",
+      "sha256": "c432697e54028e716b7dc95d5f0cca1f94ab939e843147400068fd52cd9f1804",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/labelComponents/invalid.astro",
+      "sha256": "f7febbf67c296687bf17732e1ca64c1602928bc4fa1c4e0528d4e7fd077e632c",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/labelComponents/valid.astro",
+      "sha256": "90ccc6c78f3b0e79804ad3c73f6fa4dc37aa378c7ae0e3e102c8086003a45952",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noLabelWithoutControl/astro/valid.astro",
+      "sha256": "753c92cb5d3a84ae6f03c73f57b9880add554ce94026f8ac44dea9b6f6a9b5d4",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveElementInteractions/astro/invalid.astro",
+      "sha256": "6ca7837ca06c783139f67a15a805b0c6c58983598f6454f1b3d60383f038dae1",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveElementInteractions/astro/valid.astro",
+      "sha256": "79d161d81f7e72d595ff225c284e790073469c4223cd26ffb761a4e04ccac993",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveElementToInteractiveRole/astro/invalid.astro",
+      "sha256": "2c461d852e41cdf419b151ea3aa7aa8cece3a44d054306e98c5e5ae078b5bfef",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveElementToInteractiveRole/astro/valid.astro",
+      "sha256": "609d22d797ea1810b5d532f581c23cb862e3f13a19c125cd8c156c4fa168df27",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveTabindex/astro/invalid.astro",
+      "sha256": "aa51aefe3f771fcc60ca61c635340963aed18f182873476518ee7eecf70e8aa1",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noNoninteractiveTabindex/astro/valid.astro",
+      "sha256": "c9a3b347abd11aa64cd054f2edf9fb5108f3f6b75469c30291b5aa2867f2b397",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noPositiveTabindex/astro/invalid.astro",
+      "sha256": "e6f8464d28e8965272880ecd1a147cc958e1d16546e34ea9d2aaeb13fe446309",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noPositiveTabindex/astro/valid.astro",
+      "sha256": "ed98308a0e86df7031cc91dfdc9c6291f6dbfa8b4d467c99ff38ac17351a0e45",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noRedundantAlt/astro/invalid.astro",
+      "sha256": "d9c7f889a878e416b6e7f3e8ab89296ef4f8bf2705c95a27e5f820264845b92e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noRedundantAlt/astro/valid.astro",
+      "sha256": "d522a0ba701caab8f5f2e1ba826d0fbeeb1bfebec37191fb7a144b16ee82e170",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noRedundantRoles/astro/invalid.astro",
+      "sha256": "8a804893219465c5d3b2f85053c7bf189c4853d8f5523a54c55c2211155bb1ed",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noRedundantRoles/astro/valid.astro",
+      "sha256": "1d3f76abad3192217dea499c4f83fde9818ff8953a36db9271e626bc69b7936b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noStaticElementInteractions/astro/invalid.astro",
+      "sha256": "90b50ab3c7013b3a6e370d23574198973a104701eacb2648600740cec1bcf536",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noStaticElementInteractions/astro/valid.astro",
+      "sha256": "b287323a92850c1a9c058a82ffe5620c3fb516a00436fff022785cda88ab126f",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noSvgWithoutTitle/astro/invalid.astro",
+      "sha256": "1e613d2e4672cb53850f9b7f68dc642341e8b5f7c4207705a8f1f9e6c0723768",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/noSvgWithoutTitle/astro/valid.astro",
+      "sha256": "165374a16f1c94b19a16a145f27a925e24c6e45f25df7611fb80f8fbc12fe5e8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAltText/astro/invalid.astro",
+      "sha256": "7cce5da8cea5e57627613f60f1b1837f9775c0dc95a5b658cef357ac66a98d89",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAltText/astro/valid.astro",
+      "sha256": "9db4130502b44b4bf1f91c14132a8e7e8f4ba10e56f234962b6a590090b38bc4",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAnchorContent/astro/invalid.astro",
+      "sha256": "ef37ae5bdfa994abf69194a59dde491469e68cfd3e9e9c61375f2ccd53ae5056",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAnchorContent/astro/issue_11786.astro",
+      "sha256": "b5339565df6f7f6f0f77313e61a7884752bf89ccf1541bf3caef95b14b47cc90",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAnchorContent/astro/valid.astro",
+      "sha256": "ec90c067d747deb2fb6c998d0b1229a07dd210975ae3e1edf520e82187b9498b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaActivedescendantWithTabindex/astro/invalid.astro",
+      "sha256": "b64115cdc9bf21b606abfd86535aa6de13a51ccce33aab1cb8738fe4858dcb61",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaActivedescendantWithTabindex/astro/valid.astro",
+      "sha256": "785e64188c5eb319b3d8d191e91426bec708ceb22a085bd5e0b207d68c5491c6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaPropsForRole/astro/invalid.astro",
+      "sha256": "22fb60b56ab55e726c63da8bded576bc73267a19b004c6b98f61ec5d4ff354c7",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaPropsForRole/astro/valid.astro",
+      "sha256": "42f1dce09f39fc9296c7bb5fc9af7978f3b13d81c71d28b7c585952d2276eeae",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaPropsSupportedByRole/astro/invalid.astro",
+      "sha256": "0b21f84d670529ced6d98cbcbede5083cb39d3058efe183539c111437c614c6b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useAriaPropsSupportedByRole/astro/valid.astro",
+      "sha256": "7c2a2e64361c9387b7a46441b34ee6ad56b8e2a2f17be6649776ec05b8247b4c",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useButtonType/astro/invalid.astro",
+      "sha256": "edb59b52acac524b56c380167e03843129f399cc984e607d883cf44589d2033b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useButtonType/astro/valid.astro",
+      "sha256": "e17d31345711c13eee42f9d83712e39d09389c0e50a9210f50808f44e35d844e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useFocusableInteractive/astro/invalid.astro",
+      "sha256": "7dbb1b12356cdf18d6f6202aeb7ed4a54edf678ea03891f27a298ea2b4b6b216",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useFocusableInteractive/astro/valid.astro",
+      "sha256": "8d51a534ef614d74b343aa07279863e80cd950742e4258fec5dc9c521f76c2d9",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useHeadingContent/astro/invalid.astro",
+      "sha256": "7eae97a4d4b8a9b307d4c664a5075a02cb82f8adeed66073d93e56c7d5e81a60",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useHeadingContent/astro/valid.astro",
+      "sha256": "ce35fb350c15a793e1a19276857736b6bea9219ae037be0c2b0f7503aa683cd6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useHtmlLang/astro/invalid.astro",
+      "sha256": "c26dc4066c7a9ade6a42035854df8e7f1d045704fedbddde98ffd4a9c37558fd",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useHtmlLang/astro/valid.astro",
+      "sha256": "f299d4175d625598dae78b8ab31a9002eb54d63357868a7a57f0b0af1f24186d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useIframeTitle/astro/invalid.astro",
+      "sha256": "4450bd5a839c88fb0fff895167b95e6447336ab56d417bf14e312b1faf7063b5",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useIframeTitle/astro/valid.astro",
+      "sha256": "fc2a7dbb38e019f4aabc9af706ee8938beff8a26abc5001b6630c1055780ea16",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useKeyWithClickEvents/astro/invalid.astro",
+      "sha256": "72828eee20b068562fab5ee71863d4740bef09af84a1da95b4ad57078021ef1a",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useKeyWithClickEvents/astro/valid.astro",
+      "sha256": "6e33bf62cfa73b56e15fc93197adf526867ae0aaf7b01f00df697521c95b9806",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useKeyWithMouseEvents/astro/invalid.astro",
+      "sha256": "3bb51d73d9192b2f093550aa35db10071ccc2982c40deee02fd96e164ae09dcb",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useKeyWithMouseEvents/astro/valid.astro",
+      "sha256": "9dbf205235552417cf2dd0273334d62386c157a901f2d8d2db1cb1b2b9b84b59",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useMediaCaption/astro/invalid.astro",
+      "sha256": "21ae229641bfb38716ae32a9cd5292de8f8aac4f8073b81e69e95f528c610aa0",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useMediaCaption/astro/valid.astro",
+      "sha256": "07e1dc3709065f1bba500770bec45c7ea666bf4a070d04cbba6282f0b17d9bf1",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useSemanticElements/astro/invalid.astro",
+      "sha256": "fa8ceabf7279d598c3d8489f692dcf48c3504824c003e7700549fb6a6c012f92",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useSemanticElements/astro/valid.astro",
+      "sha256": "ffcce9cec8463ae7196019d277052ea816b501be5828e4ec4f78983b6d351eca",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAnchor/astro/invalid.astro",
+      "sha256": "fefc2b63d9781dbb9d34ada88587a39933a7323ea5fe6d4258e96971571d00db",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAnchor/astro/valid.astro",
+      "sha256": "f2b220f98e35a77ee55b7e0aaf4a4d14ee79db6d1eddeac663bb0ebe02c34f84",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaProps/astro/invalid.astro",
+      "sha256": "0075599cfe0afc7bbb77a89453a1a38bf60e93a7a67534cdb1f0f5433723d9aa",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaProps/astro/valid.astro",
+      "sha256": "be8cb07fd644904150820a3da14d780c90d4389a9c197b41d6c86b3fa6806de3",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaRole/astro/allowInvalidRoles.astro",
+      "sha256": "87cf540021bcdb7bc9d8662df65150e7f140e9509e354c8ba97620474ece4558",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaRole/astro/invalid.astro",
+      "sha256": "cb2348dc2f165b968abd7be289cbe7d9a4cab1eea9a0c3f2dc59392aac59ec58",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaRole/astro/valid.astro",
+      "sha256": "c7111f44003bf23d869458c6aebee0e4cec754a342a0ff4af74bf36483da6b7b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaValues/astro/invalid.astro",
+      "sha256": "fd742462b2fce34163d06fea13fa48422ce5ecbc3260a719521af9c1969a61b9",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAriaValues/astro/valid.astro",
+      "sha256": "b8040b63d2fb954d0d510c08652d2b2cad41391561f28a9786ccb7e67288b201",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAutocomplete/astro/invalid.astro",
+      "sha256": "e7ecdc130cc3e2489fa1e0dca7446584cdfb0e7d0736e18013a2b3d086124310",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidAutocomplete/astro/valid.astro",
+      "sha256": "6abe7dc5bb14be238d896297d63b2b8d9cb2d9819c77142a46be253db6a87165",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidLang/astro/invalid.astro",
+      "sha256": "e1d610acc73d6fa990b7e3ab569764afff04a479104bdcbf2bb5ef33dde1e09c",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/a11y/useValidLang/astro/valid.astro",
+      "sha256": "df9ac492364ed83f5054afaa7073b1bcdcb5b62ceee9af91b2fcb0678068ebb8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/correctness/noRestrictedElements/invalid.astro",
+      "sha256": "7539a0af842fcfab5ea16c25bce7c6a10efabf3ab1368da5fcb9d5a168d2d3e3",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/correctness/noRestrictedElements/valid.astro",
+      "sha256": "38129a9f196d3af0211449547f497b7285560d4417ed740528dd7b0ab5bd7e41",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid.astro",
+      "sha256": "92f454e4262cd2817955472d625e747057aa4cce555a4633d4b8c6e13b544f69",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid_children.astro",
+      "sha256": "ce4be42dd91d510d633be7c6927eeb504dc4fe8ac8d8d74fb0b6ee1edad8a89d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid_directives.astro",
+      "sha256": "13c077b224a65b04ea760726596b7e8e2b6a3f8878e7fa1bf0eb532add80e199",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid_empty_expressions.astro",
+      "sha256": "0f6da564e258f9c0096983994589ed8f2c9a7d103626b806a70166fae3a260b7",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid_multiline.astro",
+      "sha256": "f780dbb719d40d545db06a134502c948b3582499e0019e8edbf9a8a319697d58",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/valid.astro",
+      "sha256": "56e7e6ed17b6b0671eb338008140d788faa9197c3ae46204ebe4e536f5e73d4f",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/valid_suppression.astro",
+      "sha256": "5a14510889b29d6d288d529a027ff9f3b27f0a22b1f37ae41175ecc561a0c39b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroSetHtmlDirective/invalid.astro",
+      "sha256": "61b50f4e61059f9775be79346639d4d312760c74d76304aa3bf805e2657aae65",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noAstroSetHtmlDirective/valid.astro",
+      "sha256": "2fd809b2c36a4811ab97d53a08ff81691b82e62437d187df1365242721213cce",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noInvalidFileInputAccept/invalid.astro",
+      "sha256": "cd5f25c39e83f5b3c1780ac54b84a838f22ea314577d9bc19868cd73aa07fd44",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noInvalidFileInputAccept/valid.astro",
+      "sha256": "11bb8316464982cf7f477135fe7d902bf261bce5a5736b1747fc9909a76619c6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noMisplacedListElements/invalid.astro",
+      "sha256": "90dd5d31f995d4e68d5bde6b51e647cc7cd5158af75b95ff2cb30c19987bc931",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noMisplacedListElements/valid.astro",
+      "sha256": "61ab2f458b9ef66f863a71ab655fe515d07f77461371754d4d154a8749480d7b",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noObsoleteTags/invalid.astro",
+      "sha256": "eefbfb6fb030fb362e542e4c955e88190121ae142725b6daebb5b1243d314101",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noObsoleteTags/valid.astro",
+      "sha256": "c8d4731196fafd7944240160be3190b58ac9ae33ab5e4d89586b222a8a2cd90c",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindLegacyUtilities/invalid.astro",
+      "sha256": "67cb71ad5f885c5244f95962d1e046d10b9e4fbdd3337d68be6881ee52fa89bc",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindLegacyUtilities/valid.astro",
+      "sha256": "8e271baec2779b32b8cc9206e730bca311d5a82c63464e23028f6ee0f45a8aa8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRawColors/invalid.astro",
+      "sha256": "2b9012b8a62a1d396aac1c6add60cbf04c9db177dcd8619549ca9054aefb7ea6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRawColors/invalid_allowed_colors.astro",
+      "sha256": "660794a26baab45eec6d3efd50414f9f82f1d2d2eafd829a3fdb03268f9212e4",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRawColors/valid.astro",
+      "sha256": "3547e9de8a39171636cb3a442ff87b0f3d95272169fc9fd62606afa7d088d39e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRawColors/valid_allowed_colors.astro",
+      "sha256": "0573bac3c0d545a904df39f6b76958bb3d5fd4607fc86659bd456e2af426961a",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRestyledComponents/invalid.astro",
+      "sha256": "02596a4e8e2cca99a2c969186e414c8ffa2a260b00ae2a9878b8117d1977c057",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noTailwindRestyledComponents/valid.astro",
+      "sha256": "a0f5eb2499f86ac53da89d5848a537d9473be9287a7fc4e224798023d1987dce",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/invalid-css-import-astro/invalid.astro",
+      "sha256": "66726a1128d33b78a1d4576b123cc2f39d4e13a42015d05eed922a8fa3ef68dd",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/invalid-upward-traversal-astro/App.astro",
+      "sha256": "23bb9dcf462dd8479b192f477560e0b38262f6f2baffc30d50377a8a1cdef0b6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/invalid-upward-traversal-astro/Button.astro",
+      "sha256": "745a502d47aed02741239c8537ced0ebb42f538f0767a03c50daba67132872b8",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/invalid-upward-traversal-astro/Page.astro",
+      "sha256": "bab377ece3e5b4b1ef4b6776317798dee52ec351a3ea995991b48ea506a369fb",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/mixedAstroSvelte/index.astro",
+      "sha256": "92a953e2429e7011b7ff3455d42f70149ef650a96d7c45e55b0e90812a77aa58",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/valid-css-import-astro/valid.astro",
+      "sha256": "c1a94d4d6d44928d9392cfb53881e05a07d98342bf12fbc6fcd5f4933af580a2",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/valid-no-style-info/valid.astro",
+      "sha256": "10005a23771499c4725c6ecd5ccb27e14ac5a262ba217dac8fd7358a338306b7",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredClasses/valid.astro",
+      "sha256": "0e25c734405ff06b44e4cdfee1b227050fdc8c6533d13d0566c96b8c27cb2dcb",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUndeclaredCustomProperties/invalid_component_style.astro",
+      "sha256": "009d8903756b803d0f4ed2400d872c9567d4b82e91584793861f2544be6c2af6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUnsafeIframeSandbox/astro/invalid.astro",
+      "sha256": "b2eb629409189bf04c421c5a55c5422f5cb402a0198bf5abf6447241112051bb",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/noUnsafeIframeSandbox/astro/valid.astro",
+      "sha256": "cd17e8ef57d1d532f8c12fa7d43ff624ec673b8c07bd178e055657fa01de12f9",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useAstroClientOnlyDirectiveValue/invalid.astro",
+      "sha256": "25fefa73659c4e26e4c987dadb325d8acb67a05f155d4369680626c32378e92a",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useAstroClientOnlyDirectiveValue/valid.astro",
+      "sha256": "35e07602bdae7515e4211fbef519c73000821fcb9da1c0d62d6c5ed5e42ea3e7",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useControlLabel/astro/invalid.astro",
+      "sha256": "c352f2d0c64494fff8f75ecb78440f295e2c0ea9ec4ad228c67b37014f287c1e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useControlLabel/astro/valid.astro",
+      "sha256": "88ff312439e99d89bff4602eb19c5ff42577d46d4d724ce22151fdacd6d50e2e",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useTailwindShorthandClasses/invalid.astro",
+      "sha256": "6876da77c2b3878409c762f6f87f7c834810c37317a2a55547f7a6043de59ee0",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useTailwindShorthandClasses/valid.astro",
+      "sha256": "8337839e4570ba540a20f3747eaacf4d861e61b2d1fefae772644c56da8dd399",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useTailwindSortedClasses/invalid.astro",
+      "sha256": "727a0e7ad3ed2ad7f19b001faba17dc3e485877ff28af6aa43e66edcb2823f06",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/nursery/useTailwindSortedClasses/valid.astro",
+      "sha256": "bc6841ca4f9986b2ff83888bbac0853e62401e3d7b3d4df64f8d6b7138522fa3",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/security/noScriptUrl/invalid.astro",
+      "sha256": "be36bc53550b22adc63b02a7bd0d7fe3817d9f464ec9214b93105d7146c626a3",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/security/noScriptUrl/valid.astro",
+      "sha256": "5469a2bacbdca839fee78f7e63414280fcae3e020a11b4bbb940ac27f7c69381",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/source/useSortedAttributes/astro/sorted.astro",
+      "sha256": "c0af03ce339c78ec9f1fd9c6a8fbb335f4470fe8aa1e6b5a61c9a5a2b8a20149",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/source/useSortedAttributes/astro/unsorted.astro",
+      "sha256": "b6f1cb5aff8634623fe6325cdd838e708341c99aefe2be8e58b35804e4ed23c6",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/style/noInlineStyles/astro/invalid.astro",
+      "sha256": "f29c7939331749e9fbaa1fbf64f46e41c96f212342189ab5bde7b11cc299db16",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/style/noInlineStyles/astro/valid.astro",
+      "sha256": "719e561e78ae7eac229d0f45494bcd468497cc6f23d8d0833a638e6df40b9484",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/specs/suspicious/useScopedStyles/invalid.astro",
+      "sha256": "605065638abc11c024aa772e376ea12c86926de6a8597b76224fa09af648b17d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/suppression/a11y/noAccessKey/noAccessKey.astro",
+      "sha256": "75d03fbe16468646bab54b07183c5b23398d571ac6297a268188585f8d221769",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/suppression/a11y/noHeaderScope/noHeaderScope.astro",
+      "sha256": "9a83955107614a0e0c0e132e0af76a2a4d07d8341273359a7046e70e423005ac",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/suppression/a11y/noPositiveTabindex/noPositiveTabindex.astro",
+      "sha256": "d9eacfb81d3f0291661ad3d1cfedfeb054abb90483b5b2af378ab22fef15272d",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_analyze/tests/suppression/nursery/noTailwindRawColors/validSuppressed.astro",
+      "sha256": "62e2987c759e46f1f2f91d0cd85837067544bfeba7f5c82bac17dda3379a499f",
+      "kind": "document",
+      "suite": "biome_html_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/component.astro",
+      "sha256": "03fa89bd0a5128439d5ee5671653fe191f668e4fb5c02eb82e928b3abefe49a0",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/directives.astro",
+      "sha256": "4673a18ec909776494dc2e0c4081443dbb9e641c6bf752a7f79552b88bd37c80",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/empty-expression.astro",
+      "sha256": "454e02dcfdb03536b4867bf99e3f2ac21690959ed03ce4a272643239f6c5d40c",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/fragment.astro",
+      "sha256": "7559fee47fc7517bbd03ba83113eea29b76714462c05e5a8c10036b6e5511b2c",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/lowercase-member.astro",
+      "sha256": "8b168392c7cb9b8286a80a758133373bf9a4ac4d367223894bba0071916d37e9",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/processing-instruction.astro",
+      "sha256": "fd2052a49a3732a2aaebad8797a79395f232b37f4d32b5c6df54d0dc31d91428",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/style-is-raw.astro",
+      "sha256": "d7cdd68d53a1427bedac347400145ca3de21af7924cd36680c046f7423bc5475",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/astro/template-literal-attribute.astro",
+      "sha256": "ec344f0dea326951b839351e4fb445ab96b65e41e73d8ff515da08cf2596293b",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_formatter/tests/specs/html/component-frameworks/astro-component-casing.astro",
+      "sha256": "e95b7bde5618b788d68173328d21b5b2b4c2ffbb6ff9c6092d7e743c1a7516e1",
+      "kind": "document",
+      "suite": "biome_html_formatter",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/benches/fixtures/synthetic/astro-components.astro",
+      "sha256": "f61f05f7eb7d44c675dca406f3d7523ed5ac4f19083d5f8d0bea5341201928a7",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/benches/fixtures/synthetic/astro-expressions.astro",
+      "sha256": "35cf767ba0ae97ce1a706210f42dc55aa23bcc6e3c04b31d16d449bdca4c806f",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/attribute_expression.astro",
+      "sha256": "79e9590f5d10749fc2106d32ed3a8df537ea6fb818e4664366e05d1e5ce2b951",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/component_closing_tag_case.astro",
+      "sha256": "1f6c151be580c506c3d9398918d568a3da06fb576fc039a794b9a4c37558e698",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/fragment_shorthand_mismatch.astro",
+      "sha256": "e1c7ce3df5a2b51352469f7f9dddfb03d7eaac0758afd5c8f976472c5d677567",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/malformed_closing_tag.astro",
+      "sha256": "64e142521908c397abd9be92a03c36cde8630a6e160cd0fde91fe8a9e6938dc4",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/mismatched_component_closing_tag.astro",
+      "sha256": "35c315b71329410df7da844c8d04dc8cce708fb45b1c0a9e25c8f9f329193b7b",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/missing_fence.astro",
+      "sha256": "0592a13eae4bcb0043cddb9f5f5305912d88952c0f2c9cd26116440a6cded3e3",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "diagnosticDifference": "The reference Astro parse API treats an unclosed frontmatter fence as template text."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/nested_expression.astro",
+      "sha256": "7f03de1ae6da08ab23b1fa61b9828cab0ac61942771ab0a220cd42c3417618bd",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/processing_instruction_bogus_attribute.astro",
+      "sha256": "21f44fababec943f4af1952bd3e48a02f0d9516b8b74af03776f84c0805d6175",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": false,
+      "tsxErrors": false,
+      "diagnosticDifference": "The reference Astro parser treats processing instructions as template text."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/processing_instruction_unclosed.astro",
+      "sha256": "90ac5137bda067d1641cd7eb2e8b8c66b7b3a829f57b53dd3c8a67f7251b20c4",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": false,
+      "tsxErrors": false,
+      "diagnosticDifference": "The reference Astro parser treats processing instructions as template text."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/spread.astro",
+      "sha256": "690424a0714b19001a81e64125f28ee2d64a71c0773b28c0215970b94c0ea564",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/stray_closing_tag_at_root.astro",
+      "sha256": "8f618505fc485f3745e0a94e9f23fe6864e91c4c496e86d4900e8a8b03e379ca",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "diagnosticDifference": "The reference Astro parse API stops at stray root closing tags without a diagnostic."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/error/astro/unterminated_template_literal_attribute.astro",
+      "sha256": "e9c3ef101813d89e9d8135e32e2b0eca6d36e778f05a9a9dfe1d7629b1adb805",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/all_directives.astro",
+      "sha256": "68ed8bf3caa7efe688a13eaf572704751b4c5cf4ba52efa517a2b6a9c5fce404",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/attribute_expression.astro",
+      "sha256": "d66c0bca962b4d0a4b48ad8272d6708d12685ee5dd5124734d1feecc354465df",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/attribute_expression_tsx.astro",
+      "sha256": "c4026c36e1c581885004a4dc7885ae29f8c286a837007f48e72641c9a89c0c37",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/bare_angle_in_text.astro",
+      "sha256": "836e5866a6d71cb75d1a131616cd08ff30b20acf7412e71832df387199f86ff3",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/brackets-in-text.astro",
+      "sha256": "a7bd100702fb7de3ec177e9809a76e3ee405d351b0ac7126f639187d6820a4b6",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/closing_tag_name_case.astro",
+      "sha256": "7f9e644fb9fcc984892e7c3a81517603d905f4916a9c2be47698ddfcf863d147",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": true,
+      "tsxErrors": true,
+      "diagnosticDifference": "The reference Astro parser matches tag names case-sensitively."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/comment_in_frontmatter.astro",
+      "sha256": "b6a7a6dcf99b72991686196c7d7fbae9d66cb1fb5320a6fee58ba9affaaae772",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/comments_between_attributes.astro",
+      "sha256": "4e8b6200cb3d3d1c205c78be3248015b2854a9bc17a8916eb856a2b485731cb9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/component.astro",
+      "sha256": "03fa89bd0a5128439d5ee5671653fe191f668e4fb5c02eb82e928b3abefe49a0",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/component_closing_tag_prefix.astro",
+      "sha256": "9ad42853ed7a106e56bc66d756150e1b0505f9c04166c3eadffc6bab70daf3d9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/component_member.astro",
+      "sha256": "3bbf14950b7f2e146034a3b2ad510a198bee47bfa5838b4bbb65f81ea8554972",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/component_member_nested.astro",
+      "sha256": "f9be9a82db6b998b9a5bd8f792564257dc47ec81f8920726d0d27fa8807476f9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/component_with_attributes.astro",
+      "sha256": "02e246d2c03c6b183959a9d278eb6fd22127eb57e14b47cb535ff2c5c67e9985",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/directives.astro",
+      "sha256": "4673a18ec909776494dc2e0c4081443dbb9e641c6bf752a7f79552b88bd37c80",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/empty_frontmatter.astro",
+      "sha256": "077d1d044af0fb60843266772b3071235aee2787d0f203dbdcb7185465360b8f",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/expression_comments.astro",
+      "sha256": "1b9118aba5b4e7c710937eec080fd50a17cd5e5e24130799bf387ab83f240ef6",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/fence_in_html_no_frontmatter.astro",
+      "sha256": "d3386903a582f3d464a2ecf515507ab877530093c2fbdb31c63ca6db56c85132",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/fence_inside_block_comment.astro",
+      "sha256": "a44f72eaddfe50bbabd253a072d9324293538786502a3828b8407b536b3210d0",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/fence_inside_single_line_comment.astro",
+      "sha256": "31968841cfad1db427eba3d66aacb5b5ae34ca6586a65c166e725c26486ce86e",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/fragment_closing_whitespace.astro",
+      "sha256": "268c9a7c6463c9c7243d1a881555c6d3cdd13f2002cae7437b5e0ee57b174b5f",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/fragment_shorthand.astro",
+      "sha256": "7559fee47fc7517bbd03ba83113eea29b76714462c05e5a8c10036b6e5511b2c",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_after_leading_markup.astro",
+      "sha256": "271a756df99cff3db80d3c9a2249fb01755e9dd1e6851bc1cfaa6adeee6dfdf9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_dash_in_body.astro",
+      "sha256": "ca26c35d1f7b569b7592d0f75d7958fdd4f3aad831152ce9583b53e604b05bc2",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_extra_dashes.astro",
+      "sha256": "a2473ba8101c58e6e63726f6f148dcbeb57737f948ccafbbe6c5f13b6036b83b",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": true,
+      "tsxErrors": true,
+      "diagnosticDifference": "The reference Astro parser consumes three fence dashes; the fourth enters JS or template text."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_fence_matches_astro.astro",
+      "sha256": "1c75535092621edae41f71a50bf0c50b7305323c98afd406299429a40aae077c",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_in_quotes.astro",
+      "sha256": "3fc8169ca56e1f15ebd3a3fe2a38901c43f9a7e7c446b1b12d664384fcfca31a",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/frontmatter_with_closing_tags.astro",
+      "sha256": "d57ccb78becef6bc433e5a38c046a6a1bfb3e6218307e231522ceb09bdfe9684",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/function_type_arguments_in_expression.astro",
+      "sha256": "7caf292cbad151dfb0d3227fbb22dde329867fc21944ee9346f5d65879bce3b9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/is_raw.astro",
+      "sha256": "17ae7db6f2b75e372496006b227d6f4fc33b9ef0414b31aa6ec13f4eb56d564b",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_7837.astro",
+      "sha256": "3928960abcb9ae444a0065bbe3526c606b637b170dc2be92f4b57897f3be4347",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_8882.astro",
+      "sha256": "f2e2a2a14f433522a6939de5b3b5a5c88c7e40926370c09b9debb7fe0fd72fb9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_9108.astro",
+      "sha256": "344b1d26b455b3e93288df5669dfc778671bcfac98b5f3fe9cc19cfe77c96f55",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_9138.astro",
+      "sha256": "d4ad393c5453394457979a2ea3671eaa3bd65e732ce4ab0e07e2740802f0a5e5",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_9187.astro",
+      "sha256": "ee9cb6e84a915f26f32d23615ecfedfd0115e1f678a36a66350d173e6cc0d783",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/issue_9696.astro",
+      "sha256": "49edc3113a19813511d759b4ed97105ce2124ae77378e2a65f3a3f498e6e4b93",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/leading_colon_attribute.astro",
+      "sha256": "811c115bd9420cdec461a29e6b5361576af73f42aa3cbff3d21c7aea5c4c46db",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/lowercase_component_member.astro",
+      "sha256": "543d1af0914f4177ac8ec574acf854cc5187baeffc15ab2646c2ff2186e9fa54",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/math_component_vs_mathml.astro",
+      "sha256": "d477c608889a3a2254fac93d5df5de34606b7247b27356408982bfca2a1418a3",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/math_double_curly.astro",
+      "sha256": "0dab122ef54e124349bdcd952bbc286608e01682a8833f9969b12eb913d3050b",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/math_no_expressions.astro",
+      "sha256": "b8ed5a82702d11d6ddbacb1dfe835b0e001ae6b2ceaa17ddef7d813d313ca97a",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/multiple_nested_expression.astro",
+      "sha256": "9369208619e9bcd8a0ab9497cf18b7b99a18b7ccc61b4e1d2e8ef4835dfc11c5",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/nested_expression.astro",
+      "sha256": "d6041e2cd74e9ffb5bac5dceeaffbd665369eb95d92ad885cba8d93023f3168b",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/nested_template_literal.astro",
+      "sha256": "e72f64d31f82772ad7bc9f5b2394e1439944c61df1bb6e101f026149cf553ebe",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/no_fence.astro",
+      "sha256": "1c5a070fe9521323867e395c8fcec7bf06d6a171bde986fa15831744837e5620",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/object_literal_expression.astro",
+      "sha256": "e9f2de7af3900bd829b67f3969e487a9697db5dc71c2deab64fac3b36d618426",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false,
+      "tsxDiagnosticDifference": "Published astro2tsx 0.1.3 duplicates HTML shorthand text literally, including object expressions, even when the resulting TSX is invalid."
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/processing_instruction.astro",
+      "sha256": "fd2052a49a3732a2aaebad8797a79395f232b37f4d32b5c6df54d0dc31d91428",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/quotes_in_jsx_text.astro",
+      "sha256": "b5f9b53c1c1a2d045d41972e7f1dae465c3c507f42228db01f48ce2c3f2f2a55",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/regex_character_class.astro",
+      "sha256": "c09fdab29861cfbb00723aa60e67d2e72a99623b1051855f88a65f82514f0667",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/spread.astro",
+      "sha256": "3326eb186edb1cfd5b29e450e2f22befd2e7a2c7d16ab169525a3513039fa18f",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/svg_with_colon_attribute.astro",
+      "sha256": "2e09814a10c5234342648800114e292b26b5c8feb5cad1cbf7265a3a9ecaa0d4",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/template_attribute_in_expression.astro",
+      "sha256": "0f360076c3dbf9a701f2eb8add5182dd583dba3c6bf2a1d33119d7d5077e30fa",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/template_literal_attribute.astro",
+      "sha256": "0a345c9e7cc1e4be8b515e754dcd6596cf572ef21c6b17354450a3022b9ab822",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/textarea.astro",
+      "sha256": "c5f85b9a0344ed57e67b1611417a61b6fe12194726f1bbf2b63cffc29a632ff9",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/type_arguments_in_expression.astro",
+      "sha256": "fcbb5e2770d48f1f96f39ddf401f3e9fa62d577b522ac4d5635a143a47eb1df3",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/unquoted_attribute_special_chars.astro",
+      "sha256": "f7ffae9fa769b18b8781cec1f07bfccf97e8459c1b6c55cd723c2cdebf7f0288",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/unquoted_value_slash_in_expression.astro",
+      "sha256": "ed23cbee50235bba37ac3f72b807395d9764a040d8aeac8daca9fdfdd891dd8a",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/void_element_in_expression.astro",
+      "sha256": "16c0664309bd4e549214d69158bfa7049b3ddf49ae5fbe058be53b3ed47df2ee",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/vue_like_attributes.astro",
+      "sha256": "9130d607a0895700cc01daefe89b5e7c725e4b4e2953ec8461deb67fa0874b13",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_html_parser/tests/html_specs/ok/astro/with_fence.astro",
+      "sha256": "bc06978a9781ec34b31ca1a74c8ed8bf5e1d94c3bbb77d149ed51cdc0ca7ffdd",
+      "kind": "document",
+      "suite": "biome_html_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/a11y/useValidAnchor/invalid_issue_11496.astro",
+      "sha256": "599bb1de4a64821b3fc1c4eb9b77779077786ca51eef228d6ee9b5ae5b9d1fb4",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/a11y/useValidAnchor/valid_issue_11496.astro",
+      "sha256": "0dc5a53efbfdf30aa2ba8b8ac4a0e2a09a8d4572cfd8a4e9939125f81e09b723",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/complexity/noUselessFragments/invalid_astro_no_props.astro",
+      "sha256": "5412e268a60673c60eb5486bb3a38c749c360b69e4220d3d4a3eae6847b5abf7",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/complexity/noUselessFragments/valid_astro_props.astro",
+      "sha256": "b62062131817f572a140f1067fac0be87b85be5fe077439604a3d6097378f50e",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/complexity/noUselessLoneBlockStatements/valid-astro-snippet.astro",
+      "sha256": "3d4ed4684e9183fb3ba3e27f597cd76e7d287321ec1dab18aeb6c5ce32aa0539",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedImports/valid-astro-template-usage.astro",
+      "sha256": "a1d4e495b900babc1378f5ae086e4cff38c8821e413c74e6bcfd4a153f591d5f",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedImports/valid_issue_9118.astro",
+      "sha256": "428c4c3db8e3ea14db85d171016f59ee0b41c4466531d41d3be46cd6c31a9d26",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedVariables/valid-astro-attribute-expressions.astro",
+      "sha256": "fe25bb1051bcb5d17502bd820ed61fd7326d0f7ddcbcae11f61979405c3766f5",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedVariables/valid-astro-directive-expressions.astro",
+      "sha256": "a3d5b8fe40e176b1d54713bd6eb77f706530cdcd75302a36d4d3fa93f8b30e04",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedVariables/valid-astro-embedded-bindings.astro",
+      "sha256": "667438ba24fdad7789352066f9af00629434c9f9e5bdd2f1d2666ec3235db122",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedVariables/valid_issue_10840.astro",
+      "sha256": "35ac7978f0a78c6f8dbe67c57e0eacafbdf74f34538d8a47a0edf8a0c91b18ca",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/noUnusedVariables/valid_issue_9589.astro",
+      "sha256": "a95b4b4c4e9925c52b6de03888b118afbcc8dc76981db1ad6567602d94c9509c",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/useImportExtensions/invalidAstro.astro",
+      "sha256": "11c649b6b9a064aaa686414313abe59210b9d0da6265feeb09ab6aaf2bdddfce",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/correctness/useJsxKeyInIterable/valid.astro",
+      "sha256": "777075d33bfaf0614c1239ed2a09a8e94f85ee876a02598abd1cda7094d196d9",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid.astro",
+      "sha256": "335de7285eeeb07e8ba4478a769627d8143bdf70cdba2cafaa7b36458fc217a7",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/invalid_multiline.astro",
+      "sha256": "b6a7f09bced90ff118be16c48aa13433bdc21b418afed4b24a25361ccf4657c4",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/valid.astro",
+      "sha256": "38bcbd08b1b5b7c09098be39b9175fee31c5fe29f22b5943863e4e6ec070dd94",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroConflictingSetDirectives/valid_suppression.astro",
+      "sha256": "8ddc187ed8e4c6d02e4ca119e515c324f4a820f0070e1296818658f62b8747d7",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroSetHtmlDirective/invalid.astro",
+      "sha256": "a1ac1dd7e0d91c03e85aeea441d7c379be2f425403185bf97bc4598a885628c5",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noAstroSetHtmlDirective/valid.astro",
+      "sha256": "9bbac91980f6767b4406411adca79cf0547b65ec92b66cda46b96d6a659cd244",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noMisplacedListElements/invalid.astro",
+      "sha256": "2a199e6a213fc934b94fcf2743fd9f6359e8174e24072b5e8ffabaac6d29baf0",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noMisplacedListElements/valid.astro",
+      "sha256": "bbc1febea71161532afdaf9e9eea5dcf5c7c22f3e7779f7c7b5aa6296c61850a",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noTailwindRawColors/invalid.astro",
+      "sha256": "97bc1cbde25b3085828b6298fcb359fc213291ffecfffd69cdf0284f48f7dc32",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noTailwindRawColors/valid.astro",
+      "sha256": "5c6781dde8dcaef56857c2b69f1b5f0b2cc0196f045128a584136a90f3bd8cfc",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noTailwindRestyledComponents/invalid.astro",
+      "sha256": "b6e0fce435da8b635c5be01325bc5108e6b0ddb383597e07a9fbaa8e8494edba",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/noTailwindRestyledComponents/valid.astro",
+      "sha256": "14d7dada97a1271fff841e6956588b29af0b751b506004d4b1ed3e7f133ab5b5",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/useTailwindShorthandClasses/invalid.astro",
+      "sha256": "a03df2709aae99602367a3e9d971a906adc25b164a1beb9319280710978e222f",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/nursery/useTailwindShorthandClasses/valid.astro",
+      "sha256": "0b2b75f71bf45f988a502c22df061845813a2cbfd0f6b3d4c7044b3e169b28ff",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/style/useConst/valid-astro-snippet-source.astro",
+      "sha256": "5b2abf980b1bfd70a7eba1b5353025820c89ba9e7dbfc41f8a484df30cb9ca2d",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/style/useImportType/valid-astro-components-in-template.astro",
+      "sha256": "09cca54f7c76b27928c4dbbaab0986d5d13768eadf0bb16374c953443d59a15d",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/style/useImportType/valid-astro-enum-in-template.astro",
+      "sha256": "e404e451e3057e1d2a6b0b1b8113925f360bd363bc63f3462d618df2b4f3626a",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/specs/style/useImportType/valid-astro-value-in-template.astro",
+      "sha256": "e03c1ac53dd1713391fc259e3a3771fb7d1d1b9f32928a493f7fe1d763e2052f",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_analyze/tests/suppression/nursery/noMisplacedListElements/validSuppressed.astro",
+      "sha256": "17f67b1930d7eb2807e8b144eb12a70300e1d035ef30ec9e86efb5eb0c5206ff",
+      "kind": "document",
+      "suite": "biome_js_analyze",
+      "biomeErrors": null,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/error/astro_bare_closing_brace_text.astro_expr.tsx",
+      "sha256": "4025aed81e6d5044faf64bc38c7136eaa975a40607dd69236568a06be655aa30",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/error/astro_legacy_void_element.astro_expr.tsx",
+      "sha256": "b64e62da07f952852392bc13505f487b4c6a134bf5bf08427257086c22473f4d",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/error/astro_non_void_unclosed.astro_expr.tsx",
+      "sha256": "f0a8ebd68c47ad5549c3322727b9c83aa803b1cc9b26935ea83d283c57096bf7",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": true,
+      "parseErrors": true,
+      "tsxErrors": true
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_attribute_name_is_raw.astro_expr.tsx",
+      "sha256": "bf8b3df4a050c00920f2e057d658323bc57ee7db68ee2cb37eba98f4582815ee",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_attribute_names.astro_expr.tsx",
+      "sha256": "b4d4c415d934c9c9938c2dddfbdccc640338f7adeaa60df726d6b18f2a6b32a1",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_bare_gt_text.astro_expr.tsx",
+      "sha256": "d37a3fcbed1400bea1d7f6a17edfbed142cd5e9aea360aa61ca74916d8f0cdbc",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_comment_before_expression.astro_expr.tsx",
+      "sha256": "4658df1a547aa19d2ded04ee1e53680c7d71752212608ace61379a7e65e5f9dc",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_comment_only.astro_expr.tsx",
+      "sha256": "d6aa9f7a2920aca0905e48f6ebfa77ec503b0f08edd0a3505cd913f65a75ea0f",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_html_comment.astro_expr.tsx",
+      "sha256": "1be4ecb5b84dc86a05732ce00b5dc9c54b24d6a3e5da1fc787427f1b4727fd5f",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_html_comment_after_expression_child.astro_expr.tsx",
+      "sha256": "4ab0feb30e20846e07f66da8c395e88c08efc1702b6852046c22c341018865d9",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_html_comment_between_siblings.astro_expr.tsx",
+      "sha256": "ea21904dd233edb90f0943e95894dd0f6a9731934b00095a71a0e3c247edc913",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_html_comment_first_last.astro_expr.tsx",
+      "sha256": "87b51bf936a8d2a2049c4e65a409709872f87353d080aab4f8c89cb0716f515e",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_html_comment_multiline.astro_expr.tsx",
+      "sha256": "97e7cdd5c3f83ab355fa47215de9881637816dd72f30b3bed34ca60248ab98c5",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_implicit_fragment.astro_expr.tsx",
+      "sha256": "741e1be53791e914e07f5cdeb13fbf0be77b365be26a03509ecc25de60e70b95",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_implicit_fragment_comments.astro_expr.tsx",
+      "sha256": "58f588ae5b6e37fcff894430c216ae623984eb63bccfccff83de6dd7f8eb9579",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_is_raw_children.astro_expr.tsx",
+      "sha256": "5deafd00859798b9a6a1d520bb58e64437ea8c9a4793258126885e4acbcc061d",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_is_raw_component_case_sensitive.astro_expr.tsx",
+      "sha256": "816f89b99d6a3953e531544a617ea19d4a045d0f488b86d6ca4cdcef17f15ca9",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_is_raw_end_tag_name_boundary.astro_expr.tsx",
+      "sha256": "dfdd1c7effe2c1f09b6c471030c4e25eed80e69e8d3ee45408711f776a6c6553",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": true,
+      "tsxErrors": false,
+      "diagnosticDifference": "The reference Astro raw-text reader accepts a closing-name prefix; the trailing closing tag then enters JavaScript recovery."
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_is_raw_first_matching_end_tag.astro_expr.tsx",
+      "sha256": "d50a9b18ec35bf1400562a07ae6407cebc5258a2c52d9be24065d85c47269102",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_quote_leading_attribute_double_quote.astro_expr.tsx",
+      "sha256": "1fa93863cc7291e9ceed4df64110c558e3e43cb0bb129cab55fbbb00e1a5648e",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "tsxDiagnosticDifference": "Published astro2tsx 0.1.3 treats the leading quote as an unterminated string; the newer Biome fixture permits a quote in an attribute name.",
+      "parseThrows": "SyntaxError"
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_quote_leading_attribute_name.astro_expr.tsx",
+      "sha256": "07184f4f5b64d1941b354d028d8c07ea68a7c37293ae35600cb8376e9daa44df",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "tsxDiagnosticDifference": "Published astro2tsx 0.1.3 treats the leading quote as an unterminated string; the newer Biome fixture permits a quote in an attribute name."
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_quote_leading_attribute_self_closing.astro_expr.tsx",
+      "sha256": "5b251be482d7056bb903eba8a35075d41274506c318a7da6f1896fd3bbc25c2a",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "tsxDiagnosticDifference": "Published astro2tsx 0.1.3 treats the leading quote as an unterminated string; the newer Biome fixture permits a quote in an attribute name."
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_raw_text_end_tag.astro_expr.tsx",
+      "sha256": "9ec8ad769f6885f394436846099a48c60c12064d5480d2f314eb7baf6275cbea",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": true,
+      "tsxErrors": false,
+      "diagnosticDifference": "The reference Astro parse API validates the script body; Biome tests only raw-text boundaries here."
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_raw_text_end_tag_whitespace.astro_expr.tsx",
+      "sha256": "b8f0fcfdf4fc67b582d0ea05f0d3668611647fe4a985e67246eb45712ea08af4",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_script_raw_text.astro_expr.tsx",
+      "sha256": "8f401e855726d33405463a22da0f718985e9d3e4ac24a4ade8977afbee730f83",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_shorthand_attribute_expression.astro_expr.tsx",
+      "sha256": "343559b9991b6527883d62abaf05eb5da79a87508e5636efd8a93c469fbfb232",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": true,
+      "tsxDiagnosticDifference": "Published astro2tsx 0.1.3 permits only simple JSX shorthand names; the newer Biome fixture permits expressions."
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_single_element_no_fragment.astro_expr.tsx",
+      "sha256": "409d9581353fa18caac7c2cefe15c8c319dd1b416ef4b52a19747414bbbd9451",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_style_raw_text.astro_expr.tsx",
+      "sha256": "f6ca42c7906154337e7d64309d169cffe4cd7050fa684be540648d2c32e31ce9",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_template_attribute_value.astro_expr.tsx",
+      "sha256": "434344be5afdb879ae834ce95ee1b5dd5fba6454e749c4c1f0e8c0c8a714d68f",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_unquoted_attribute_slash_open_tag.astro_expr.tsx",
+      "sha256": "e31652774307faaf454933213d71a9a5d40785fec96185ebbb602b98abba835f",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_unquoted_attribute_value_self_closing.astro_expr.tsx",
+      "sha256": "cc79d4dc37c112a78bbd7e5141005d2bc8b2d22fa414f41f04f6b75a64650aca",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_unquoted_attribute_value_trailing_slash.astro_expr.tsx",
+      "sha256": "4a00747353b1a245aa55f652ca7042327c9adcb9dded04b15ab5eb8ca52fa590",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_unquoted_attribute_values.astro_expr.tsx",
+      "sha256": "08a8d75f6824bdd88cb8a38b7f779954dcb9c1d817e851256b52e264e8a0525a",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_void_element.astro_expr.tsx",
+      "sha256": "ed7cfcd41e52eca0056f5ac9cca76ba0841a5f7365ea0fcd1bbe80f60dedeb3a",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    },
+    {
+      "file": "crates/biome_js_parser/tests/js_test_suite/ok/astro_void_element_siblings.astro_expr.tsx",
+      "sha256": "c5fc0e4b2229030363cadbd819b5aeb92c24fe75430ce0debd33e24524bb4cac",
+      "kind": "expression",
+      "suite": "biome_js_parser",
+      "biomeErrors": false,
+      "parseErrors": false,
+      "tsxErrors": false
+    }
+  ]
+}

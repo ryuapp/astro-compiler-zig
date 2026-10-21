@@ -1,0 +1,31 @@
+// Ported from withastro/compiler-rs (MIT); see test/fixtures/compiler-upstream.json and LICENSE.
+import { type TransformResult, transform, preprocessStyles } from "../../../dist/index.mjs";
+import { assert, describe, it, beforeAll as before } from "vite-plus/test";
+import { preprocessStyle } from "../utils.ts";
+
+const FIXTURE = `
+---
+let value = 'world';
+---
+
+<style lang="scss"></style>
+
+<div>Hello world!</div>
+
+<div>Ahhh</div>
+`;
+
+describe("styles/empty-style", () => {
+  let result: TransformResult;
+  before(async () => {
+    const preprocessedStyles = await preprocessStyles(FIXTURE, preprocessStyle);
+    result = transform(FIXTURE, {
+      sourcemap: "external",
+      preprocessedStyles,
+    });
+  });
+
+  it("can compile empty style", () => {
+    assert.ok(result.code, "Expected to compile with empty style.");
+  });
+});

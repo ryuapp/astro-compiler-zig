@@ -1,0 +1,542 @@
+{
+  "repository": "https://github.com/withastro/compiler-rs",
+  "revision": "3fd9d58f7e3054ef4a4ac399a6f9f2cb37596598",
+  "license": "MIT",
+  "copyright": "Astro contributors",
+  "files": [
+    {
+      "upstream": "packages/compiler/test/inline-component-assets.ts",
+      "file": "test/compiler-upstream/inline-component-assets.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Test-only async adapter around the synchronous public transform API"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/utils.ts",
+      "file": "test/compiler-upstream/utils.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Sass namespace import instead of its deprecated default export"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/bad-styles/sass.ts",
+      "file": "test/compiler-upstream/bad-styles/sass.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/bad-styles/unclosed-style.ts",
+      "file": "test/compiler-upstream/bad-styles/unclosed-style.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Omit unused catch binding"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/client-directive/special-characters.ts",
+      "file": "test/compiler-upstream/client-directive/special-characters.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/compact/minify.ts",
+      "file": "test/compiler-upstream/compact/minify.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/head-metadata/with-head.ts",
+      "file": "test/compiler-upstream/head-metadata/with-head.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/head-metadata/without-head.ts",
+      "file": "test/compiler-upstream/head-metadata/without-head.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/complex-frontmatter.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/complex-frontmatter.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/deprecated.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/deprecated.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/error.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/error.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/frontmatter.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/frontmatter.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/hover.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/hover.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/module.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/module.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/script.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/script.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/template.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/template.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/js-sourcemaps/windows-linereturns.ts",
+      "file": "test/compiler-upstream/js-sourcemaps/windows-linereturns.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/resolve-path/preserve.ts",
+      "file": "test/compiler-upstream/resolve-path/preserve.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Test-only async adapter around the synchronous public transform API"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/scope/same-source.ts",
+      "file": "test/compiler-upstream/scope/same-source.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/scope/spread-global.ts",
+      "file": "test/compiler-upstream/scope/spread-global.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/scripts/order.ts",
+      "file": "test/compiler-upstream/scripts/order.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Narrow optional inline script code before checking content"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/server-islands/meta.ts",
+      "file": "test/compiler-upstream/server-islands/meta.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/slot-result/result.ts",
+      "file": "test/compiler-upstream/slot-result/result.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Synchronous identity resolvePath for the synchronous public transform API"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/define-vars.ts",
+      "file": "test/compiler-upstream/styles/define-vars.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/emit-scope.ts",
+      "file": "test/compiler-upstream/styles/emit-scope.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/empty-style.ts",
+      "file": "test/compiler-upstream/styles/empty-style.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/global-immediate-child-complex.ts",
+      "file": "test/compiler-upstream/styles/global-immediate-child-complex.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/global-immediate-child.ts",
+      "file": "test/compiler-upstream/styles/global-immediate-child.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/hash.ts",
+      "file": "test/compiler-upstream/styles/hash.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/sass.ts",
+      "file": "test/compiler-upstream/styles/sass.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/styles/static-extraction-css.ts",
+      "file": "test/compiler-upstream/styles/static-extraction-css.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "Assert source-preserved CSS string quotes instead of reference printer formatting"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/transition/meta.ts",
+      "file": "test/compiler-upstream/transition/meta.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/basic/component-metadata/index.ts",
+      "file": "test/compiler-upstream/basic/component-metadata/index.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/basic/parse/client-component-unfound.ts",
+      "file": "test/compiler-upstream/basic/parse/client-component-unfound.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/basic/parse/index.ts",
+      "file": "test/compiler-upstream/basic/parse/index.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/client-directive/warn.ts",
+      "file": "test/compiler-upstream/expected-fails/client-directive/warn.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/client-only-unfound.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/client-only-unfound.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/define-vars.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/define-vars.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/fragment-shorthand.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/fragment-shorthand.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/html-comment.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/html-comment.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/invalid-spread.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/invalid-spread.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/jsx-comment.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/jsx-comment.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/errors/missing-frontmatter-fence.ts",
+      "file": "test/compiler-upstream/expected-fails/errors/missing-frontmatter-fence.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/scripts/isinline-hint.ts",
+      "file": "test/compiler-upstream/expected-fails/scripts/isinline-hint.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "packages/compiler/test/expected-fails/transition/data-astro.ts",
+      "file": "test/compiler-upstream/expected-fails/transition/data-astro.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports"
+      ],
+      "upstreamSkipped": true
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/attributes.test.ts",
+      "file": "test/tsx-upstream-api/attributes.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/bindings.test.ts",
+      "file": "test/tsx-upstream-api/bindings.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/diagnostics.test.ts",
+      "file": "test/tsx-upstream-api/diagnostics.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/enums.test.ts",
+      "file": "test/tsx-upstream-api/enums.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/events.test.ts",
+      "file": "test/tsx-upstream-api/events.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/exports.test.ts",
+      "file": "test/tsx-upstream-api/exports.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/frontmatter.test.ts",
+      "file": "test/tsx-upstream-api/frontmatter.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/generic.test.ts",
+      "file": "test/tsx-upstream-api/generic.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/mappings.test.ts",
+      "file": "test/tsx-upstream-api/mappings.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/syntax.test.ts",
+      "file": "test/tsx-upstream-api/syntax.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths",
+        "Existing checked-in upstream Astro fixtures"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/text-only.test.ts",
+      "file": "test/tsx-upstream-api/text-only.test.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths"
+      ],
+      "upstreamSkipped": false
+    },
+    {
+      "upstream": "crates/astro2tsx/__test__/typecheck.ts",
+      "file": "test/tsx-upstream-api/typecheck.ts",
+      "adaptations": [
+        "Vitest imports",
+        "Local compiler imports",
+        "TypeScript 5.5 compatibility dependency and portable virtual file paths",
+        "Resolve Astro types from the upstream test's own ambient declarations"
+      ],
+      "upstreamSkipped": false
+    }
+  ]
+}

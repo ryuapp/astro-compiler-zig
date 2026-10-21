@@ -1,0 +1,4562 @@
+{
+  "yuku": {
+    "version": "0.21.0",
+    "revision": "74a6945ce3c6c0f615150921b9e63f4feec0eafd",
+    "semanticErrors": true,
+    "verification": "Official upstream WASM and official generated JavaScript decoder; no Astro dialect or fork patches."
+  },
+  "references": {
+    "compilerRs": "0.5.2",
+    "astro2tsx": "0.1.3"
+  },
+  "validation": {
+    "publicTests": {
+      "passed": 3770,
+      "failed": 48,
+      "skipped": 37
+    },
+    "nativeTests": {
+      "passed": 28,
+      "failed": 1,
+      "existingFailure": "skipped generic arrow heads remain available to TSX recovery"
+    },
+    "build": "vp pack passed",
+    "lintAndTypes": "vp check --no-fmt passed",
+    "fullCheck": "104 pre-existing formatting failures",
+    "ownFix": "Committed dialect nodes retain selected JavaScript diagnostics and their adjusted ranges; enclosing parsers do not re-add raw diagnostics.",
+    "fixedGeneratedInputs": [
+      "{ok && <Component @x={,b} />}",
+      "{ok && <Component @x={a,} />}"
+    ]
+  },
+  "counts": {
+    "syntax-policy": 7,
+    "reference-missing-diagnostic": 3,
+    "yuku-ast-recovery": 17,
+    "reference-markup-recovery": 1,
+    "reference-fatal-policy": 2,
+    "yuku-lexer-bug": 18,
+    "test-depth-policy": 3,
+    "test-transfer-scope": 1,
+    "yuku-diagnostic-recovery": 18
+  },
+  "tests": [
+    {
+      "name": "astro2tsx reference: legacy import assertion is an editor error",
+      "file": "test/astro2tsx.test.ts",
+      "category": "syntax-policy",
+      "source": "---\nimport value from './data.json' /* note */ assert {type:'json'};\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 47,
+            "end": 53
+          }
+        },
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 54,
+            "end": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "astro2tsx grammar probe: logical expression",
+      "file": "test/astro2tsx.test.ts",
+      "category": "reference-missing-diagnostic",
+      "source": "{a && b || c ?? d}",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Logical expressions and nullish coalescing cannot be mixed",
+          "severity": 1,
+          "position": {
+            "start": 1,
+            "end": 17
+          }
+        }
+      ],
+      "referenceDiagnostics": []
+    },
+    {
+      "name": "astro2tsx grammar probe: JS/TS: expanded decorated class",
+      "file": "test/astro2tsx.test.ts",
+      "category": "syntax-policy",
+      "source": "---\n@dec class C { @dec x=1; @dec m(@dec x:T){} }\n---",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Decorators are not valid here.",
+          "severity": 1,
+          "position": {
+            "start": 36,
+            "end": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "astro2tsx grammar probe: JS/TS: expanded all statements",
+      "file": "test/astro2tsx.test.ts",
+      "category": "syntax-policy",
+      "source": "---\nlabel: for(let i=0;i<3;i++){if(i)continue label;else break label} for (const x in y) {} for await (const x of y){} while(x){} do{}while(x); switch(x){case 1:break;default:debugger} try{throw x}catch(e:T){}finally{};\n---",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Catch clause variable type annotation must be 'any' or 'unknown' if specified.",
+          "severity": 1,
+          "position": {
+            "start": 205,
+            "end": 206
+          }
+        }
+      ]
+    },
+    {
+      "name": "astro2tsx grammar probe: JS/TS: expanded JSDoc types",
+      "file": "test/astro2tsx.test.ts",
+      "category": "syntax-policy",
+      "source": "---\ntype T=Foo<?X,!Y,Z?,W!,?>;\n---",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a type parameter but instead found '?'.",
+          "severity": 1,
+          "position": {
+            "start": 15,
+            "end": 16
+          }
+        },
+        {
+          "message": "expected `,` but instead found `X`",
+          "severity": 1,
+          "position": {
+            "start": 16,
+            "end": 17
+          }
+        },
+        {
+          "message": "Expected a type parameter but instead found '!'.",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        },
+        {
+          "message": "expected `,` but instead found `Y`",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 20
+          }
+        },
+        {
+          "message": "expected `,` but instead found `?`",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 23
+          }
+        },
+        {
+          "message": "expected `,` but instead found `!`",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "Expected a type parameter but instead found '?'.",
+          "severity": 1,
+          "position": {
+            "start": 27,
+            "end": 28
+          }
+        }
+      ]
+    },
+    {
+      "name": "astro2tsx grammar probe: root missing unary operand",
+      "file": "test/astro2tsx.test.ts",
+      "category": "reference-missing-diagnostic",
+      "source": "{!}",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 2,
+            "end": 2
+          }
+        }
+      ],
+      "referenceDiagnostics": []
+    },
+    {
+      "name": "converter preserves the public Yuku parse result contract",
+      "file": "test/astro2tsx.test.ts",
+      "category": "syntax-policy",
+      "differingFields": [],
+      "source": "---\nimport value from \"./data.json\" assert {type:\"json\"};\n---"
+    },
+    {
+      "name": "editor diagnostic compatibility preserves strict Yuku diagnostics",
+      "file": "test/astro2tsx.test.ts",
+      "category": "reference-missing-diagnostic",
+      "differingFields": [],
+      "source": "{a && b || c ?? d}"
+    },
+    {
+      "name": "compiler-rs public AST: logical expression",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a && b || c ?? d}",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Logical expressions and nullish coalescing cannot be mixed",
+          "hint": "Wrap either expression in parentheses",
+          "labels": [
+            {
+              "text": null,
+              "start": 1,
+              "end": 17,
+              "line": 1,
+              "column": 1
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Logical expressions and coalesce expressions cannot be mixed",
+          "hint": "Wrap either expression by parentheses",
+          "labels": [
+            {
+              "text": null,
+              "start": 1,
+              "end": 17,
+              "line": 1,
+              "column": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root missing binary RHS",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a + }",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 6,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 6,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root missing binary stops body",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a + }tail",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 6,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 6,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root missing unary operand",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{!}",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 2,
+              "end": 3,
+              "line": 1,
+              "column": 2
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 2,
+              "end": 3,
+              "line": 1,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root missing multiplicative RHS",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a *}",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 4,
+              "end": 5,
+              "line": 1,
+              "column": 4
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 4,
+              "end": 5,
+              "line": 1,
+              "column": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root missing conditional alternate",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a ? b : }",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 9,
+              "end": 10,
+              "line": 1,
+              "column": 9
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 9,
+              "end": 10,
+              "line": 1,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: root nested missing RHS",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "{a + b * }",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 9,
+              "end": 10,
+              "line": 1,
+              "column": 9
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 9,
+              "end": 10,
+              "line": 1,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: crates/biome_js_parser/tests/js_test_suite/ok/astro_is_raw_end_tag_name_boundary.astro_expr.tsx",
+      "file": "test/parse-compat.test.ts",
+      "category": "reference-markup-recovery",
+      "source": "{\nx && <div is:raw></divx></div>\n\n}",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '<'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 26,
+              "end": 27,
+              "line": 2,
+              "column": 24
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unterminated regular expression",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 27,
+              "end": 33,
+              "line": 2,
+              "column": 25
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected corresponding JSX closing tag for 'div'.",
+          "hint": "",
+          "labels": [
+            {
+              "text": "Expected `</div>`",
+              "start": 21,
+              "end": 25,
+              "line": 2,
+              "column": 19
+            },
+            {
+              "text": "Opened here",
+              "start": 8,
+              "end": 11,
+              "line": 2,
+              "column": 6
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 27,
+              "end": 35,
+              "line": 2,
+              "column": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: unfinished input <input a={x + }/>",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "<input a={x + }/>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token '}'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 14,
+              "end": 15,
+              "line": 1,
+              "column": 14
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 14,
+              "end": 15,
+              "line": 1,
+              "column": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: unfinished input <input {...x +",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "<input {...x +",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token 'end of file'",
+          "hint": "Expected an expression",
+          "labels": [
+            {
+              "text": null,
+              "start": 14,
+              "end": 14,
+              "line": 1,
+              "column": 14
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found 'end of file'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 14,
+              "end": 14,
+              "line": 1,
+              "column": 14
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Unclosed opening tag",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 0,
+              "end": 14,
+              "line": 1,
+              "column": 0
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 14,
+              "end": 14,
+              "line": 1,
+              "column": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Token recovery and declarations 4",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "---\nfunction f(...xs,){}const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Rest parameter may not have a trailing comma",
+          "hint": "Remove the trailing comma after the rest parameter.",
+          "labels": [
+            {
+              "text": null,
+              "start": 15,
+              "end": 21,
+              "line": 2,
+              "column": 11
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "A rest parameter or binding pattern may not have a trailing comma.",
+          "hint": "Remove the trailing comma here",
+          "labels": [
+            {
+              "text": null,
+              "start": 20,
+              "end": 21,
+              "line": 2,
+              "column": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Token recovery and declarations 5",
+      "file": "test/parse-compat.test.ts",
+      "category": "reference-fatal-policy",
+      "source": "---\nconst [...xs,last]=[1,2];const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Rest element must be the last element",
+          "hint": "No elements can follow the rest element in a destructuring pattern.",
+          "labels": [
+            {
+              "text": null,
+              "start": 11,
+              "end": 16,
+              "line": 2,
+              "column": 7
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "A rest element must be last in a destructuring pattern",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 11,
+              "end": 16,
+              "line": 2,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Token recovery and declarations 6",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nconst value=100_;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Numeric separator is only allowed between two digits",
+          "hint": "Try placing the separator between two digits, or removing it",
+          "labels": [
+            {
+              "text": null,
+              "start": 20,
+              "end": 21,
+              "line": 2,
+              "column": 16
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Invalid Character `;`",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 20,
+              "end": 20,
+              "line": 2,
+              "column": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Token recovery and declarations 7",
+      "file": "test/parse-compat.test.ts",
+      "category": "reference-fatal-policy",
+      "source": "---\nclass C extends /*x*/ {}const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "comments"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected '{' to start class body, but found 'const'",
+          "hint": "Class body must be enclosed in braces: class Name { ... }",
+          "labels": [
+            {
+              "text": null,
+              "start": 28,
+              "end": 33,
+              "line": 2,
+              "column": 24
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected `{` but found `const`",
+          "hint": "",
+          "labels": [
+            {
+              "text": "`{` expected",
+              "start": 28,
+              "end": 33,
+              "line": 2,
+              "column": 24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Token recovery and declarations 8",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nconst value=100_ /*🦊*/;\n---\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Numeric separator is only allowed between two digits",
+          "hint": "Try placing the separator between two digits, or removing it",
+          "labels": [
+            {
+              "text": null,
+              "start": 20,
+              "end": 21,
+              "line": 2,
+              "column": 16
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Invalid Character ` `",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 20,
+              "end": 20,
+              "line": 2,
+              "column": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 0",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p>{/a/uv.test(\"a\")}</p>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 9,
+              "end": 10,
+              "line": 1,
+              "column": 9
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 4,
+              "end": 5,
+              "line": 1,
+              "column": 4
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 4,
+              "end": 9,
+              "line": 1,
+              "column": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 1",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p title={/a/uv.source}/>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 15,
+              "end": 16,
+              "line": 1,
+              "column": 15
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 10,
+              "end": 11,
+              "line": 1,
+              "column": 10
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 12,
+              "end": 13,
+              "line": 1,
+              "column": 12
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 22,
+              "end": 23,
+              "line": 1,
+              "column": 22
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 10,
+              "end": 15,
+              "line": 1,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 2",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p>{[/a/uv,/b/vu]}</p>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 10,
+              "end": 11,
+              "line": 1,
+              "column": 10
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 6,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 5,
+              "end": 10,
+              "line": 1,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 11,
+              "end": 16,
+              "line": 1,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 3",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p>🦊{/*before*/ /a/uv.source /*after*/}</p>",
+      "differingFields": [
+        "body",
+        "comments"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 24,
+              "end": 25,
+              "line": 1,
+              "column": 21
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 19,
+              "end": 20,
+              "line": 1,
+              "column": 16
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 19,
+              "end": 24,
+              "line": 1,
+              "column": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 4",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p title={true ? /a/uv : /b/vu}>🦊</p>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 22,
+              "end": 23,
+              "line": 1,
+              "column": 22
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 17,
+              "end": 18,
+              "line": 1,
+              "column": 17
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 19,
+              "end": 20,
+              "line": 1,
+              "column": 19
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 25,
+              "end": 26,
+              "line": 1,
+              "column": 25
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 27,
+              "end": 28,
+              "line": 1,
+              "column": 27
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected an attribute name",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 30,
+              "end": 31,
+              "line": 1,
+              "column": 30
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 17,
+              "end": 22,
+              "line": 1,
+              "column": 17
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 25,
+              "end": 30,
+              "line": 1,
+              "column": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 5",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p>{(()=>{return /a/uv})()}</p>",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 22,
+              "end": 23,
+              "line": 1,
+              "column": 22
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 17,
+              "end": 22,
+              "line": 1,
+              "column": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Markup recovery boundary 6",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "{[<b/>,/a/uv]}",
+      "differingFields": [
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 12,
+              "end": 13,
+              "line": 1,
+              "column": 12
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected expression delimiter, but found '/'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 7,
+              "end": 8,
+              "line": 1,
+              "column": 7
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 7,
+              "end": 12,
+              "line": 1,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 0",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "---\nconst text=\"🦊\";const value=/[abc/;\n---\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Line terminator not allowed in regular expression literal",
+          "hint": "Try removing the line break here or escaping it within the regex pattern",
+          "labels": [
+            {
+              "text": null,
+              "start": 41,
+              "end": 42,
+              "line": 2,
+              "column": 34
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unterminated regular expression",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 34,
+              "end": 42,
+              "line": 2,
+              "column": 27
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 34,
+              "end": 42,
+              "line": 2,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 1",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "---\nconst first=\"🦊\";const value:{x:;\n---\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected a type, but found ';'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 38,
+              "end": 39,
+              "line": 2,
+              "column": 31
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected a type, but found ';'",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 38,
+              "end": 39,
+              "line": 2,
+              "column": 31
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unexpected token",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 38,
+              "end": 39,
+              "line": 2,
+              "column": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 2",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "---\nfunction f<T( ){return 1}\n---\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected '>' to close a type parameter list, but found '('",
+          "hint": "Each '<' in a type must be matched by a '>'",
+          "labels": [
+            {
+              "text": null,
+              "start": 16,
+              "end": 17,
+              "line": 2,
+              "column": 12
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Expected `,` or `>` but found `(`",
+          "hint": "",
+          "labels": [
+            {
+              "text": "`,` or `>` expected",
+              "start": 16,
+              "end": 17,
+              "line": 2,
+              "column": 12
+            },
+            {
+              "text": "Opened here",
+              "start": 14,
+              "end": 15,
+              "line": 2,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 3",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-ast-recovery",
+      "source": "---\nfunction f(){return /---/.source;} const value=f();\n---\n<p>{value}</p>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unterminated regular expression literal",
+          "hint": "Try adding a closing slash (/) here, optionally followed by flags (g, i, m, etc.)",
+          "labels": [
+            {
+              "text": null,
+              "start": 25,
+              "end": 25,
+              "line": 2,
+              "column": 21
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "Expected '}' to close function body, but found 'end of file'",
+          "hint": "Add a closing brace '}' to complete the function, or check for unbalanced braces inside.",
+          "labels": [
+            {
+              "text": null,
+              "start": 25,
+              "end": 25,
+              "line": 2,
+              "column": 21
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "Unterminated regular expression",
+          "hint": "",
+          "labels": [
+            {
+              "text": null,
+              "start": 24,
+              "end": 25,
+              "line": 2,
+              "column": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 4",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nconst value=/a/uv;\n---\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 21,
+              "end": 22,
+              "line": 2,
+              "column": 17
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 16,
+              "end": 21,
+              "line": 2,
+              "column": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compiler-rs public AST: Program recovery boundary 5",
+      "file": "test/parse-compat.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\r\n/*🦊*/const first=/a/uv;const second=/b/vu;\r\n---\r\n<p/>",
+      "differingFields": [
+        "frontmatter"
+      ],
+      "actualDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be used together",
+          "hint": "The 'u' (unicode) and 'v' (unicodeSets) flags are mutually exclusive; use one or the other",
+          "labels": [
+            {
+              "text": null,
+              "start": 30,
+              "end": 31,
+              "line": 2,
+              "column": 22
+            }
+          ]
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 25,
+              "end": 30,
+              "line": 2,
+              "column": 17
+            }
+          ]
+        },
+        {
+          "severity": "error",
+          "text": "The 'u' and 'v' regular expression flags cannot be enabled at the same time",
+          "hint": "v flag enables additional syntax over u flag",
+          "labels": [
+            {
+              "text": null,
+              "start": 44,
+              "end": 49,
+              "line": 2,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deep expressions and native nesting return diagnostics without a process failure",
+      "file": "test/safety.test.ts",
+      "category": "test-depth-policy",
+      "differingFields": [],
+      "inputs": "See the original test in test/safety.test.ts; input sizes and replacement AST assertions are documented in YUKU_ISSUES.md."
+    },
+    {
+      "name": "public parse returns diagnostics for excessive syntactic nesting",
+      "file": "test/safety.test.ts",
+      "category": "test-depth-policy",
+      "differingFields": [],
+      "inputs": "See the original test in test/safety.test.ts; input sizes and replacement AST assertions are documented in YUKU_ISSUES.md."
+    },
+    {
+      "name": "nested program parsers share the document recursion budget",
+      "file": "test/safety.test.ts",
+      "category": "test-depth-policy",
+      "differingFields": [],
+      "inputs": "See the original test in test/safety.test.ts; input sizes and replacement AST assertions are documented in YUKU_ISSUES.md."
+    },
+    {
+      "name": "WASM little endian records decode on a big endian host",
+      "file": "test/transfer-endianness.test.ts",
+      "category": "test-transfer-scope",
+      "differingFields": [],
+      "inputSet": "test/fixtures/compiler-rs-syntax.json"
+    },
+    {
+      "name": "TSX corpus: test\\fixtures\\tsx-upstream\\fixtures\\props_generic_invalid.astro",
+      "file": "test/tsx-corpus.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\r\ninterface Props<T extends { [key: string]: any }, P extends string ? { [key: string]: any }: never> {}\r\n---\r\n<div/>\r\n",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '?'",
+          "severity": 1,
+          "position": {
+            "start": 72,
+            "end": 73
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found '?'",
+          "severity": 1,
+          "position": {
+            "start": 72,
+            "end": 73
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `,` but instead found `?`",
+          "severity": 1,
+          "position": {
+            "start": 72,
+            "end": 73
+          }
+        },
+        {
+          "message": "expected `,` but instead found `key`",
+          "severity": 1,
+          "position": {
+            "start": 77,
+            "end": 80
+          }
+        },
+        {
+          "message": "expected `,` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 80,
+            "end": 81
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX corpus: test\\fixtures\\transform-upstream\\fixtures\\import_assertions.astro",
+      "file": "test/tsx-corpus.test.ts",
+      "category": "syntax-policy",
+      "source": "---\nimport data from \"test\" assert { type: 'json' };\n---",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 28,
+            "end": 34
+          }
+        },
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 35,
+            "end": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX generated compatibility inputs: truncated",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-ast-recovery",
+      "differingFields": [],
+      "inputSet": "test/fixtures/tsx-differential-inputs.ts"
+    },
+    {
+      "name": "TSX generated compatibility inputs: deleted",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-ast-recovery",
+      "differingFields": [],
+      "inputSet": "test/fixtures/tsx-differential-inputs.ts"
+    },
+    {
+      "name": "TSX continuation diagnostics: <p title={\"a\n\r\t\u0000🦊\"}/>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "<p title={\"a\n\r\t\u0000🦊\"}/>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unterminated string literal",
+          "severity": 1,
+          "position": {
+            "start": 12,
+            "end": 13
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "unterminated string literal",
+          "severity": 1,
+          "position": {
+            "start": 10,
+            "end": 12
+          }
+        },
+        {
+          "message": "unexpected token `�`",
+          "severity": 1,
+          "position": {
+            "start": 15,
+            "end": 16
+          }
+        },
+        {
+          "message": "Unexpected token `🦊`",
+          "severity": 1,
+          "position": {
+            "start": 16,
+            "end": 18
+          }
+        },
+        {
+          "message": "unterminated string literal",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 19
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\ncontinue;const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\ncontinue;const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Illegal continue statement",
+          "severity": 1,
+          "position": {
+            "start": 4,
+            "end": 13
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "A `continue` statement can only be used within an enclosing `for`, `while` or `do while` statement.",
+          "severity": 1,
+          "position": {
+            "start": 4,
+            "end": 12
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nbreak missing;const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nbreak missing;const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Use of undefined label 'missing'",
+          "severity": 1,
+          "position": {
+            "start": 4,
+            "end": 18
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Use of undefined statement label `missing`",
+          "severity": 1,
+          "position": {
+            "start": 10,
+            "end": 17
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nclass C { method(){return 1; }\n---\n<p/>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nclass C { method(){return 1; }\n---\n<p/>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token '--' as class element key",
+          "severity": 1,
+          "position": {
+            "start": 35,
+            "end": 37
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 43,
+            "end": 43
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected an identifier, a string literal, a number literal, a private field name, or a computed name but instead found '--'.",
+          "severity": 1,
+          "position": {
+            "start": 35,
+            "end": 37
+          }
+        },
+        {
+          "message": "expected a semicolon to end the class property, but found none",
+          "severity": 1,
+          "position": {
+            "start": 40,
+            "end": 41
+          }
+        },
+        {
+          "message": "Expected an identifier, a string literal, a number literal, a private field name, or a computed name but instead found '/'.",
+          "severity": 1,
+          "position": {
+            "start": 41,
+            "end": 42
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 43,
+            "end": 43
+          }
+        },
+        {
+          "message": "expected `}` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 43,
+            "end": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nconst {...rest,}={};const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst {...rest,}={};const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Rest element cannot have a trailing comma in object destructuring.",
+          "severity": 1,
+          "position": {
+            "start": 10,
+            "end": 20
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "rest element may not have a trailing comma",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nconst value=100_;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nconst value=100_;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "numeric separators are only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nconst value=0x_FF;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst value=0x_FF;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "numbers cannot be followed by identifiers directly after",
+          "severity": 1,
+          "position": {
+            "start": 17,
+            "end": 21
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nconst value=1e_2;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst value=1e_2;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "numbers cannot be followed by identifiers directly after",
+          "severity": 1,
+          "position": {
+            "start": 17,
+            "end": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX continuation diagnostics: ---\nconst value=/x/uvv;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nconst value=/x/uvv;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Duplicate regular expression flag",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        },
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        },
+        {
+          "message": "Duplicate flag `v`.",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nconst fn=()=> <b>🦊</b>;\n---\n<p>{fn?.()}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst fn=()=> <b>🦊</b>;\n---\n<p>{fn?.()}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Invalid character at start of identifier",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Unexpected token `🦊`",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 23
+          }
+        },
+        {
+          "message": "unterminated regex literal",
+          "severity": 1,
+          "position": {
+            "start": 28,
+            "end": 28
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nconst value={render(){return <b>🦊</b>}};\n---\n<p>{value.render()}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst value={render(){return <b>🦊</b>}};\n---\n<p>{value.render()}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Invalid character at start of identifier",
+          "severity": 1,
+          "position": {
+            "start": 36,
+            "end": 36
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Unexpected token `🦊`",
+          "severity": 1,
+          "position": {
+            "start": 36,
+            "end": 38
+          }
+        },
+        {
+          "message": "unterminated regex literal",
+          "severity": 1,
+          "position": {
+            "start": 45,
+            "end": 45
+          }
+        },
+        {
+          "message": "expected `}` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 46,
+            "end": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nclass Value{get child(){return <b>x</b>}}\n---\n<p>{new Value().child}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nclass Value{get child(){return <b>x</b>}}\n---\n<p>{new Value().child}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Line terminator not allowed in regular expression literal",
+          "severity": 1,
+          "position": {
+            "start": 45,
+            "end": 46
+          }
+        },
+        {
+          "message": "Expected '}' to close function body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 46,
+            "end": 46
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "unterminated regex literal",
+          "severity": 1,
+          "position": {
+            "start": 45,
+            "end": 45
+          }
+        },
+        {
+          "message": "expected `}` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 46,
+            "end": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nfunction* f(){yield <b>a</b>;yield <i>b</i>}\n---\n<p>{[...f()]}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nfunction* f(){yield <b>a</b>;yield <i>b</i>}\n---\n<p>{[...f()]}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token '}'",
+          "severity": 1,
+          "position": {
+            "start": 47,
+            "end": 48
+          }
+        },
+        {
+          "message": "Expected '}' to close function body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 49,
+            "end": 49
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected an expression but instead found '}'.",
+          "severity": 1,
+          "position": {
+            "start": 47,
+            "end": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nconst values={x:<b>🦊</b>};const key=\"x\";\n---\n<p>{values[key]}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst values={x:<b>🦊</b>};const key=\"x\";\n---\n<p>{values[key]}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Invalid character at start of identifier",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Unexpected token `🦊`",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 25
+          }
+        },
+        {
+          "message": "unterminated regex literal",
+          "severity": 1,
+          "position": {
+            "start": 45,
+            "end": 45
+          }
+        },
+        {
+          "message": "expected `}` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 46,
+            "end": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nfor(const value of [/a/uv]){}\n---\n<p/>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nfor(const value of [/a/uv]){}\n---\n<p/>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "severity": 1,
+          "position": {
+            "start": 29,
+            "end": 30
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 28,
+            "end": 29
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nfunction f(){return /a/uv}\n---\n<p/>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\nfunction f(){return /a/uv}\n---\n<p/>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "severity": 1,
+          "position": {
+            "start": 29,
+            "end": 30
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 28,
+            "end": 29
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: <p>{/a/uv.test(\"a\")}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p>{/a/uv.test(\"a\")}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "severity": 1,
+          "position": {
+            "start": 9,
+            "end": 10
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 9
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: <p title={/a/uv.source}/>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "<p title={/a/uv.source}/>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "severity": 1,
+          "position": {
+            "start": 15,
+            "end": 16
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 14,
+            "end": 15
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\n/*🦊*/const a=/a/uv;/*x*/const b=/b/vu;const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-lexer-bug",
+      "source": "---\n/*🦊*/const a=/a/uv;/*x*/const b=/b/vu;const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 24
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 23
+          }
+        },
+        {
+          "message": "Invalid regex flag.",
+          "severity": 1,
+          "position": {
+            "start": 41,
+            "end": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nconst value=1__0;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nconst value=1__0;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Numeric literal cannot contain consecutive separators",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "numeric separators are only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 17,
+            "end": 18
+          }
+        },
+        {
+          "message": "numeric separators are only allowed between two digits",
+          "severity": 1,
+          "position": {
+            "start": 18,
+            "end": 19
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nbreak;const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nbreak;const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Illegal break statement",
+          "severity": 1,
+          "position": {
+            "start": 4,
+            "end": 10
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "A `break` statement can only be used within an enclosing iteration or switch statement.",
+          "severity": 1,
+          "position": {
+            "start": 4,
+            "end": 9
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nfunction f(...xs,y){}const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nfunction f(...xs,y){}const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Rest parameter must be the last parameter",
+          "severity": 1,
+          "position": {
+            "start": 15,
+            "end": 21
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "rest elements may not have trailing commas",
+          "severity": 1,
+          "position": {
+            "start": 15,
+            "end": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX lexer and declaration recovery: ---\nclass Value extends {}const value=1;\n---\n<p>{value}</p>",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\nclass Value extends {}const value=1;\n---\n<p>{value}</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '{' to start class body, but found 'const'",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 31
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "'extends' list cannot be empty.",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX fixture diagnostic recovery: ---\ninterface Props<T extends { [key: string]: any }, P extends string ? { [key: string]: any }: never> {}\n---\n<div/>\n",
+      "file": "test/tsx-differential.test.ts",
+      "category": "yuku-diagnostic-recovery",
+      "source": "---\ninterface Props<T extends { [key: string]: any }, P extends string ? { [key: string]: any }: never> {}\n---\n<div/>\n",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '?'",
+          "severity": 1,
+          "position": {
+            "start": 71,
+            "end": 72
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found '?'",
+          "severity": 1,
+          "position": {
+            "start": 71,
+            "end": 72
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `,` but instead found `?`",
+          "severity": 1,
+          "position": {
+            "start": 71,
+            "end": 72
+          }
+        },
+        {
+          "message": "expected `,` but instead found `key`",
+          "severity": 1,
+          "position": {
+            "start": 76,
+            "end": 79
+          }
+        },
+        {
+          "message": "expected `,` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 79,
+            "end": 80
+          }
+        }
+      ]
+    },
+    {
+      "name": "TSX fixture diagnostic recovery: ---\nimport data from \"test\" assert { type: 'json' };\n---",
+      "file": "test/tsx-differential.test.ts",
+      "category": "syntax-policy",
+      "source": "---\nimport data from \"test\" assert { type: 'json' };\n---",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 28,
+            "end": 34
+          }
+        },
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found none",
+          "severity": 1,
+          "position": {
+            "start": 35,
+            "end": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "incomplete type heads and lexical errors retain reference TSX output and diagnostic ranges",
+      "file": "test/tsx-recovery.test.ts",
+      "category": "yuku-ast-recovery",
+      "differingFields": [],
+      "inputs": [
+        "---\n+ /*",
+        "---\n+ \"",
+        "---\n+ /",
+        "---\n+",
+        "---\r\n+\r\n---\r\n<p>🦊</p>",
+        "---\ninterface Props<",
+        "---\r\ninterface Props<\r\n---\r\n<p>🦊</p>",
+        "---\ninterface Props<T",
+        "---\r\ninterface Props<T\r\n---\r\n<p>🦊</p>",
+        "---\ninterface Props<T (x:T)",
+        "---\r\ninterface Props<T (x:T)\r\n---\r\n<p>🦊</p>",
+        "---\ninterface Props { x: }",
+        "---\r\ninterface Props { x: }\r\n---\r\n<p>🦊</p>",
+        "---\ntype Shape = { : string }",
+        "---\r\ntype Shape = { : string }\r\n---\r\n<p>🦊</p>",
+        "---\nconst id = <T>(x:T",
+        "---\r\nconst id = <T>(x:T\r\n---\r\n<p>🦊</p>",
+        "---\nconst id = <T>(x:T)=>;",
+        "---\r\nconst id = <T>(x:T)=>;\r\n---\r\n<p>🦊</p>"
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": "regex-uv",
+      "source": "const value=/x/uv;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "The 'u' and 'v' regular expression flags cannot be used together",
+          "start": 17,
+          "end": 18,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "regex-uvv",
+      "source": "const value=/x/uvv;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Duplicate regular expression flag",
+          "start": 17,
+          "end": 18,
+          "highlight": "v"
+        }
+      ]
+    },
+    {
+      "id": "numeric-trailing",
+      "source": "const value=100_;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "start": 16,
+          "end": 17,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "numeric-radix",
+      "source": "const value=0x_FF;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "start": 14,
+          "end": 15,
+          "highlight": "_"
+        }
+      ]
+    },
+    {
+      "id": "numeric-exponent",
+      "source": "const value=1e_2;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Numeric separator is only allowed between two digits",
+          "start": 14,
+          "end": 15,
+          "highlight": "_"
+        }
+      ]
+    },
+    {
+      "id": "numeric-double",
+      "source": "const value=1__0;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Numeric literal cannot contain consecutive separators",
+          "start": 14,
+          "end": 15,
+          "highlight": "_"
+        }
+      ]
+    },
+    {
+      "id": "rest-parameter-comma",
+      "source": "function f(...xs,){}const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Rest parameter may not have a trailing comma",
+          "start": 11,
+          "end": 17,
+          "highlight": "...xs,"
+        }
+      ]
+    },
+    {
+      "id": "rest-parameter-last",
+      "source": "function f(...xs,y){}const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Rest parameter must be the last parameter",
+          "start": 11,
+          "end": 17,
+          "highlight": "...xs,"
+        }
+      ]
+    },
+    {
+      "id": "rest-binding-last",
+      "source": "const [...xs,last]=[1,2];const after=1;",
+      "body": [
+        "VariableDeclaration",
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Rest element must be the last element",
+          "start": 7,
+          "end": 12,
+          "highlight": "...xs"
+        }
+      ]
+    },
+    {
+      "id": "object-rest-comma",
+      "source": "const {...rest,}={};const after=1;",
+      "body": [
+        "VariableDeclaration",
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Rest element cannot have a trailing comma in object destructuring.",
+          "start": 6,
+          "end": 16,
+          "highlight": "{...rest,}"
+        }
+      ]
+    },
+    {
+      "id": "class-extends",
+      "source": "class Value extends {}const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected '{' to start class body, but found 'const'",
+          "start": 22,
+          "end": 27,
+          "highlight": "const"
+        }
+      ]
+    },
+    {
+      "id": "class-comment",
+      "source": "class C extends /*x*/ {}const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected '{' to start class body, but found 'const'",
+          "start": 24,
+          "end": 29,
+          "highlight": "const"
+        }
+      ]
+    },
+    {
+      "id": "break",
+      "source": "break;const after=1;",
+      "body": [
+        "BreakStatement",
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Illegal break statement",
+          "start": 0,
+          "end": 6,
+          "highlight": "break;"
+        }
+      ]
+    },
+    {
+      "id": "continue",
+      "source": "continue;const after=1;",
+      "body": [
+        "ContinueStatement",
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Illegal continue statement",
+          "start": 0,
+          "end": 9,
+          "highlight": "continue;"
+        }
+      ]
+    },
+    {
+      "id": "break-label",
+      "source": "break missing;const after=1;",
+      "body": [
+        "BreakStatement",
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Use of undefined label 'missing'",
+          "start": 0,
+          "end": 14,
+          "highlight": "break missing;"
+        }
+      ]
+    },
+    {
+      "id": "unterminated-string",
+      "source": "const x=\"a\n🦊\";const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unterminated string literal",
+          "start": 10,
+          "end": 11,
+          "highlight": "\n"
+        }
+      ]
+    },
+    {
+      "id": "unclosed-class",
+      "source": "class C { method(){return 1; }",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected '}' to close class body, but found 'end of file'",
+          "start": 30,
+          "end": 30,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "regex-unclosed",
+      "source": "const text=\"🦊\";const value=/[abc/;",
+      "body": [
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Unterminated regular expression literal",
+          "start": 35,
+          "end": 35,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "type-unclosed",
+      "source": "const first=\"🦊\";const value:{x:;",
+      "body": [
+        "VariableDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Expected a type, but found ';'",
+          "start": 32,
+          "end": 33,
+          "highlight": ";"
+        },
+        {
+          "message": "Expected a type, but found ';'",
+          "start": 32,
+          "end": 33,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "type-params-unclosed",
+      "source": "function f<T( ){return 1}",
+      "body": [
+        "FunctionDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '('",
+          "start": 12,
+          "end": 13,
+          "highlight": "("
+        }
+      ]
+    },
+    {
+      "id": "parameter-decorator",
+      "source": "class C { m(@dec x:T){} }",
+      "body": [
+        "ClassDeclaration"
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "catch-type",
+      "source": "try {} catch(e:T) {}",
+      "body": [
+        "TryStatement"
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "jsdoc-types",
+      "source": "type T=Foo<?X,!Y,Z?,W!,?>;",
+      "body": [
+        "TSTypeAliasDeclaration"
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "import-assert",
+      "source": "import data from \"test\" assert {type:\"json\"};",
+      "body": [
+        "ImportDeclaration"
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "invalid-type-constraint",
+      "source": "interface Props<T extends { [key: string]: any }, P extends string ? { [key: string]: any }: never> {}",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '?'",
+          "start": 67,
+          "end": 68,
+          "highlight": "?"
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found '?'",
+          "start": 67,
+          "end": 68,
+          "highlight": "?"
+        }
+      ]
+    },
+    {
+      "id": "jsx-in-ts",
+      "source": "const fn=()=> <b>🦊</b>;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Invalid character at start of identifier",
+          "start": 17,
+          "end": 18,
+          "highlight": "\ud83e"
+        }
+      ]
+    },
+    {
+      "id": "generator-jsx-in-ts",
+      "source": "function* f(){yield <b>a</b>;yield <i>b</i>}",
+      "body": [
+        "TSDeclareFunction"
+      ],
+      "diagnostics": [
+        {
+          "message": "Unexpected token '}'",
+          "start": 43,
+          "end": 44,
+          "highlight": "}"
+        },
+        {
+          "message": "Expected '}' to close function body, but found 'end of file'",
+          "start": 44,
+          "end": 44,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "type-assertion-empty",
+      "source": "const id = <T>",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token 'end of file'",
+          "start": 14,
+          "end": 14,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "type-assertion-partial",
+      "source": "const id = <T>(x:T",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "start": 16,
+          "end": 17,
+          "highlight": ":"
+        }
+      ]
+    },
+    {
+      "id": "arrow-empty",
+      "source": "const id = <T>(x:T)=>;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "start": 16,
+          "end": 17,
+          "highlight": ":"
+        }
+      ]
+    },
+    {
+      "id": "skipped-arrow-head",
+      "source": "onst id = <T>(x:T)=>x;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found 'id'",
+          "start": 5,
+          "end": 7,
+          "highlight": "id"
+        }
+      ]
+    },
+    {
+      "id": "skipped-arrow-assignment",
+      "source": "const id <T>(x:T)=>x;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "'const' declarations must be initialized",
+          "start": 6,
+          "end": 8,
+          "highlight": "id"
+        },
+        {
+          "message": "Expected a semicolon or an implicit semicolon after a statement, but found '<'",
+          "start": 9,
+          "end": 10,
+          "highlight": "<"
+        }
+      ]
+    },
+    {
+      "id": "interface-partial",
+      "source": "interface Props<T> {x:T",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected ';', ',', or newline between type members, but found 'end of file'",
+          "start": 23,
+          "end": 23,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "interface-params-partial",
+      "source": "interface Props<T",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found 'end of file'",
+          "start": 17,
+          "end": 17,
+          "highlight": ""
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found 'end of file'",
+          "start": 17,
+          "end": 17,
+          "highlight": ""
+        }
+      ]
+    },
+    {
+      "id": "interface-empty-params",
+      "source": "interface Props<> {x:T}",
+      "body": [
+        "TSInterfaceDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "A type parameter list cannot be empty",
+          "start": 16,
+          "end": 17,
+          "highlight": ">"
+        }
+      ]
+    },
+    {
+      "id": "interface-invalid-params",
+      "source": "interface Props<T {x:T}",
+      "body": [
+        "TSInterfaceDeclaration"
+      ],
+      "diagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '{'",
+          "start": 18,
+          "end": 19,
+          "highlight": "{"
+        }
+      ]
+    },
+    {
+      "id": "comma-leading",
+      "source": "fn(,b);const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ','",
+          "start": 3,
+          "end": 4,
+          "highlight": ","
+        }
+      ]
+    },
+    {
+      "id": "comma-trailing-sequence",
+      "source": "(a,);const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Trailing comma is not allowed in parenthesized expression",
+          "start": 0,
+          "end": 4,
+          "highlight": "(a,)"
+        }
+      ]
+    },
+    {
+      "id": "expression a +",
+      "source": "a +;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ';'",
+          "start": 3,
+          "end": 4,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "expression !",
+      "source": "!;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ';'",
+          "start": 1,
+          "end": 2,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "expression a *",
+      "source": "a *;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ';'",
+          "start": 3,
+          "end": 4,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "expression a ? b :",
+      "source": "a ? b :;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ';'",
+          "start": 7,
+          "end": 8,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "expression a + b *",
+      "source": "a + b *;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Unexpected token ';'",
+          "start": 7,
+          "end": 8,
+          "highlight": ";"
+        }
+      ]
+    },
+    {
+      "id": "expression a && b || c ?? d",
+      "source": "a && b || c ?? d;const after=1;",
+      "body": [],
+      "diagnostics": [
+        {
+          "message": "Logical expressions and nullish coalescing cannot be mixed",
+          "start": 0,
+          "end": 16,
+          "highlight": "a && b || c ?? d"
+        }
+      ]
+    }
+  ],
+  "generatedInputs": [
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:T",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:T)",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:T)=",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:T)=>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\nconst id = <T>(x:T)=>x;\n-",
+      "differingFields": [
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nonst id = <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ncnst id = <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ncost id = <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ncont id = <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ncons id = <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id  <T>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <>(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T(x:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(:T)=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(x:T=>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(x:T)>x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(x:T)=x;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(x:T)=>;\n---\n<p>{id(x)}</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\nconst id = <T>(x:T)=>x;\n--\n<p>{id(x)}</p>",
+      "differingFields": [
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T>",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> ",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> {",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> {x",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> {x:",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> {x:T",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "truncated",
+      "source": "---\ninterface Props<T> {x:T}\n-",
+      "differingFields": [
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<> {x:T}\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T {x:T}\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T> x:T}\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T> {:T}\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T> {x:}\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "code"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T> {x:T\n---\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ]
+    },
+    {
+      "category": "deleted",
+      "source": "---\ninterface Props<T> {x:T}\n--\n<Component value={Astro.props.x} />",
+      "differingFields": [
+        "diagnostics"
+      ]
+    }
+  ],
+  "groupedRecovery": [
+    {
+      "source": "---\n+ /*",
+      "differingFields": [],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 8
+          }
+        },
+        {
+          "message": "Unterminated multi-line comment",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 8
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 8
+          }
+        },
+        {
+          "message": "unterminated block comment",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 8
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\n+ \"",
+      "differingFields": [],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        },
+        {
+          "message": "Unterminated string literal",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        },
+        {
+          "message": "unterminated string literal",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\n+ /",
+      "differingFields": [],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        },
+        {
+          "message": "Unterminated regular expression literal",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        },
+        {
+          "message": "unterminated regex literal",
+          "severity": 1,
+          "position": {
+            "start": 7,
+            "end": 7
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\n+",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 5,
+            "end": 5
+          }
+        },
+        {
+          "message": "Unexpected token 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 5,
+            "end": 5
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 5,
+            "end": 5
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\n+\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "diagnostics",
+        "hasParseErrors"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 8,
+            "end": 8
+          }
+        }
+      ],
+      "referenceDiagnostics": []
+    },
+    {
+      "source": "---\ninterface Props<",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        },
+        {
+          "message": "A type parameter list cannot be empty",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        },
+        {
+          "message": "Expected '>' to close a type parameter list, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        },
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 20
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\ninterface Props<\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "A type parameter list cannot be empty",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        },
+        {
+          "message": "Expected '>' to close a type parameter list, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 23
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\ninterface Props<T",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        },
+        {
+          "message": "Expected '>' to close a type parameter list, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        },
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 21
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\ninterface Props<T\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "code",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 24,
+            "end": 24
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found 'end of file'",
+          "severity": 1,
+          "position": {
+            "start": 24,
+            "end": 24
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 24,
+            "end": 24
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\ninterface Props<T (x:T)",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '('",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 23
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found '('",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 23
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 27,
+            "end": 27
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `,` but instead found `(`",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 23
+          }
+        },
+        {
+          "message": "expected `,` but instead found `x`",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 24
+          }
+        },
+        {
+          "message": "expected `,` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 24,
+            "end": 25
+          }
+        },
+        {
+          "message": "expected `,` but instead found `T`",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "expected `,` but instead found `)`",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 27
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 27,
+            "end": 27
+          }
+        },
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 27,
+            "end": 27
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\ninterface Props<T (x:T)\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected '>' to close a type parameter list, but found '('",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 24
+          }
+        },
+        {
+          "message": "Expected '{' to start an interface body, but found '('",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 24
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `,` but instead found `(`",
+          "severity": 1,
+          "position": {
+            "start": 23,
+            "end": 24
+          }
+        },
+        {
+          "message": "expected `,` but instead found `x`",
+          "severity": 1,
+          "position": {
+            "start": 24,
+            "end": 25
+          }
+        },
+        {
+          "message": "expected `,` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "expected `,` but instead found `T`",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 27
+          }
+        },
+        {
+          "message": "expected `,` but instead found `)`",
+          "severity": 1,
+          "position": {
+            "start": 27,
+            "end": 28
+          }
+        },
+        {
+          "message": "expected `>` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 30,
+            "end": 30
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\ninterface Props { x: }",
+      "differingFields": [
+        "code"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected a type, but found '}'",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 26
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a type but instead found '}'.",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 26
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\ninterface Props { x: }\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "code"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected a type, but found '}'",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 27
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a type but instead found '}'.",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 27
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\ntype Shape = { : string }",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token ':' as signature key",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 20
+          }
+        },
+        {
+          "message": "Expected a type, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 20
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 29,
+            "end": 29
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a property, or a signature but instead found ': string'.",
+          "severity": 1,
+          "position": {
+            "start": 19,
+            "end": 27
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 29,
+            "end": 29
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\ntype Shape = { : string }\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Unexpected token ':' as signature key",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        },
+        {
+          "message": "Expected a type, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a property, or a signature but instead found ': string'.",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 28
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\nconst id = <T>(x:T",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 22
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `)` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 22,
+            "end": 22
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\nconst id = <T>(x:T\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "expected `)` but instead found `:`",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\nconst id = <T>(x:T)=>;",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 20,
+            "end": 21
+          }
+        },
+        {
+          "message": "Unclosed frontmatter fence",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 26
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a function body, or an expression but instead found ';'.",
+          "severity": 1,
+          "position": {
+            "start": 25,
+            "end": 26
+          }
+        },
+        {
+          "message": "expected `---` but instead the file ends",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 26
+          }
+        }
+      ]
+    },
+    {
+      "source": "---\r\nconst id = <T>(x:T)=>;\r\n---\r\n<p>🦊</p>",
+      "differingFields": [
+        "code",
+        "mappings",
+        "frontmatter",
+        "body",
+        "diagnostics"
+      ],
+      "actualDiagnostics": [
+        {
+          "message": "Expected ',' or ')' in parenthesized expression, but found ':'",
+          "severity": 1,
+          "position": {
+            "start": 21,
+            "end": 22
+          }
+        }
+      ],
+      "referenceDiagnostics": [
+        {
+          "message": "Expected a function body, or an expression but instead found ';'.",
+          "severity": 1,
+          "position": {
+            "start": 26,
+            "end": 27
+          }
+        }
+      ]
+    }
+  ]
+}

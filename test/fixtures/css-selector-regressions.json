@@ -1,0 +1,82 @@
+{
+  "reference": {
+    "package": "@astrojs/compiler-rs",
+    "version": "0.5.2",
+    "goPackage": "@astrojs/compiler",
+    "goVersion": "2.13.1"
+  },
+  "cases": [
+    {
+      "name": "uppercase document selectors",
+      "selector": "HTML.foo > BODY.bar",
+      "expected": "HTML:where(.astro-SCOPE).foo > BODY:where(.astro-SCOPE).bar {\n  color: red;\n}\n",
+      "go": "HTML:where(.astro-SCOPE).foo>BODY:where(.astro-SCOPE).bar{color:red}"
+    },
+    {
+      "name": "nth-child global arguments",
+      "selector": ":nth-child(2n of :global(.a), .b)",
+      "expected": ":where(.astro-SCOPE):nth-child(2n of :global(.a), .b) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE):nth-child(2n of :global(.a),.b){color:red}"
+    },
+    {
+      "name": "nth-last-child global arguments",
+      "selector": ":nth-last-child(2n of :global(.a), .b)",
+      "expected": ":where(.astro-SCOPE):nth-last-child(2n of :global(.a), .b) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE):nth-last-child(2n of :global(.a),.b){color:red}"
+    },
+    {
+      "name": "opaque host-context arguments",
+      "selector": ":host-context(:global(.a))",
+      "expected": ":where(.astro-SCOPE):host-context(:global(.a)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE):host-context(:global(.a)){color:red}"
+    },
+    {
+      "name": "single-colon slotted arguments",
+      "selector": ":slotted(:global(.a))",
+      "expected": ":where(.astro-SCOPE):slotted(:global(.a)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE):slotted(:global(.a)){color:red}"
+    },
+    {
+      "name": "host global selector lists",
+      "selector": ":host(:global(.a,.b))",
+      "expected": ":where(.astro-SCOPE):host(:global(.a,.b)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE):host(:global(.a,.b)){color:red}"
+    },
+    {
+      "name": "slotted global selector lists",
+      "selector": "::slotted(:global(.a,.b))",
+      "expected": ":where(.astro-SCOPE)::slotted(:global(.a,.b)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE)::slotted(:global(.a,.b)){color:red}"
+    },
+    {
+      "name": "opaque pseudo-element selector function",
+      "selector": "::is(:global(.a))",
+      "expected": ":where(.astro-SCOPE)::is(:global(.a)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE)::is(:global(.a)){color:red}"
+    },
+    {
+      "name": "opaque pseudo-element host function",
+      "selector": "::host(:global(.a))",
+      "expected": ":where(.astro-SCOPE)::host(:global(.a)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE)::host(:global(.a)){color:red}"
+    },
+    {
+      "name": "opaque pseudo-element nth function",
+      "selector": "::nth-child(2n of :global(.a))",
+      "expected": ":where(.astro-SCOPE)::nth-child(2n of :global(.a)) {\n  color: red;\n}\n",
+      "go": ":where(.astro-SCOPE)::nth-child(2n of :global(.a)){color:red}"
+    },
+    {
+      "name": "global type after local class",
+      "selector": ".local:global(button)",
+      "expected": ".local:where(.astro-SCOPE)button {\n  color: red;\n}\n",
+      "go": ".local:where(.astro-SCOPE)button{color:red}"
+    },
+    {
+      "name": "global type after another global",
+      "selector": ":global(.a):global(html)",
+      "expected": ".ahtml {\n  color: red;\n}\n",
+      "go": ".ahtml{color:red}"
+    }
+  ]
+}

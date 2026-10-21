@@ -1,0 +1,27 @@
+.{
+    .name = .astro_compiler,
+    .version = "0.0.1",
+    .license = "MIT",
+    .fingerprint = 0x412e511d4af319e, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.17.0",
+    .dependencies = .{
+        .yuku = .{
+            .url = "git+https://github.com/ryuapp/yuku.git#80e9bbc5767de2ea3248cbed071521d4eebc37f4",
+            .hash = "yuku-0.21.0-m6ranrZ8EgC0LPbGbCAD4d3loevcfSwKbIZ5MlUVUPaK",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "README.md",
+        "LICENSE",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "vite.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "test",
+        "scripts",
+    },
+}

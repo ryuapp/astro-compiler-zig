@@ -1,0 +1,4 @@
+---
+import Page from "../layouts/Page.astro";
+---
+<Page title="Escaping"><div set:html={"<em>trusted</em>"}/><p set:text={"<script>"}/></Page>

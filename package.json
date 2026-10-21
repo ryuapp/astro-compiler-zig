@@ -1,0 +1,44 @@
+{
+  "name": "astro-compiler-zig",
+  "version": "0.0.1",
+  "description": "Unofficial Astro compiler, written in Zig",
+  "license": "MIT",
+  "repository": "ryuapp/astro-compiler-zig",
+  "files": [
+    "index.mjs",
+    "index.d.mts",
+    "compiler.wasm",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "./index.d.mts",
+  "exports": {
+    ".": "./index.mjs",
+    "./compiler.wasm": "./compiler.wasm"
+  },
+  "devDependencies": {
+    "@astrojs/astro2tsx": "0.1.3",
+    "@astrojs/compiler-rs": "0.5.2",
+    "@astrojs/node": "11.1.9",
+    "@astrojs/react": "7.1.0",
+    "@jridgewell/trace-mapping": "0.3.31",
+    "@types/node": "^26.6.5",
+    "astro": "7.4.1",
+    "compiler-rs-compat": "npm:@astrojs/compiler-rs@0.5.2",
+    "dax": "0.50.1",
+    "playwright-core": "1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sass": "1.105.2",
+    "tinybench": "6.2.2",
+    "typescript": "7.0.2",
+    "typescript-compat": "npm:typescript@5.5.4",
+    "vite-plus": "1.3.0"
+  },
+  "engines": {
+    "node": ">=24.5.0"
+  },
+  "packageManager": "pnpm@12.11.2"
+}

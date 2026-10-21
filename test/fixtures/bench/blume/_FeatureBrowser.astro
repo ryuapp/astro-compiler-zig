@@ -1,0 +1,732 @@
+---
+/*
+MIT License
+
+Copyright (c) 2026 Hayden Bleasel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Source: https://github.com/haydenbleasel/blume/blob/8a23edb9d213906c4776fb2cb21b77e102104442/apps/docs/pages/_FeatureBrowser.astro
+License: https://github.com/haydenbleasel/blume/blob/8a23edb9d213906c4776fb2cb21b77e102104442/LICENSE
+Original component preserved below; only this license comment was added.
+*/
+// A theme-aware browser window used by the homepage "Batteries included"
+// section. The same component renders in the sticky desktop graphic (crossfaded
+// per feature) and inline on mobile, so each `kind` lives in exactly one place.
+// It mirrors the hero product preview: app header + a three-pane docs layout
+// (sidebar · content · on-this-page). Only the content morphs — except the
+// `changelog` kind, which goes single-pane like the generated /changelog
+// timeline it mirrors. Every kind depicts the fictional "Acme" brand (see
+// `sampleBrand` in _home/shared.ts).
+import { glyph, sampleBrand } from "./_home/shared.ts";
+
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+
+// Chrome glyphs resolve from Lucide at build time (server-only) and inline as
+// bare bodies; the <svg> wrappers below supply size/stroke. The lightbulb
+// matches the shipped <Callout type="tip"> icon (see ProductPreview).
+const searchIcon = glyph("search");
+const globeIcon = glyph("globe");
+const chevronDown = glyph("chevron-down");
+const lightbulb = glyph("lightbulb");
+const check = glyph("check");
+const folder = glyph("folder");
+const file = glyph("file");
+const rocket = glyph("rocket");
+const sliders = glyph("sliders-vertical");
+const fileText = glyph("file-text");
+
+// The docs sidebar groups; the active item and right-rail outline change per
+// feature. The `api` kind swaps this sidebar for OpenAPI endpoints (see below).
+const navGroups = sampleBrand.sidebar;
+const meta = {
+  api: {
+    active: "Messages",
+    crumb: "API reference",
+    heading: "Get a message",
+    toc: ["Parameters", "Responses", "Schema"],
+  },
+  components: {
+    active: "Components",
+    crumb: "Get started",
+    heading: "Components",
+    toc: ["Overview", "Installation", "Architecture"],
+  },
+  page: {
+    active: "Introduction",
+    crumb: "Get started",
+    heading: "Introduction",
+    toc: ["Why Acme", "What's included", "Next steps"],
+  },
+  // The search kind opens a ⌘K modal over a normal docs page, so its "view"
+  // mirrors the Introduction page that sits (dimmed) behind the overlay.
+  search: {
+    active: "Introduction",
+    crumb: "Get started",
+    heading: "Introduction",
+    toc: ["Why Acme", "What's included", "Next steps"],
+  },
+};
+const view = meta[kind as keyof typeof meta] ?? meta.page;
+
+// The search mock mirrors Blume's ⌘K dialog mid-query: section filter chips
+// with counts, highlighted results (the first selected), and a preview pane
+// for the selected hit. `mark` spans take the dialog's own highlight.
+const searchQuery = "webhook";
+const searchFilters = [
+  { count: 12, label: "All" },
+  { count: 5, label: "Docs" },
+  { count: 4, label: "API" },
+  { count: 3, label: "Changelog" },
+];
+const searchResults = [
+  {
+    excerpt: ["Receive delivery events at your ", "webhook", " endpoint…"],
+    title: ["", "Webhook", "s"],
+  },
+  {
+    excerpt: ["…signs every ", "webhook", " with your secret…"],
+    title: ["Verify signatures", "", ""],
+  },
+  {
+    excerpt: ["…exponential backoff for ", "webhook", " retries…"],
+    title: ["acme@2.0.4", "", ""],
+  },
+];
+const searchPreview = [
+  "Acme sends a ",
+  "webhook",
+  " to your endpoint whenever a message is delivered, opened, or bounced. Each event carries the message ID and a timestamp, so you can reconcile it with your own records.",
+];
+
+// For the `api` kind the sidebar swaps to OpenAPI endpoints (Scalar-style):
+// the operation summary on the left, a color-coded method badge on the right.
+const apiGroups = sampleBrand.api;
+const apiEndpoint = "/messages/{id}";
+const methodColor: Record<string, string> = {
+  DELETE: "text-[#ef4444]",
+  GET: "text-[#3b82f6]",
+  POST: "text-[#16a34a]",
+  PUT: "text-[#f59e0b]",
+};
+const methodLabel: Record<string, string> = { DELETE: "DEL" };
+const apiResponse = `{
+  "id": "msg_01H8...",
+  "to": "ada@example.com",
+  "status": "delivered"
+}`;
+
+// Rows for the `changelog` kind, mirroring the generated /changelog index:
+// releases grouped by year beside a year rail, each row the release title,
+// its category tag, and the date without the year its group already shows.
+const changelogYears = [
+  {
+    releases: [
+      { date: "July 8", label: "acme@2.1.0" },
+      { date: "June 26", label: "acme@2.0.4" },
+      { date: "June 12", label: "acme@2.0.0" },
+      { date: "May 30", label: "acme@1.9.2" },
+      { date: "May 14", label: "acme@1.9.1" },
+    ],
+    year: "2026",
+  },
+  {
+    releases: [
+      { date: "December 2", label: "acme@1.9.0" },
+      { date: "November 18", label: "acme@1.8.3" },
+    ],
+    year: "2025",
+  },
+];
+---
+
+<div class="relative flex h-full flex-col">
+  {/* App header */}
+  <div
+    class="flex items-center justify-between px-4 py-2.5"
+  >
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5 font-medium text-foreground text-sm">
+        <span
+          aria-hidden="true"
+          class="inline-flex h-4 items-center text-accent [&>svg]:h-4 [&>svg]:w-auto"
+          set:html={sampleBrand.logo}
+        />
+        {sampleBrand.name}
+      </span>
+      <span class="sr-only">{sampleBrand.badge}</span>
+      <nav class="hidden items-center gap-3 text-[11px] text-muted-foreground sm:flex">
+        <span
+          class={kind === "api" || kind === "changelog" ? "" : "text-foreground"}
+        >
+          Docs
+        </span>
+        <span class={kind === "api" ? "text-foreground" : ""}>API</span>
+        <span class={kind === "changelog" ? "text-foreground" : ""}>
+          Changelog
+        </span>
+      </nav>
+    </div>
+    <div class="flex items-center gap-2">
+      <span
+        class="hidden items-center gap-1.5 rounded-full border border-border px-3 py-1 text-[11px] text-muted-foreground lg:flex"
+      >
+        <svg
+          class="size-3"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          set:html={globeIcon}
+        />
+        English
+        <svg
+          class="size-2.5"
+          fill="none"
+          height="10"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="10"
+          set:html={chevronDown}
+        />
+      </span>
+      <span
+        class="hidden items-center gap-2 rounded-full border border-border px-3 py-1 text-[11px] text-muted-foreground sm:flex"
+      >
+        <svg
+          class="size-3"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          set:html={searchIcon}
+        />
+        Search
+        <span class="ml-2 font-mono">⌘K</span>
+      </span>
+    </div>
+  </div>
+
+  {/* Three-pane docs body — except the changelog, whose generated page is a
+      focused full-width timeline, so it renders as a single pane. */}
+  <div
+    class={`min-h-[332px] flex-1 ${kind === "changelog" ? "" : "grid grid-cols-1 sm:grid-cols-[148px_1fr] lg:grid-cols-[148px_1fr_140px]"}`}
+  >
+    {/* Sidebar */}
+    {
+      kind !== "changelog" && (
+        <aside class="hidden p-4 text-[11px] sm:block">
+          {kind === "api"
+            ? apiGroups.map((group) => (
+                <div class="mb-4 last:mb-0">
+                  <p class="font-medium text-foreground">{group.label}</p>
+                  <ul class="mt-2 space-y-0.5">
+                    {group.items.map((ep) => (
+                      <li
+                        class={`flex items-center gap-2 rounded px-1.5 py-1 ${ep.method === "GET" && ep.path === "/messages/{id}" ? "bg-muted text-foreground" : "text-muted-foreground"}`}
+                      >
+                        <span class="flex-1 truncate">{ep.summary}</span>
+                        <span
+                          class={`shrink-0 font-mono font-semibold text-[9px] ${methodColor[ep.method]}`}
+                        >
+                          {methodLabel[ep.method] ?? ep.method}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            : navGroups.map((group) => (
+                <div class="mb-4 last:mb-0">
+                  <p class="font-medium text-foreground">{group.label}</p>
+                  <ul class="mt-2 space-y-1.5 text-muted-foreground">
+                    {group.items.map((item) => (
+                      <li class={item === view.active ? "text-accent" : ""}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+        </aside>
+      )
+    }
+
+    {/* Content (morphs per feature). The changelog owns its whole header: the
+        generated page is a bare landing with just an <h1>, no breadcrumb. */}
+    <div class="p-5">
+      {
+        kind !== "changelog" && (
+          <Fragment>
+            <p class="text-[11px] text-muted-foreground">{view.crumb}</p>
+            <h4 class="mt-1 font-semibold text-foreground text-xl">
+              {view.heading}
+            </h4>
+          </Fragment>
+        )
+      }
+
+      {
+        (kind === "page" || kind === "search") && (
+          <div>
+            <p class="mt-2 text-muted-foreground text-xs leading-relaxed">
+              Acme is a transactional email & SMS API. Send your first message in
+              minutes, then add templates, webhooks, and analytics as you grow.
+            </p>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-blume border border-border p-3">
+                <svg
+                  class="size-4 text-accent"
+                  fill="none"
+                  height="16"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  set:html={rocket}
+                />
+                <p class="mt-2 font-medium text-foreground text-xs">Quickstart</p>
+                <p class="mt-0.5 text-[11px] text-muted-foreground">
+                  Send your first message
+                </p>
+              </div>
+              <div class="rounded-blume border border-border p-3">
+                <svg
+                  class="size-4 text-accent"
+                  fill="none"
+                  height="16"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  set:html={sliders}
+                />
+                <p class="mt-2 font-medium text-foreground text-xs">
+                  Authentication
+                </p>
+                <p class="mt-0.5 text-[11px] text-muted-foreground">
+                  API keys & scopes
+                </p>
+              </div>
+            </div>
+            {/* Tip callout — full tinted border + lightbulb, mirroring the
+                shipped <Callout type="tip"> shown in ProductPreview. */}
+            <div class="mt-3 flex gap-2 rounded-blume border border-accent/25 bg-accent/10 px-3 py-2.5">
+              <svg
+                class="mt-px size-3.5 shrink-0 text-accent"
+                fill="none"
+                height="14"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="14"
+                set:html={lightbulb}
+              />
+              <p class="text-[11px] text-muted-foreground leading-relaxed">
+                Every request is idempotent — safely retry without sending twice.
+              </p>
+            </div>
+            <p class="mt-5 font-medium text-foreground text-xs">
+              What's included
+            </p>
+            <div class="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2">
+              {[
+                "Full-text search",
+                "OG images & SEO",
+                "Dark mode",
+                "30+ languages (i18n)",
+              ].map((item) => (
+                <span class="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                  <svg
+                    class="size-3 shrink-0 text-accent"
+                    fill="none"
+                    height="12"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    viewBox="0 0 24 24"
+                    width="12"
+                    set:html={check}
+                  />
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div class="mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px]">
+              {["Quickstart", "Configuration"].map((step) => (
+                <span class="inline-flex items-center gap-1 font-medium text-accent">
+                  {step}
+                  <span aria-hidden="true">→</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      {
+        kind === "api" && (
+          <div>
+            <div class="mt-2 flex items-center gap-2">
+              <span class="font-mono font-semibold text-[11px] text-[#3b82f6]">
+                GET
+              </span>
+              <span class="font-mono text-[11px] text-muted-foreground">
+                {apiEndpoint}
+              </span>
+            </div>
+            <p class="mt-3 text-muted-foreground text-xs leading-relaxed">
+              Returns a single message by its ID — rendered straight from your
+              OpenAPI spec, with a live “Try it” playground.
+            </p>
+            <p class="mt-4 border-border border-b pb-2 font-medium text-[11px] text-foreground">
+              Path Parameters
+            </p>
+            <div class="mt-2 text-[11px]">
+              <span class="font-mono font-semibold text-foreground">id</span>
+              <span class="ml-2 text-muted-foreground">string</span>
+              <span class="ml-2 text-[10px] text-[#f59e0b]">required</span>
+              <p class="mt-0.5 text-[10px] text-muted-foreground">
+                The ID of the message to return.
+              </p>
+            </div>
+            <p class="mt-4 border-border border-b pb-2 font-medium text-[11px] text-foreground">
+              Responses
+            </p>
+            <div class="mt-2 overflow-hidden rounded-blume border border-border">
+              <div class="flex items-center gap-2 border-border border-b bg-muted/40 px-3 py-1.5 text-[10px]">
+                <span class="font-mono font-semibold text-[#16a34a]">200</span>
+                <span class="text-muted-foreground">successful operation</span>
+              </div>
+              <pre class="overflow-x-auto px-3 py-2 font-mono text-[10px] text-muted-foreground"><code>{apiResponse}</code></pre>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        kind === "components" && (
+          <div>
+            <p class="mt-2 text-muted-foreground text-xs leading-relaxed">
+              30+ accessible, theme-aware components — used in situ, with nothing
+              to import.
+            </p>
+            {/* Two cards side by side (Card / CardGroup). */}
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-blume border border-border p-3">
+                <svg
+                  class="size-4 text-accent"
+                  fill="none"
+                  height="16"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  set:html={rocket}
+                />
+                <p class="mt-2 font-medium text-[11px] text-foreground">
+                  Quickstart
+                </p>
+                <p class="mt-0.5 text-[10px] text-muted-foreground">
+                  Send your first message
+                </p>
+              </div>
+              <div class="rounded-blume border border-border p-3">
+                <svg
+                  class="size-4 text-accent"
+                  fill="none"
+                  height="16"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  set:html={fileText}
+                />
+                <p class="mt-2 font-medium text-[11px] text-foreground">
+                  Examples
+                </p>
+                <p class="mt-0.5 text-[10px] text-muted-foreground">
+                  Copy-paste snippets
+                </p>
+              </div>
+            </div>
+            {/* Installation — Steps component, rendered in situ. */}
+            <p class="mt-5 font-semibold text-[13px] text-foreground">
+              Installation
+            </p>
+            <div class="mt-3 ms-2 space-y-2.5 border-border border-s ps-4">
+              {["Install the SDK", "Add your API key", "Send a message"].map(
+                (step, i) => (
+                  <div class="relative">
+                    <span class="-start-[1.5rem] absolute top-0 flex size-4 items-center justify-center rounded-full bg-accent font-semibold text-[9px] text-accent-foreground">
+                      {i + 1}
+                    </span>
+                    <p class="text-[11px] text-foreground">{step}</p>
+                  </div>
+                )
+              )}
+            </div>
+            {/* Architecture — FileTree component, rendered in situ. */}
+            <p class="mt-5 font-semibold text-[13px] text-foreground">
+              Architecture
+            </p>
+            <div class="mt-3 rounded-blume border border-border p-3 text-[11px]">
+              <div class="flex items-center gap-1.5 text-foreground">
+                <svg
+                  class="size-3.5 shrink-0 text-muted-foreground"
+                  fill="none"
+                  height="14"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="14"
+                  set:html={folder}
+                />
+                docs
+              </div>
+              <div class="mt-2 ms-3.5 space-y-2">
+                {["index.mdx", "guide.mdx"].map((name) => (
+                  <div class="flex items-center gap-1.5 text-muted-foreground">
+                    <svg
+                      class="size-3.5 shrink-0"
+                      fill="none"
+                      height="14"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="14"
+                      set:html={file}
+                    />
+                    {name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        kind === "changelog" && (
+          <div class="mx-auto max-w-lg">
+            <h4 class="font-semibold text-2xl text-foreground">Changelog</h4>
+            <p class="mt-1 text-muted-foreground text-xs">
+              Product updates, new features, and fixes from every release.
+            </p>
+            <div class="mt-5 divide-y divide-border border-border border-y">
+              {changelogYears.map((group) => (
+                <div class="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4">
+                  <p class="pt-2 font-medium text-[11px] text-muted-foreground tabular-nums">
+                    {group.year}
+                  </p>
+                  <ul class="divide-y divide-border" role="list">
+                    {group.releases.map((release, index) => (
+                      <li class="flex items-baseline gap-3 py-2">
+                        <span
+                          class:list={[
+                            "min-w-0 flex-1 font-medium text-[11px]",
+                            group.year === "2026" && index === 0
+                              ? "text-accent"
+                              : "text-foreground",
+                          ]}
+                        >
+                          {release.label}
+                        </span>
+                        <span class="shrink-0 rounded-full bg-muted px-1.5 py-0.5 font-medium text-[9px] text-muted-foreground">
+                          Release
+                        </span>
+                        <span class="shrink-0 font-mono text-[10px] text-muted-foreground tabular-nums">
+                          {release.date}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+    </div>
+
+    {/* On this page */}
+    {
+      kind !== "changelog" && (
+        <aside class="hidden p-4 text-[11px] lg:block">
+          <p class="font-medium text-foreground">On this page</p>
+          <ul class="mt-2 space-y-1.5 text-muted-foreground">
+            {view.toc.map((item, index) => (
+              <li class={index === 0 ? "text-foreground" : ""}>{item}</li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+
+    {/* Search: Blume's ⌘K dialog mid-query over the dimmed page. The backdrop
+        is positioned to the window root, so it covers the whole window — nav
+        included — like the real dialog's backdrop. */}
+    {
+      kind === "search" && (
+        <div class="absolute inset-0 z-10 flex items-start justify-center bg-black/30 p-4 pt-10">
+          <div class="flex w-full max-w-xl flex-col overflow-hidden rounded-blume border border-border bg-background/85 shadow-2xl backdrop-blur-xl">
+            <div class="flex items-center gap-2 border-border border-b px-3 py-2.5">
+              <svg
+                class="size-3.5 text-muted-foreground"
+                fill="none"
+                height="14"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="14"
+                set:html={searchIcon}
+              />
+              <span class="flex-1 text-foreground text-xs">{searchQuery}</span>
+              <span class="rounded border border-border bg-muted px-1 py-0.5 font-mono text-[9px] text-muted-foreground">
+                Esc
+              </span>
+            </div>
+            <div class="grid min-h-0 grid-cols-1 sm:grid-cols-[14rem_minmax(0,1fr)]">
+              <div class="sm:border-border sm:border-e">
+                <div class="flex flex-wrap gap-1 border-border border-b px-2.5 py-2">
+                  {searchFilters.map((filter, index) => (
+                    <span
+                      class:list={[
+                        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-medium text-[10px]",
+                        index === 0
+                          ? "border-transparent bg-foreground text-background"
+                          : "border-border text-muted-foreground",
+                      ]}
+                    >
+                      {filter.label}
+                      <span class="opacity-60">{filter.count}</span>
+                    </span>
+                  ))}
+                </div>
+                <div class="p-1.5">
+                  <p class="px-2 pt-1 pb-1 text-[10px] text-muted-foreground">
+                    Results
+                  </p>
+                  {searchResults.map((result, index) => (
+                    <div
+                      class:list={[
+                        "flex items-start gap-2 rounded-blume border px-2 py-1.5 [&_mark]:rounded-sm [&_mark]:bg-accent/25 [&_mark]:text-inherit",
+                        index === 0
+                          ? "border-border bg-muted"
+                          : "border-transparent",
+                      ]}
+                    >
+                      <svg
+                        class="mt-px size-3.5 shrink-0 text-muted-foreground"
+                        fill="none"
+                        height="14"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        set:html={file}
+                      />
+                      <div class="min-w-0 flex-1">
+                        <p class="truncate text-foreground text-xs">
+                          {result.title[0]}
+                          {result.title[1] && <mark>{result.title[1]}</mark>}
+                          {result.title[2]}
+                        </p>
+                        <p class="truncate text-[10px] text-muted-foreground">
+                          {result.excerpt[0]}
+                          <mark>{result.excerpt[1]}</mark>
+                          {result.excerpt[2]}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div class="hidden p-4 sm:block [&_mark]:rounded-sm [&_mark]:bg-accent/25 [&_mark]:text-inherit">
+                <p class="font-medium text-foreground text-sm">
+                  <mark>Webhook</mark>s
+                </p>
+                <p class="mt-2 text-[11px] text-muted-foreground leading-relaxed">
+                  {searchPreview[0]}
+                  <mark>{searchPreview[1]}</mark>
+                  {searchPreview[2]}
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-3 border-border border-t px-3 py-1.5 text-[10px] text-muted-foreground">
+              <span class="flex items-center gap-1.5">
+                <span class="size-2.5 rounded-[3px] border border-border"></span>
+                All languages
+              </span>
+              <span class="flex items-center gap-2.5">
+                <span class="flex items-center gap-1">
+                  <span class="rounded border border-border bg-muted px-1 font-mono text-[9px]">↑</span>
+                  <span class="rounded border border-border bg-muted px-1 font-mono text-[9px]">↓</span>
+                  navigate
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="rounded border border-border bg-muted px-1 font-mono text-[9px]">↵</span>
+                  open
+                </span>
+                <span class="hidden items-center gap-1 sm:flex">
+                  <span class="rounded border border-border bg-muted px-1 font-mono text-[9px]">⌘J</span>
+                  preview
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</div>

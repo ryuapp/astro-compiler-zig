@@ -1,0 +1,738 @@
+[
+  {
+    "name": "empty",
+    "source": ""
+  },
+  {
+    "name": "plain text",
+    "source": "hello world"
+  },
+  {
+    "name": "unicode text",
+    "source": "<p>héllo 日本語 😀</p>"
+  },
+  {
+    "name": "BOM CRLF",
+    "source": "﻿---\r\nconst 名前 = '星';\r\n---\r\n<p>{名前}😀</p>"
+  },
+  {
+    "name": "empty frontmatter",
+    "source": "---\n---\n"
+  },
+  {
+    "name": "inline frontmatter",
+    "source": "--- const x = 1; ---<p>{x}</p>"
+  },
+  {
+    "name": "leading frontmatter",
+    "source": "ignored\n ---\nlet x = 1;\n---\n<p/>"
+  },
+  {
+    "name": "frontmatter trailing newline",
+    "source": "---\nconst x=1;\n---\n\n<p/>"
+  },
+  {
+    "name": "missing frontmatter fence",
+    "source": "---\nconst x=1;"
+  },
+  {
+    "name": "frontmatter strings fences",
+    "source": "---\nconst s = '---'; const r = /---/; const t = `a---${1}`;\n---\n<p/>"
+  },
+  {
+    "name": "frontmatter imports exports await return",
+    "source": "---\nimport x, {y as z} from 'pkg'; export const v = await x(z); return v;\n---\n<p/>"
+  },
+  {
+    "name": "frontmatter directive",
+    "source": "---\n'use strict';\nconst x=1;\n---\n<p/>"
+  },
+  {
+    "name": "frontmatter comments",
+    "source": "---\n// front\n/* block */\nconst x=1;\n---\n{/* template */}<script>// script\nconst y=2;</script>"
+  },
+  {
+    "name": "simple element",
+    "source": "<p>hello</p>"
+  },
+  {
+    "name": "siblings",
+    "source": "hello<p/>world<span/>"
+  },
+  {
+    "name": "fragment",
+    "source": "<>a<p/>{x}</>"
+  },
+  {
+    "name": "named fragment",
+    "source": "<Fragment slot='header'><p/></Fragment>"
+  },
+  {
+    "name": "member component",
+    "source": "<UI.Button value={x}/>"
+  },
+  {
+    "name": "colon tag",
+    "source": "<Namespace:Widget/>"
+  },
+  {
+    "name": "hyphen tag",
+    "source": "<my-element data-x=42/>"
+  },
+  {
+    "name": "boolean attributes",
+    "source": "<input disabled required/>"
+  },
+  {
+    "name": "quoted attributes",
+    "source": "<div a='b' c=\"d\" empty=''></div>"
+  },
+  {
+    "name": "unquoted attributes",
+    "source": "<div class=item data-id=42/>"
+  },
+  {
+    "name": "attribute entities",
+    "source": "<div title=\"&amp; &#65; &#x1F600; &copy;\"/>"
+  },
+  {
+    "name": "attribute names",
+    "source": "<div @click='go' x.data='v' :class='item' client:load/>"
+  },
+  {
+    "name": "expression attributes",
+    "source": "<Widget value={x + 1} empty={} />"
+  },
+  {
+    "name": "shorthand spread attributes",
+    "source": "<Widget {value} {...props}/>"
+  },
+  {
+    "name": "template attribute",
+    "source": "<Widget title=`hello ${name}`/>"
+  },
+  {
+    "name": "comment attribute",
+    "source": "<div {/* note */} class='item'/>"
+  },
+  {
+    "name": "duplicate attributes",
+    "source": "<div class='a' class='b'/>"
+  },
+  {
+    "name": "void tags",
+    "source": "<div><img src='x'><br/><input disabled></div>"
+  },
+  {
+    "name": "implicit ancestor close",
+    "source": "<div><p>text</div>"
+  },
+  {
+    "name": "optional li ending",
+    "source": "<ul><li>a<li>b</ul>"
+  },
+  {
+    "name": "comment",
+    "source": "<!-- original -->"
+  },
+  {
+    "name": "doctype",
+    "source": "<!DOCTYPE html>"
+  },
+  {
+    "name": "doctype public",
+    "source": "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\">"
+  },
+  {
+    "name": "text entities",
+    "source": "<p>&amp; &#65; &#x1f600; &copy;</p>"
+  },
+  {
+    "name": "text newlines",
+    "source": "<p>one\r\ntwo\rthree</p>"
+  },
+  {
+    "name": "literal angle text",
+    "source": "<p>4 < 8 > 2</p>"
+  },
+  {
+    "name": "non ascii tag text",
+    "source": "<p><日本></p>"
+  },
+  {
+    "name": "raw directive",
+    "source": "<div is:raw>{<% untouched %>}</div>"
+  },
+  {
+    "name": "foreign math",
+    "source": "<math><mi>{not + js}</mi></math>"
+  },
+  {
+    "name": "foreign iframe",
+    "source": "<iframe>{not + js}</iframe>"
+  },
+  {
+    "name": "textarea",
+    "source": "<textarea>{value}<b>literal</b></textarea>"
+  },
+  {
+    "name": "title",
+    "source": "<title>{value}<b>literal</b></title>"
+  },
+  {
+    "name": "style",
+    "source": "<style>p { color: red; }</style>"
+  },
+  {
+    "name": "style scss",
+    "source": "<style lang='scss'>$c: red; p {color:$c;}</style>"
+  },
+  {
+    "name": "script",
+    "source": "<script>const x: number = 1;</script>"
+  },
+  {
+    "name": "script leading trivia",
+    "source": "<script>\n// hi\nconst x=1;\n</script>"
+  },
+  {
+    "name": "empty script",
+    "source": "<script> \n </script>"
+  },
+  {
+    "name": "json script",
+    "source": "<script type='application/json'>{\"x\":1}</script>"
+  },
+  {
+    "name": "module script",
+    "source": "<script type='module'>import x from 'x'; console.log(x);</script>"
+  },
+  {
+    "name": "inline script",
+    "source": "<script is:inline>let x: number = 1;</script>"
+  },
+  {
+    "name": "script nested expression",
+    "source": "{ok && <script>const x=1;</script>}"
+  },
+  {
+    "name": "empty expression",
+    "source": "{}"
+  },
+  {
+    "name": "whitespace expression",
+    "source": "{   }"
+  },
+  {
+    "name": "comment expression",
+    "source": "{/* expression */}"
+  },
+  {
+    "name": "identifier expression",
+    "source": "{name}"
+  },
+  {
+    "name": "arithmetic expression",
+    "source": "{a + b * 2}"
+  },
+  {
+    "name": "logical expression",
+    "source": "{a && b || c ?? d}"
+  },
+  {
+    "name": "conditional expression",
+    "source": "{ok ? foo : bar}"
+  },
+  {
+    "name": "sequence expression",
+    "source": "{a, b, c}"
+  },
+  {
+    "name": "assignment expression",
+    "source": "{a += 2}"
+  },
+  {
+    "name": "update expression",
+    "source": "{++a + b--}"
+  },
+  {
+    "name": "unary expression",
+    "source": "{typeof x === 'string' ? !x : void 0}"
+  },
+  {
+    "name": "call member expression",
+    "source": "{obj.foo(a, ...rest)[key]}"
+  },
+  {
+    "name": "optional expression",
+    "source": "{obj?.foo?.(x)}"
+  },
+  {
+    "name": "new expression",
+    "source": "{new Map([[1, 2]])}"
+  },
+  {
+    "name": "object expression",
+    "source": "{{x: 1, value, ['key']: true, ...props}}"
+  },
+  {
+    "name": "array expression",
+    "source": "{[1, , 2, ...items]}"
+  },
+  {
+    "name": "arrow expression",
+    "source": "{items.map((x: string, i = 0) => <li>{x}{i}</li>)}"
+  },
+  {
+    "name": "arrow destructuring",
+    "source": "{({a, b: c = 1}, ...rest) => a + c}"
+  },
+  {
+    "name": "function expression",
+    "source": "{function f(x: number): number { return x; }}"
+  },
+  {
+    "name": "async arrow",
+    "source": "{async x => await foo(x)}"
+  },
+  {
+    "name": "template expression",
+    "source": "{`hello ${name}!`}"
+  },
+  {
+    "name": "tagged template",
+    "source": "{tag`a${x}b`}"
+  },
+  {
+    "name": "regular expression",
+    "source": "{/[}]/gi.test('}')}"
+  },
+  {
+    "name": "bigint expression",
+    "source": "{0xffn}"
+  },
+  {
+    "name": "escaped literal",
+    "source": "{'a\\n\\u65e5'}"
+  },
+  {
+    "name": "parenthesized expression",
+    "source": "{(foo + bar)}"
+  },
+  {
+    "name": "TS assertions",
+    "source": "{value as string}"
+  },
+  {
+    "name": "TS satisfies",
+    "source": "{value satisfies Props}"
+  },
+  {
+    "name": "TS nonnull",
+    "source": "{value!}"
+  },
+  {
+    "name": "TS instantiation",
+    "source": "{foo<string>(value)}"
+  },
+  {
+    "name": "TS generic arrow",
+    "source": "{(<T,>(x: T) => x)(1)}"
+  },
+  {
+    "name": "spread child",
+    "source": "{...items}"
+  },
+  {
+    "name": "sibling expression markup",
+    "source": "{<p/><span/>}"
+  },
+  {
+    "name": "whitespace markup expression",
+    "source": "{   <p/>   }"
+  },
+  {
+    "name": "mixed markup expression",
+    "source": "{<!-- hi --><p/>text}"
+  },
+  {
+    "name": "frontmatter function markup",
+    "source": "---\nconst make = (x: string) => <b>{x}</b>;\n---\n{make('x')}"
+  },
+  {
+    "name": "TS interface alias",
+    "source": "---\ninterface Props { name: string; optional?: number; }\ntype Pair<T> = [T, T];\n---\n<p/>"
+  },
+  {
+    "name": "TS union literal type",
+    "source": "---\ntype Value = 'a' | 1 | null; const x: Value = 'a';\n---\n<p/>"
+  },
+  {
+    "name": "control flow",
+    "source": "---\nlet x=0; if (ok) x++; else x--; for (const v of items) {x += v;} while(x<10) x++;\n---\n{x}"
+  },
+  {
+    "name": "try switch",
+    "source": "---\ntry { run(); } catch (err) { throw err; } finally {done();} switch(x) {case 1: break; default: run();}\n---\n<p/>"
+  },
+  {
+    "name": "class",
+    "source": "---\nclass C extends Base { x: number = 1; static y=2; constructor(x: number){super(x);} get value(){return this.x;} m(a){return a;} }\n---\n<p/>"
+  },
+  {
+    "name": "export declarations",
+    "source": "---\nexport default function f() {} export {f as named}; export * from 'pkg';\n---\n<p/>"
+  },
+  {
+    "name": "import type",
+    "source": "---\nimport type {Props} from 'pkg'; const x: Props = {};\n---\n<p/>"
+  },
+  {
+    "name": "unclosed element",
+    "source": "<div>"
+  },
+  {
+    "name": "unclosed component",
+    "source": "<Card>"
+  },
+  {
+    "name": "mismatched closing",
+    "source": "<div></span>"
+  },
+  {
+    "name": "invalid expression",
+    "source": "<p>{a + }</p>"
+  },
+  {
+    "name": "unicode invalid expression",
+    "source": "<p>é😀{a + }</p>"
+  },
+  {
+    "name": "invalid frontmatter",
+    "source": "---\nlet x = ;\n---\n<p/>"
+  },
+  {
+    "name": "invalid script",
+    "source": "<script>let x: = 1</script>"
+  },
+  {
+    "name": "unexpected expression token",
+    "source": "{a; b}"
+  },
+  {
+    "name": "malformed comment",
+    "source": "<!-->"
+  },
+  {
+    "name": "stray closing",
+    "source": "</div>tail"
+  },
+  {
+    "name": "lone surrogate string",
+    "source": "{'\\uD800'}"
+  },
+  {
+    "name": "lone surrogate template",
+    "source": "{`\\uDC00`}"
+  },
+  {
+    "name": "paired surrogate string",
+    "source": "{'\\uD83D\\uDE00'}"
+  },
+  {
+    "name": "long numeric literal",
+    "source": "{0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff}"
+  },
+  {
+    "name": "numeric separators",
+    "source": "{1_000 + 0b1010_1010 + 0o7_7 + .5 + 1e-5}"
+  },
+  {
+    "name": "bigint decimal",
+    "source": "{1234567890123456789012345678901234567890n}"
+  },
+  {
+    "name": "unicode escaped identifier",
+    "source": "---\nconst \\u0061 = 1;\n---\n{\\u0061}"
+  },
+  {
+    "name": "long chain",
+    "source": "{a.b.c.d.e.f.g.h}"
+  },
+  {
+    "name": "computed optional chain",
+    "source": "{a?.[key]?.b}"
+  },
+  {
+    "name": "object methods",
+    "source": "{{get x() {return 1;}, set x(v) {}, m(x) {return x;}, async y() {return 1;}}}"
+  },
+  {
+    "name": "generator",
+    "source": "---\nfunction* f(){yield 1; yield* items;}\n---\n<p/>"
+  },
+  {
+    "name": "class private members",
+    "source": "---\nclass C { #value=1; m(){return this.#value;} static { run(); } }\n---\n<p/>"
+  },
+  {
+    "name": "TS enum namespace",
+    "source": "---\nenum Mode { A, B = 'b' } namespace Ns { export const x = 1; }\n---\n<p/>"
+  },
+  {
+    "name": "TS mapped conditional types",
+    "source": "---\ntype Copy<T> = {readonly [K in keyof T]?: T[K]}; type Is<T> = T extends string ? true : false;\n---\n<p/>"
+  },
+  {
+    "name": "TS type query function",
+    "source": "---\ntype X = typeof item; type F = (x: string, ...rest: number[]) => void;\n---\n<p/>"
+  },
+  {
+    "name": "TS declaration function",
+    "source": "---\ndeclare function f(x: number): string;\n---\n<p/>"
+  },
+  {
+    "name": "TS optional tuple",
+    "source": "---\ntype Tuple = [first: string, second?: number, ...tail: boolean[]];\n---\n<p/>"
+  },
+  {
+    "name": "TS abstract class",
+    "source": "---\nabstract class C { abstract x: string; abstract m(x: string): void; }\n---\n<p/>"
+  },
+  {
+    "name": "TS constructor parameter",
+    "source": "---\nclass C { constructor(public readonly x: string) {} }\n---\n<p/>"
+  },
+  {
+    "name": "import meta",
+    "source": "{import.meta.url}"
+  },
+  {
+    "name": "dynamic import",
+    "source": "{import('pkg')}"
+  },
+  {
+    "name": "export type",
+    "source": "---\nexport type {Props} from 'pkg'; export type A = string;\n---\n<p/>"
+  },
+  {
+    "name": "frontmatter destructuring",
+    "source": "---\nconst {a, b: c = 1, ...rest} = props; let [x, , ...items] = list;\n---\n<p/>"
+  },
+  {
+    "name": "TS object annotation",
+    "source": "---\nconst {name}: {name: string} = props;\n---\n<p/>"
+  },
+  {
+    "name": "nested markup in TS template",
+    "source": "{`a${ok ? <b/> : <i/>}b`}"
+  },
+  {
+    "name": "JS/TS: expanded operators",
+    "source": "---\na+b-c*d/e%f**g; a==b; a===b; a!=b; a!==b; a<b; a<=b; a>b; a>=b; a<<b; a>>b; a>>>b; a&b; a|b; a^b; a in b; a instanceof b; a && b; a || b; a ?? b; !a; ~a; +a; -a; typeof a; void a; delete a.x; ++a; a--; a+=b; a&&=b; a??=b;\n---"
+  },
+  {
+    "name": "JS/TS: expanded all keyword types",
+    "source": "---\ntype T=[any,unknown,never,void,null,undefined,string,number,bigint,boolean,symbol,object];\n---"
+  },
+  {
+    "name": "JS/TS: expanded generics",
+    "source": "---\nfunction f<const T extends U=V>(x:T):T{return x} type A<T>=T; const v=f<string>(\"x\"); new C<string>();\n---"
+  },
+  {
+    "name": "JS/TS: expanded qualified type names",
+    "source": "---\ntype A=X.Y.Z<string>; type B=typeof X.Y.Z<string>; interface I extends X.Y<string> {} class C implements X.Y<string> {}\n---"
+  },
+  {
+    "name": "JS/TS: expanded literal types",
+    "source": "---\ntype T=\"x\"|1|-2|3n|-4n|true|false|`simple`; type U=`prefix${T}suffix`;\n---"
+  },
+  {
+    "name": "JS/TS: expanded type structures",
+    "source": "---\ntype A=(X|Y)&Z; type B=readonly [a:string,b?:number,...c:boolean[]]; type C=X[Y]; type D=T extends U?X:Y; type E=T extends infer U extends X ?U:never;\n---"
+  },
+  {
+    "name": "JS/TS: expanded function and constructor types",
+    "source": "---\ntype A=<T>(this:C,x:T,...args:string[])=>T; type B=abstract new<T>(x:T)=>C<T>;\n---"
+  },
+  {
+    "name": "JS/TS: expanded predicates",
+    "source": "---\nfunction isX(x:unknown):x is X{return true} function ok(x:unknown):asserts x {} function me():this is C{return true}\n---"
+  },
+  {
+    "name": "JS/TS: expanded type signatures",
+    "source": "---\ninterface I { readonly a?: string; m<T>(x:T):T; get p():string; set p(x:string); (this:C,x:string):void; new(x:string):C; readonly [key:string]:number }\n---"
+  },
+  {
+    "name": "JS/TS: expanded mapped types",
+    "source": "---\ntype A={readonly[K in keyof X as N]?:X[K]}; type B={-readonly[K in X]-?:Y}; type C={[K in X]+?:Y};\n---"
+  },
+  {
+    "name": "JS/TS: expanded enum variants",
+    "source": "---\nconst enum E {A,B=2,\"C\"=3,[\"D\"]=4}\n---"
+  },
+  {
+    "name": "JS/TS: expanded namespace variants",
+    "source": "---\ndeclare namespace X.Y.Z { export const a:number; } declare module \"m\"; declare global {interface I{}}\n---"
+  },
+  {
+    "name": "JS/TS: expanded imports exports",
+    "source": "---\nimport d,* as ns from \"m\"; import {type A,B as C} from \"m\" with {type:\"json\"}; import source x from \"m\"; import defer * as y from \"m\"; export type {A}; export {C as D}; export * as e from \"m\" with {type:\"json\"};\n---"
+  },
+  {
+    "name": "JS/TS: expanded TS import equals",
+    "source": "---\nimport x=require(\"m\"); import y=X.Y; export =x; export as namespace Foo;\n---"
+  },
+  {
+    "name": "JS/TS: expanded this and overload functions",
+    "source": "---\ndeclare function f(this:C,x?:number):void; function g(this:C,x:number):void; function g(this:C,x:number){}\n---"
+  },
+  {
+    "name": "JS/TS: expanded abstract accessor class",
+    "source": "---\nabstract class C<T> extends B<T> implements I<T> {public abstract m(x:T):void; protected abstract p?:T; abstract accessor q:T; static [k:string]:unknown; static {} }\n---"
+  },
+  {
+    "name": "JS/TS: expanded class members",
+    "source": "---\nclass C{ #p=1; get #x(){return this.#p}; set #x(x){this.#p=x}; async *m(a=1){yield* x;await x}; static accessor a=1; override x!:T; constructor(public readonly p:T=1, private q?:T){} }\n---"
+  },
+  {
+    "name": "JS/TS: expanded decorated class",
+    "source": "---\n@dec class C { @dec x=1; @dec m(@dec x:T){} }\n---"
+  },
+  {
+    "name": "JS/TS: expanded object members",
+    "source": "---\nconst x={a,b:c,[d]:e,m(x=1){return x},async *g(){},get p(){return 1},set p(v){}};\n---"
+  },
+  {
+    "name": "JS/TS: expanded patterns",
+    "source": "---\nconst [a,,b=1,...rest]=xs; const {x:y=1,z,...o}=v; function f([a]:T,{b}:T=foo,...c:T[]){}; ([a,...b]=c); ({a,b:c=1,...d}=x);\n---"
+  },
+  {
+    "name": "JS/TS: expanded all statements",
+    "source": "---\nlabel: for(let i=0;i<3;i++){if(i)continue label;else break label} for (const x in y) {} for await (const x of y){} while(x){} do{}while(x); switch(x){case 1:break;default:debugger} try{throw x}catch(e:T){}finally{};\n---"
+  },
+  {
+    "name": "JS/TS: expanded dynamic imports and meta",
+    "source": "---\nimport(\"m\",{with:{type:\"json\"}}); import.source(\"m\"); import.defer(\"m\"); import.meta; function f(){new.target;}\n---"
+  },
+  {
+    "name": "JS/TS: expanded regex template",
+    "source": "---\nconst r=/a/ymigd; const t=`a${x}b${y}c`; const q=tag`bad\\xg`;\n---"
+  },
+  {
+    "name": "JS/TS: expanded long literals",
+    "source": "---\nconst x=0x123456789abcdef0123456789; const y=0b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111; const z=111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111; const b=0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffn;\n---"
+  },
+  {
+    "name": "JS/TS: expanded long member chain",
+    "source": "---\nconst x=a.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b;\n---"
+  },
+  {
+    "name": "JS/TS: expanded JSDoc types",
+    "source": "---\ntype T=Foo<?X,!Y,Z?,W!,?>;\n---"
+  },
+  {
+    "name": "JS/TS: expanded resource declarations",
+    "source": "---\nusing x=foo(); await using y=bar();\n---"
+  },
+  {
+    "name": "JS/TS: expanded empty defaults",
+    "source": "---\nexport default function(){}; export default class{};\n---"
+  },
+  {
+    "name": "script closing trivia",
+    "source": "<div><script></script>  <p/></div>"
+  },
+  {
+    "name": "script closing block trivia",
+    "source": "<div><script></script>/*hi*/<p/></div>"
+  },
+  {
+    "name": "self closing script trivia",
+    "source": "<script/> a<p/>"
+  },
+  {
+    "name": "stray nested closing recovery",
+    "source": "<div></span><p/></div>"
+  },
+  {
+    "name": "attribute JS comments",
+    "source": "<div /*a*/ id=\"x\" //b\nclass=\"y\"/>"
+  },
+  {
+    "name": "shorthand JS comments",
+    "source": "<p {/*a*/ id /*b*/}/>"
+  },
+  {
+    "name": "attribute name JSON escape",
+    "source": "<p data-a\\b/>"
+  },
+  {
+    "name": "attribute name Unicode escape",
+    "source": "<p data-\\u0041/>"
+  },
+  {
+    "name": "generic component",
+    "source": "<Box<string> a={v}/>"
+  },
+  {
+    "name": "generic component in expression",
+    "source": "{<Box<string> a={v}/>}"
+  },
+  {
+    "name": "nested generic component",
+    "source": "<UI.Box<Array<string>, {x: number}> value={v}/>"
+  },
+  {
+    "name": "generic component function type",
+    "source": "<Box<() => string>/>"
+  },
+  {
+    "name": "frontmatter generic component",
+    "source": "---\nconst node = <Box<{x: string}>/>;\n---\n{node}"
+  },
+  {
+    "name": "frontmatter invalid type assertion",
+    "source": "---\nconst v = <number>x;\n---\n<p/>"
+  },
+  {
+    "name": "enum invalid bare template name",
+    "source": "---\nenum E { `x` = 1 }\n---\n<p/>"
+  },
+  {
+    "name": "member component spacing",
+    "source": "<UI . Button/>"
+  },
+  {
+    "name": "invalid attribute expression",
+    "source": "<p a={a + }/>"
+  },
+  {
+    "name": "invalid shorthand expression",
+    "source": "<p {a + }/>"
+  },
+  {
+    "name": "root missing binary RHS",
+    "source": "{a + }"
+  },
+  {
+    "name": "root missing binary stops body",
+    "source": "{a + }tail"
+  },
+  {
+    "name": "root missing unary operand",
+    "source": "{!}"
+  },
+  {
+    "name": "root missing multiplicative RHS",
+    "source": "{a *}"
+  },
+  {
+    "name": "root missing conditional alternate",
+    "source": "{a ? b : }"
+  },
+  {
+    "name": "root nested missing RHS",
+    "source": "{a + b * }"
+  }
+]

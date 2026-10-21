@@ -1,0 +1,8 @@
+.tmp/
+.zig-cache/
+zig-out/
+zig-pkg/
+test/upstream/
+node_modules/
+coverage/
+dist/

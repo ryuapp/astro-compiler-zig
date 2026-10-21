@@ -1,0 +1,2071 @@
+{
+  "reference": "@astrojs/astro2tsx@0.1.2",
+  "results": [
+    {
+      "name": "extract script in expression: markup",
+      "source": "{ok && <script><span>{x}</span></script>}",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n{ok && <script></script>}\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            15,
+            0,
+            15,
+            0
+          ],
+          [
+            56,
+            10,
+            31,
+            10,
+            0
+          ],
+          [
+            103,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 67
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 31
+            },
+            "content": "<span>{x}</span>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in attribute: markup",
+      "source": "<C value={<script><span>{x}</span></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C value={<script></script>} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            44,
+            6,
+            3,
+            6,
+            0
+          ],
+          [
+            51,
+            8,
+            10,
+            8,
+            0
+          ],
+          [
+            59,
+            9,
+            34,
+            9,
+            0
+          ],
+          [
+            69,
+            3,
+            44,
+            3,
+            0
+          ],
+          [
+            109,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 73
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 18,
+              "end": 34
+            },
+            "content": "<span>{x}</span>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in lowered attribute: markup",
+      "source": "<C @x={<script><span>{x}</span></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C {...{\"@x\":(<script></script>)}} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            50,
+            2,
+            3,
+            2,
+            0
+          ],
+          [
+            55,
+            8,
+            7,
+            8,
+            0
+          ],
+          [
+            63,
+            9,
+            31,
+            9,
+            0
+          ],
+          [
+            75,
+            3,
+            41,
+            3,
+            0
+          ],
+          [
+            115,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 79
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 31
+            },
+            "content": "<span>{x}</span>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in expression: comment",
+      "source": "{ok && <script><!--c--></script>}",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n{ok && <script></script>}\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            15,
+            0,
+            15,
+            0
+          ],
+          [
+            56,
+            10,
+            23,
+            10,
+            0
+          ],
+          [
+            103,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 67
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 23
+            },
+            "content": "<!--c-->",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in attribute: comment",
+      "source": "<C value={<script><!--c--></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C value={<script></script>} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            44,
+            6,
+            3,
+            6,
+            0
+          ],
+          [
+            51,
+            8,
+            10,
+            8,
+            0
+          ],
+          [
+            59,
+            9,
+            26,
+            9,
+            0
+          ],
+          [
+            69,
+            3,
+            36,
+            3,
+            0
+          ],
+          [
+            109,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 73
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 18,
+              "end": 26
+            },
+            "content": "<!--c-->",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in lowered attribute: comment",
+      "source": "<C @x={<script><!--c--></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C {...{\"@x\":(<script></script>)}} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            50,
+            2,
+            3,
+            2,
+            0
+          ],
+          [
+            55,
+            8,
+            7,
+            8,
+            0
+          ],
+          [
+            63,
+            9,
+            23,
+            9,
+            0
+          ],
+          [
+            75,
+            3,
+            33,
+            3,
+            0
+          ],
+          [
+            115,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 79
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 23
+            },
+            "content": "<!--c-->",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in expression: unicode",
+      "source": "{ok && <script>日本🦊</script>}",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n{ok && <script></script>}\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            15,
+            0,
+            15,
+            0
+          ],
+          [
+            56,
+            10,
+            19,
+            10,
+            0
+          ],
+          [
+            103,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 67
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 19
+            },
+            "content": "日本🦊",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in attribute: unicode",
+      "source": "<C value={<script>日本🦊</script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C value={<script></script>} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            44,
+            6,
+            3,
+            6,
+            0
+          ],
+          [
+            51,
+            8,
+            10,
+            8,
+            0
+          ],
+          [
+            59,
+            9,
+            22,
+            9,
+            0
+          ],
+          [
+            69,
+            3,
+            32,
+            3,
+            0
+          ],
+          [
+            109,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 73
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 18,
+              "end": 22
+            },
+            "content": "日本🦊",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in lowered attribute: unicode",
+      "source": "<C @x={<script>日本🦊</script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C {...{\"@x\":(<script></script>)}} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            50,
+            2,
+            3,
+            2,
+            0
+          ],
+          [
+            55,
+            8,
+            7,
+            8,
+            0
+          ],
+          [
+            63,
+            9,
+            19,
+            9,
+            0
+          ],
+          [
+            75,
+            3,
+            29,
+            3,
+            0
+          ],
+          [
+            115,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 79
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 19
+            },
+            "content": "日本🦊",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in expression: broken-js",
+      "source": "{ok && <script>const = ;</script>}",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n{ok && <script></script>}\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            15,
+            0,
+            15,
+            0
+          ],
+          [
+            56,
+            10,
+            24,
+            10,
+            0
+          ],
+          [
+            103,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 67
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 24
+            },
+            "content": "const = ;",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in attribute: broken-js",
+      "source": "<C value={<script>const = ;</script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C value={<script></script>} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            44,
+            6,
+            3,
+            6,
+            0
+          ],
+          [
+            51,
+            8,
+            10,
+            8,
+            0
+          ],
+          [
+            59,
+            9,
+            27,
+            9,
+            0
+          ],
+          [
+            69,
+            3,
+            37,
+            3,
+            0
+          ],
+          [
+            109,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 73
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 18,
+              "end": 27
+            },
+            "content": "const = ;",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in lowered attribute: broken-js",
+      "source": "<C @x={<script>const = ;</script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C {...{\"@x\":(<script></script>)}} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            50,
+            2,
+            3,
+            2,
+            0
+          ],
+          [
+            55,
+            8,
+            7,
+            8,
+            0
+          ],
+          [
+            63,
+            9,
+            24,
+            9,
+            0
+          ],
+          [
+            75,
+            3,
+            34,
+            3,
+            0
+          ],
+          [
+            115,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 79
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 24
+            },
+            "content": "const = ;",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in expression: nested-style",
+      "source": "{ok && <script><style>.x{color:red}</style></script>}",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n{ok && <script></script>}\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            15,
+            0,
+            15,
+            0
+          ],
+          [
+            56,
+            10,
+            43,
+            10,
+            0
+          ],
+          [
+            103,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 67
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 43
+            },
+            "content": "<style>.x{color:red}</style>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in attribute: nested-style",
+      "source": "<C value={<script><style>.x{color:red}</style></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C value={<script></script>} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            44,
+            6,
+            3,
+            6,
+            0
+          ],
+          [
+            51,
+            8,
+            10,
+            8,
+            0
+          ],
+          [
+            59,
+            9,
+            46,
+            9,
+            0
+          ],
+          [
+            69,
+            3,
+            56,
+            3,
+            0
+          ],
+          [
+            109,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 73
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 18,
+              "end": 46
+            },
+            "content": "<style>.x{color:red}</style>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "extract script in lowered attribute: nested-style",
+      "source": "<C @x={<script><style>.x{color:red}</style></script>} />",
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<C {...{\"@x\":(<script></script>)}} />\n</Fragment>\nexport default function AstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            50,
+            2,
+            3,
+            2,
+            0
+          ],
+          [
+            55,
+            8,
+            7,
+            8,
+            0
+          ],
+          [
+            63,
+            9,
+            43,
+            9,
+            0
+          ],
+          [
+            75,
+            3,
+            53,
+            3,
+            0
+          ],
+          [
+            115,
+            14,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 79
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [
+          {
+            "position": {
+              "start": 15,
+              "end": 43
+            },
+            "content": "<style>.x{color:red}</style>",
+            "type": "processed-module"
+          }
+        ],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: $foo.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "$foo.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function FooAstroComponent(_props: Record<string, any>): any {}\n\nexport { FooAstroComponent as Foo };\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            17,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 138,
+          "end": 175
+        }
+      }
+    },
+    {
+      "name": "generic component name: $foo.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "$foo.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function FooAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof FooAstroComponent>[0], typeof FooAstroComponent>>;\n\nexport { FooAstroComponent as Foo };\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            17,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 479,
+          "end": 516
+        }
+      }
+    },
+    {
+      "name": "component name: foo$bar.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "foo$bar.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function FooBarAstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "generic component name: foo$bar.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "foo$bar.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function FooBarAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof FooBarAstroComponent>[0], typeof FooBarAstroComponent>>;\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: éComp.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "éComp.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function ÉCompAstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            19,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "generic component name: éComp.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "éComp.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function ÉCompAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof ÉCompAstroComponent>[0], typeof ÉCompAstroComponent>>;\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            19,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: ΔPage.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "ΔPage.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function ΔPageAstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            19,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "generic component name: ΔPage.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "ΔPage.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function ΔPageAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof ΔPageAstroComponent>[0], typeof ΔPageAstroComponent>>;\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            19,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: ßPage.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "ßPage.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function SSPageAstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "generic component name: ßPage.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "ßPage.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function SSPageAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof SSPageAstroComponent>[0], typeof SSPageAstroComponent>>;\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: foo2BAR.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "foo2BAR.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function Foo2barAstroComponent(_props: Record<string, any>): any {}\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            21,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "generic component name: foo2BAR.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "foo2BAR.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function Foo2barAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof Foo2barAstroComponent>[0], typeof Foo2barAstroComponent>>;\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            21,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false
+      }
+    },
+    {
+      "name": "component name: foo2Bar.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "foo2Bar.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function Foo2BarAstroComponent(_props: Record<string, any>): any {}\n\nexport { Foo2BarAstroComponent as Foo2Bar };\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            21,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 142,
+          "end": 187
+        }
+      }
+    },
+    {
+      "name": "generic component name: foo2Bar.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "foo2Bar.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function Foo2BarAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof Foo2BarAstroComponent>[0], typeof Foo2BarAstroComponent>>;\n\nexport { Foo2BarAstroComponent as Foo2Bar };\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            21,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 491,
+          "end": 536
+        }
+      }
+    },
+    {
+      "name": "component name: my_comp.astro",
+      "source": "<p/>",
+      "options": {
+        "filename": "my_comp.astro"
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n<Fragment>\n<p/>\n</Fragment>\nexport default function MyCompAstroComponent(_props: Record<string, any>): any {}\n\nexport { MyCompAstroComponent as MyComp };\n",
+        "mappings": [
+          [
+            29,
+            1,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            41,
+            4,
+            0,
+            4,
+            0
+          ],
+          [
+            82,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 30
+        },
+        "body": {
+          "start": 41,
+          "end": 46
+        },
+        "frontmatterStatus": "doesnt-exist",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 0
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 141,
+          "end": 184
+        }
+      }
+    },
+    {
+      "name": "generic component name: my_comp.astro",
+      "source": "---\ninterface Props<T> {value:T}\n---\n<p/>",
+      "options": {
+        "filename": "my_comp.astro",
+        "ambientTypes": true
+      },
+      "expected": {
+        "code": "/* @jsxImportSource astro */\n\n\ninterface Props<T> {value:T}\n\n;{};<Fragment>\n\n<p/>\n</Fragment>\nexport default function MyCompAstroComponent<T>(_props: Props<T>): any {}\ndeclare const Fragment: any;\n/**\n * Astro global available in all contexts in .astro files\n *\n * [Astro documentation](https://docs.astro.build/reference/api-reference/#astro-global)\n*/\ndeclare const Astro: Readonly<import('astro').AstroGlobal<Parameters<typeof MyCompAstroComponent>[0], typeof MyCompAstroComponent>>;\n\nexport { MyCompAstroComponent as MyComp };\n",
+        "mappings": [
+          [
+            30,
+            30,
+            3,
+            30,
+            0
+          ],
+          [
+            61,
+            15,
+            33,
+            0,
+            1
+          ],
+          [
+            76,
+            5,
+            36,
+            5,
+            0
+          ],
+          [
+            118,
+            20,
+            0,
+            0,
+            1,
+            72
+          ]
+        ],
+        "frontmatter": {
+          "start": 30,
+          "end": 61
+        },
+        "body": {
+          "start": 76,
+          "end": 82
+        },
+        "frontmatterStatus": "closed",
+        "frontmatterSource": {
+          "start": 0,
+          "end": 36
+        },
+        "scripts": [],
+        "styles": [],
+        "hasParseErrors": false,
+        "generatedComponentExport": {
+          "start": 488,
+          "end": 531
+        }
+      }
+    }
+  ]
+}

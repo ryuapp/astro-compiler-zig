@@ -1,0 +1,14 @@
+---
+const {tone = "tomato"} = Astro.props;
+---
+<article class:list={["card", {active:true}]} transition:name="card">
+  <slot name="title"/><slot/>
+</article>
+<style define:vars={{tone}}>
+  .card {color:var(--tone)}
+  .card > :global(p) {font-weight:600}
+</style>
+<script>
+  enum State {Ready = 3}
+  document.documentElement.dataset.yuku = "yuku-client-ready:" + State.Ready;
+</script>

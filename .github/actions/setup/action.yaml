@@ -1,0 +1,19 @@
+name: Setup
+description: Set up Vite+ and Zig.
+
+runs:
+  using: composite
+  steps:
+    - uses: voidzero-dev/setup-vp@68f39c78aaf39be468cabd2afb09c162574c84af # v1.21.2
+      with:
+        node-version-file: .node-version
+        run-install: true
+        cache: true
+    - uses: jdx/mise-action@fc42bcc7ddbf51124c30f95a877a0c5168a3bfde # v5.2.1
+    - name: Cache Zig build
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: .zig-cache
+        key: zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-${{ hashFiles('build.zig', 'src/**') }}
+        restore-keys: |
+          zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('mise.toml', 'mise.lock', 'build.zig.zon') }}-
