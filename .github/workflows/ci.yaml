@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v7.0.1
       - uses: $/.github/actions/setup
       - run: vp pack
+        env:
+          ZIG_VERBOSE_CMD: "1"
       - run: vp check
         if: runner.os != 'Windows'
       - run: vp exec playwright-core install --only-shell chromium ${{ runner.os == 'Linux' && '--with-deps' || '' }}
