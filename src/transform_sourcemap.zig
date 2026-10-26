@@ -1,6 +1,6 @@
 const std = @import("std");
 const text = @import("tsx_text.zig");
-const utf = @import("util").Utf;
+const utf = @import("spec").line_terminators;
 const Allocator = std.mem.Allocator;
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 const digits = blk: {

@@ -22,6 +22,13 @@ const inputs = ["biome", "tsx-upstream", "transform-upstream", "bench"].flatMap(
   })),
 );
 inputs.push(...fixtures);
+inputs.push(
+  ...[
+    '---\r\n/*🦊*/ const 名前 = "日本語";\r\n---\r\n<p>{名前 /*🦀*/}</p><script>/*é*/ const value = "🦊";</script>',
+    "<p>🦊</p>\r\n<script>/*日本語*/ const first = 1;</script>\r\n<script>//🦀\r\nconst second = 2;</script>",
+    '---\r\nconst 名前 = "🦊";\r\n---\r\n<p>{名前 + /*🦀*/ }</p>',
+  ].map((source, index) => ({ name: "Yuku UTF-16 transfer with CRLF " + index, source })),
+);
 for (const fixture of biome.fixtures.filter((fixture) => fixture.kind === "expression")) {
   const source =
     biome.expressionWrapper.prefix +

@@ -32,16 +32,16 @@ pub fn lower(allocator: Allocator, tree: *Ast.Tree) !void {
         const symbol = semantics.symbol(symbol_id);
         var owner: Index = .null;
         if (symbol.flags.enum_member) {
-            owner = semantics.scope(symbol.scope).node;
+            owner = semantics.scopes.get(symbol.scope).node;
             for (0..256) |_| {
                 if (tree.data(owner) == .ts_enum_declaration) break;
                 owner = semantics.parentOf(owner) orelse break;
             }
-        } else if (symbol.flags.exported and semantics.scope(symbol.scope).kind == .ts_module) {
+        } else if (symbol.flags.exported and semantics.scopes.get(symbol.scope).kind == .ts_module) {
             var scope = semantics.scopeOf(id);
-            while (scope != .none and semantics.scope(scope).kind != .ts_module) scope = semantics.scope(scope).parent;
+            while (scope != .none and semantics.scopes.get(scope).kind != .ts_module) scope = semantics.scopes.get(scope).parent;
             if (scope == symbol.scope) continue;
-            owner = semantics.scope(symbol.scope).node;
+            owner = semantics.scopes.get(symbol.scope).node;
             for (0..256) |_| {
                 if (tree.data(owner) == .ts_module_declaration) break;
                 owner = semantics.parentOf(owner) orelse break;
