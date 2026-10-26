@@ -6,8 +6,8 @@
     .minimum_zig_version = "0.17.0",
     .dependencies = .{
         .yuku = .{
-            .url = "git+https://github.com/ryuapp/yuku.git#80e9bbc5767de2ea3248cbed071521d4eebc37f4",
-            .hash = "yuku-0.21.0-m6ranrZ8EgC0LPbGbCAD4d3loevcfSwKbIZ5MlUVUPaK",
+            .url = "git+https://github.com/ryuapp/yuku.git#5fd0fd093bf41b9a62c3dbbea9e43e8e4acaad1b",
+            .hash = "yuku-0.24.1-m6rangZXEwBQy0Sh4wSPwMZSXi31z-EurL3C9vNXrXM0",
         },
     },
     .paths = .{

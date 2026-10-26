@@ -28,6 +28,7 @@ fn compilerModule(b: *std.Build, name: []const u8, target: std.Build.ResolvedTar
     module.addImport("parser", parser);
     module.addImport("yuku_transfer", transfer);
     module.addImport("util", parser.import_table.get("util").?);
+    module.addImport("spec", parser.import_table.get("spec").?);
     module.addImport("meta", meta);
     parser.import_table.get("dialect").?.addImport("astro", module);
     return module;

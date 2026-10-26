@@ -133,7 +133,7 @@ async function tsxData(): Promise<string> {
 }
 
 // Keep Yuku's complete ESTree conversion, including uncommon TypeScript nodes.
-// Project Astro dialect nodes, share the UTF-16 position table and decode selected
+// Project Astro dialect nodes and decode selected
 // region roots from the shared document tree.
 export function estreeDecoderSource(source: string, revision: string): string {
   const entitiesStart = source.indexOf("const JSX_ENTITY_NAMES =");
@@ -141,7 +141,8 @@ export function estreeDecoderSource(source: string, revision: string): string {
   assert.ok(entitiesStart >= 0 && entitiesEnd > entitiesStart, "Missing Yuku JSX text decoder");
   const tables =
     source.slice(source.indexOf("const NULL ="), source.indexOf("const TokenKind =")) +
-    source.slice(entitiesStart, entitiesEnd);
+    source.slice(entitiesStart, entitiesEnd) +
+    source.slice(source.indexOf("const CHILD_SLOTS ="), source.indexOf("const IS_NODE ="));
   const decoders = source.slice(
     source.indexOf("function shaped("),
     source.indexOf("function decode("),
@@ -153,7 +154,7 @@ export function estreeDecoderSource(source: string, revision: string): string {
   context = context
     .replace(
       "function decode(buffer, source, path, shapes)",
-      "function createDecoder(buffer, source, markup, astro, offsets)",
+      "function createDecoder(buffer, source, markup, astro)",
     )
     .replace("new Uint8Array(buffer)", "new Uint8Array(buffer, 12)")
     .replace(
@@ -161,33 +162,36 @@ export function estreeDecoderSource(source: string, revision: string): string {
       "new Int32Array(buffer, 12, new DataView(buffer).getUint32(8, true) >> 2)",
     )
     .replace("  const _src = source;", "  const shapes = null;\n  const _src = source;")
-    .replace("buildPosMap(_src, _srcLen, _firstNa)", "offsets")
     .replace(
-      "  function _decode(i, depth) {",
-      "  function _decode(i, depth) {\n    if (markup.has(i)) return astro(markup.get(i));",
+      "  function _decode(i) {",
+      "  function _decode(i) {\n    if (markup.has(i)) return astro(markup.get(i));",
     )
-    .replace(
-      "  const _inner = _attached ? nodeWithComments : _decode;",
-      `  function jsonNode(i, depth) {
-    const value = _decode(i, depth);
+    .replaceAll(
+      "const r = _decode(k);",
+      `const r = _decode(k);
+    const value = r;
     if (value?.type === "Literal" && (typeof value.value === "bigint" || value.regex || typeof value.value === "number" && !Number.isFinite(value.value))) value.value = null;
     if (value?.regex && value.start === 0 && value.end === 0) value.raw = null;
-    return value;
-  }
-  const _inner = jsonNode;`,
+`,
     );
   // Astro restores selected region roots and projects its dialect nodes from document metadata.
   // Keep the ordinary decoder path so uncommitted or unrelated forest nodes are not materialized.
-  context = context.replace(/  let _owned, _ownedBits;[\s\S]*?(?=  function _decode\()/, "");
-  const indexed = /  const node = [\s\S]*?;\n/;
-  assert.ok(indexed.test(context), "Missing Yuku node dispatcher");
-  context = context.replace(indexed, "  const node = _inner;\n");
+  const comments = source.slice(
+    source.indexOf("  function _decodeComments()"),
+    source.indexOf("  function _decodeDiagnostics()"),
+  );
+  const subtree = source
+    .slice(source.indexOf("  function _subtree(root)"), source.indexOf("  let _parentArr;"))
+    .replace("      found.push(k);", "      found.push(k);\n      if (markup.has(k)) continue;");
   assert.ok(context.includes("if (markup.has(i))"), "Yuku decoder layout changed");
   const javascript =
     tables +
     decoders +
     context +
-    "\n  _posMap();\n  return (id) => id === NULL || id === 0xffffffff ? null : node(id, 0);\n}\nexport { createDecoder };\n";
+    "  let _comments;\n" +
+    comments +
+    subtree +
+    "\n  return (id) => id === NULL || id === 0xffffffff ? null : nodeAt(id);\n}\nexport { createDecoder };\n";
   // Upstream generates JavaScript. Add explicit types to its generated dynamic
   // records/functions so the checked-in adaptation remains TypeScript in strict mode.
   const file = ts.createSourceFile("estree_nodes.ts", javascript, ts.ScriptTarget.Latest, true);
@@ -286,7 +290,7 @@ async function estreeDecoder(): Promise<string> {
   const match = /git\+([^"#]+)#([0-9a-f]{40})/.exec(dependency);
   assert.ok(match, "Missing pinned Yuku dependency");
   const source = await repository(match[1], match[2], ".tmp/yuku-source");
-  const [decoder] = await readBlobs(source, match[2], ["packages/yuku/core/decode.js"]);
+  const [decoder] = await readBlobs(source, match[2], ["npm/yuku/core/decode.js"]);
   return estreeDecoderSource(decoder.toString("utf8"), match[2]);
 }
 

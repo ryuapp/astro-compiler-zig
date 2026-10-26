@@ -4,7 +4,7 @@ const wire = @import("yuku_transfer");
 const astro = @import("astro");
 
 comptime {
-    std.debug.assert(@sizeOf(wire.Header) == 40);
+    std.debug.assert(@sizeOf(wire.Header) == 36);
     std.debug.assert(@sizeOf(wire.PackedNode) == 48);
     std.debug.assert(@sizeOf(wire.PackedComment) == 24);
     std.debug.assert(@sizeOf(ast.Token) == 16);

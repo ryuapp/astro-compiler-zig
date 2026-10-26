@@ -10,7 +10,7 @@ import type { InternalAstroDiagnostic, ESTreeNode, ParseResult } from "./types.t
 export default function estree(r: Reader, littleEndian?: boolean): ParseResult {
   const header = r.open(littleEndian);
   const source = r.source;
-  const sourceLength = header[3];
+  const sourceLength = r.sourceLength;
   const documentStart = r.cursor;
   const firstNonAscii = r.firstNonAscii;
   const offsets =
@@ -69,16 +69,16 @@ export default function estree(r: Reader, littleEndian?: boolean): ParseResult {
     comments.push({
       type: r.view.getUint8(offset + layout.COMMENT_FLAGS_OFFSET) & 1 ? "Block" : "Line",
       value:
-        start < sourceLength
-          ? slice(start, end)
+        start < source.length
+          ? source.slice(start, end)
           : decodeUtf8(
               r.buffer.subarray(
-                r.poolOffset + start - sourceLength,
-                r.poolOffset + end - sourceLength,
+                r.poolOffset + start - source.length,
+                r.poolOffset + end - source.length,
               ),
             ),
-      start: nativeWord(layout.COMMENT_SPAN_START_OFFSET),
-      end: nativeWord(layout.COMMENT_SPAN_END_OFFSET),
+      start: r.byteOffset(nativeWord(layout.COMMENT_SPAN_START_OFFSET)),
+      end: r.byteOffset(nativeWord(layout.COMMENT_SPAN_END_OFFSET)),
     });
   }
   comments.sort((a, b) => a.start - b.start);
@@ -101,13 +101,7 @@ export default function estree(r: Reader, littleEndian?: boolean): ParseResult {
     comments[commentCount++] = comment;
   }
   comments.length = commentCount;
-  const js: (id: number) => ESTreeNode | null = createDecoder(
-    r.view.buffer,
-    source,
-    markup,
-    astro,
-    offsets,
-  );
+  const js: (id: number) => ESTreeNode | null = createDecoder(r.view.buffer, source, markup, astro);
 
   function programFor(id: number, start: number, end: number): ESTreeNode {
     const program = js(id)!;
@@ -122,7 +116,7 @@ export default function estree(r: Reader, littleEndian?: boolean): ParseResult {
       program.start = 0;
       program.end = 0;
     } else {
-      program.start = pos(r.firstTokenStart(start, end));
+      program.start = r.firstTokenStart(pos(start), pos(end));
       program.end = pos(end);
     }
     return program;

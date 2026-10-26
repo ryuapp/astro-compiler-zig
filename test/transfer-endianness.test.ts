@@ -4,7 +4,6 @@ import { assert, test } from "vite-plus/test";
 import ts from "typescript-compat";
 import { Reader, decodeSnapshot } from "../src/transfer_decode.ts";
 import { binding } from "./parse-internal.ts";
-import { byteIndex } from "../src/positions.ts";
 import { createDecoder } from "../src/estree_nodes.ts";
 
 function bigEndianWords(buffer: ArrayBuffer, offset: number, count: number) {
@@ -43,17 +42,16 @@ test("WASM records restore complete ASTs with simulated big endian host word rea
     "---\ninterface Props<T>{value:T}const fn=<T,>(value:T)=>value;\n---",
   ]) {
     const buffer = binding.parseBuffer(source);
-    const header = new Reader(buffer, source).open(true);
+    new Reader(buffer, source).open(true);
     const root = decodeSnapshot(buffer, source, true).ast.frontmatter!.root;
-    const offsets = header[9] < header[3] ? byteIndex(source, header[3], header[9]) : null;
     const markup = () => {
       throw new Error("Unexpected Astro markup in the JavaScript fixture");
     };
-    const expected = createDecoder(buffer.slice(0), source, new Map(), markup, offsets)(root);
+    const expected = createDecoder(buffer.slice(0), source, new Map(), markup)(root);
     assert.strictEqual(expected.type, "Program");
     assert.ok(expected.body.length > 0);
-    const decode = module.createDecoder(buffer, source, new Map(), markup, offsets);
+    const decode = module.createDecoder(buffer, source, new Map(), markup);
     assert.deepEqual(JSON.parse(JSON.stringify(decode(root))), expected, source);
-    assert.strictEqual(new DataView(buffer).getUint32(24, false), Buffer.byteLength(source));
+    assert.strictEqual(new DataView(buffer).getUint32(24, false), source.length);
   }
 });

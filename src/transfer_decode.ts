@@ -121,10 +121,13 @@ export class Reader {
       throw new Error("Unsupported Astro transfer format");
     const treeEnd = 12 + this.u32();
     const header = words(this.view.buffer, 12, layout.HEADER_SIZE / 4, littleEndian);
-    if (header[3] !== utf8Length(this.source)) throw new Error("Transfer source length mismatch");
+    if (header[3] !== this.source.length) throw new Error("Transfer source length mismatch");
     if (treeEnd > this.buffer.length) throw new Error("Truncated Astro transfer buffer");
-    this.sourceLength = header[3];
-    this.firstNonAscii = header[9];
+    this.sourceLength = utf8Length(this.source);
+    let firstNonAscii = 0;
+    while (firstNonAscii < this.source.length && this.source.charCodeAt(firstNonAscii) < 128)
+      firstNonAscii++;
+    this.firstNonAscii = firstNonAscii;
     this.poolOffset = 12 + layout.HEADER_SIZE + header[0] * layout.NODE_SIZE + header[1] * 4;
     this.commentOffset = this.poolOffset + Math.ceil(header[2] / 4) * 4;
     this.tokenOffset = this.commentOffset + header[4] * layout.COMMENT_SIZE;
@@ -150,6 +153,10 @@ export class Reader {
     }
     return end;
   }
+  // Yuku transfers UTF-16 positions; Astro document metadata keeps UTF-8 byte offsets.
+  byteOffset(unit: number) {
+    return unit <= this.firstNonAscii ? unit : utf8Length(this.source.slice(0, unit));
+  }
   yukuDiagnostic() {
     const severity = severities[this.u8()];
     const span = { start: this.u32(), end: this.u32() };
@@ -174,12 +181,13 @@ export default function decode(
     nodeCount,
     extraCount,
     poolLength,
-    sourceLength,
+    yukuSourceLength,
     commentCount,
     _tokenCount,
     diagnosticCount,
     root,
   ] = h;
+  const sourceLength = r.sourceLength;
   let offset = 12 + layout.HEADER_SIZE;
   const nodes = [] as any[];
   offset += nodeCount * layout.NODE_SIZE;
@@ -257,10 +265,14 @@ export default function decode(
   for (const comment of comments) {
     const { start, end } = comment.value;
     const value =
-      start < sourceLength
-        ? r.slice(start, end)
-        : decodeUtf8(pool.subarray(start - sourceLength, end - sourceLength));
-    astComments.push({ type: comment.type, span: comment.span, value });
+      start < yukuSourceLength
+        ? r.source.slice(start, end)
+        : decodeUtf8(pool.subarray(start - yukuSourceLength, end - yukuSourceLength));
+    astComments.push({
+      type: comment.type,
+      span: { start: r.byteOffset(comment.span.start), end: r.byteOffset(comment.span.end) },
+      value,
+    });
   }
   astComments.sort((a, b) => a.span.start - b.span.start);
   let count = 0;

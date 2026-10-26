@@ -12,9 +12,9 @@ function entries(tree: any, range: any) {
   return tree.extras.slice(range.start, range.start + range.len);
 }
 function stringBytes(tree: any, handle: any) {
-  const source = Buffer.from(tree.source);
+  const source = tree.source;
   return handle.start < source.length
-    ? source.subarray(handle.start, handle.end)
+    ? Buffer.from(source.slice(handle.start, handle.end))
     : Buffer.from(tree.strings.extra).subarray(
         handle.start - source.length,
         handle.end - source.length,
@@ -181,7 +181,7 @@ test("independent programs retain nested markup, comments and local return rules
     ),
   );
 });
-test("Unicode spans stay in original UTF-8 bytes and Yuku diagnostic messages survive", () => {
+test("Yuku UTF-16 diagnostics match Astro UTF-8 diagnostics without losing messages", () => {
   const source = "<p>日本😀{名 + }</p>";
   const { ast, diagnostics } = parse(source);
   assert.ok(diagnostics.length > 0);
@@ -192,14 +192,22 @@ test("Unicode spans stay in original UTF-8 bytes and Yuku diagnostic messages su
   const tree = view(ast, expression.javascript);
   assert.strictEqual(tree.root, NULL);
   assert.ok(tree.diagnostics.length > 0);
+  const byteOffset = (unit: number) => Buffer.byteLength(source.slice(0, unit));
   for (const diagnostic of tree.diagnostics) {
     const outward = diagnostics.find(
-      (item) => item.message === diagnostic.message && item.start === diagnostic.span.start,
+      (item) =>
+        item.message === diagnostic.message && item.start === byteOffset(diagnostic.span.start),
     );
     assert.ok(outward);
-    assert.strictEqual(outward.end, diagnostic.span.end);
+    assert.strictEqual(outward.end, byteOffset(diagnostic.span.end));
     assert.strictEqual(outward.severity, diagnostic.severity);
-    assert.deepEqual(outward.labels, diagnostic.labels);
+    assert.deepEqual(
+      outward.labels,
+      diagnostic.labels.map((label: any) => ({
+        ...label,
+        span: { start: byteOffset(label.span.start), end: byteOffset(label.span.end) },
+      })),
+    );
   }
 });
 test("nested markup and many sibling expressions keep one valid global ID namespace", () => {

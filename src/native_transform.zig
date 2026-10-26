@@ -598,7 +598,7 @@ const Emitter = struct {
             .indent = 1,
             .quotes = .double,
             .comments = .all,
-            .source_map = if (self.options.sourcemap != null) .{ .source = intermediate } else null,
+            .source_map = if (self.options.sourcemap != null) .{} else null,
         });
         try self.codegenDiagnostics(generated.diagnostics, true);
         var quasis: std.ArrayList(maps.Quasi) = .empty;

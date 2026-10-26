@@ -36,7 +36,9 @@ pub fn serializeInto(session: *const Session, buffer: []u8) !void {
     std.mem.writeInt(u32, buffer[0..4], magic, .little);
     std.mem.writeInt(u32, buffer[4..8], version, .little);
     std.mem.writeInt(u32, buffer[8..12], @intCast(tree_size), .little);
-    _ = wire.serializeInto(&session.tree, buffer[header_size..][0..tree_size]);
+    var offsets = try wire.utf16.Offsets.init(session.document.allocator, session.document.source);
+    defer offsets.deinit(session.document.allocator);
+    _ = wire.serializeInto(&session.tree, &offsets, buffer[header_size..][0..tree_size]);
     var writer = Writer{ .source = session.document.source, .buffer = buffer[header_size + tree_size ..] };
     try writer.writeDocument(&session.document, &session.tree);
     std.debug.assert(writer.cursor == writer.buffer.?.len);

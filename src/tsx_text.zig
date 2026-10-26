@@ -1,6 +1,6 @@
 const std = @import("std");
 const data = @import("tsx_data.zig");
-const unicode = @import("util").UnicodeId;
+const unicode = @import("spec").unicode_id;
 const Allocator = std.mem.Allocator;
 pub fn eql(a: []const u8, b: []const u8) bool {
     return std.mem.eql(u8, a, b);

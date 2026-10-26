@@ -1,4 +1,5 @@
 const yuku = @import("parser");
+const Error = @import("std").mem.Allocator.Error;
 
 pub const files: []const yuku.dialect.File = &.{.{ .extension = ".astro", .lang = .tsx }};
 
@@ -29,11 +30,11 @@ pub fn operator(
     parser: *yuku.dialect.Parser,
     left: yuku.ast.NodeIndex,
     precedence: u8,
-) yuku.dialect.Error!yuku.dialect.Claim {
+) Error!yuku.dialect.Claim {
     _ = precedence;
     return @import("astro").endDialectExpression(parser, left);
 }
 
-pub fn expression(parser: *yuku.dialect.Parser) yuku.dialect.Error!yuku.dialect.Claim {
+pub fn expression(parser: *yuku.dialect.Parser) Error!yuku.dialect.Claim {
     return @import("astro").parseDialectExpression(parser);
 }
