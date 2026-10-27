@@ -1,6 +1,6 @@
 .{
     .name = .astro_compiler,
-    .version = "0.0.1",
+    .version = "0.0.2",
     .license = "MIT",
     .fingerprint = 0x412e511d4af319e, // Changing this has security and trust implications.
     .minimum_zig_version = "0.17.0",
